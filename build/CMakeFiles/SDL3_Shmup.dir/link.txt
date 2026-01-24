@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/SDL3_Shmup.dir/link.d CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o -o game  /usr/lib64/libSDL3.so.0.2.24
