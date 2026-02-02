@@ -72,10 +72,38 @@ include CMakeFiles/SDL3_Shmup.dir/flags.make
 CMakeFiles/SDL3_Shmup.dir/codegen:
 .PHONY : CMakeFiles/SDL3_Shmup.dir/codegen
 
+CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o: CMakeFiles/SDL3_Shmup.dir/flags.make
+CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o: /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.cpp
+CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o: CMakeFiles/SDL3_Shmup.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ryand/Documents/Dev/SDL3_POLAR-STAR/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o -MF CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o.d -o CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o -c /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.cpp
+
+CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.cpp > CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.i
+
+CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.cpp -o CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.s
+
+CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o: CMakeFiles/SDL3_Shmup.dir/flags.make
+CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o: /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.cpp
+CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o: CMakeFiles/SDL3_Shmup.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ryand/Documents/Dev/SDL3_POLAR-STAR/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o -MF CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o.d -o CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o -c /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.cpp
+
+CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.cpp > CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.i
+
+CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.cpp -o CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.s
+
 CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o: CMakeFiles/SDL3_Shmup.dir/flags.make
 CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o: /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/main.cpp
 CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o: CMakeFiles/SDL3_Shmup.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ryand/Documents/Dev/SDL3_POLAR-STAR/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ryand/Documents/Dev/SDL3_POLAR-STAR/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o -MF CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o.d -o CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o -c /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/main.cpp
 
 CMakeFiles/SDL3_Shmup.dir/src/main.cpp.i: cmake_force
@@ -88,17 +116,21 @@ CMakeFiles/SDL3_Shmup.dir/src/main.cpp.s: cmake_force
 
 # Object files for target SDL3_Shmup
 SDL3_Shmup_OBJECTS = \
+"CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o" \
+"CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o" \
 "CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o"
 
 # External object files for target SDL3_Shmup
 SDL3_Shmup_EXTERNAL_OBJECTS =
 
+game: CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o
+game: CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o
 game: CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o
 game: CMakeFiles/SDL3_Shmup.dir/build.make
 game: CMakeFiles/SDL3_Shmup.dir/compiler_depend.ts
 game: /usr/lib/libSDL3.so.0.4.0
 game: CMakeFiles/SDL3_Shmup.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ryand/Documents/Dev/SDL3_POLAR-STAR/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ryand/Documents/Dev/SDL3_POLAR-STAR/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable game"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SDL3_Shmup.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

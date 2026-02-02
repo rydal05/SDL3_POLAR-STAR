@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/ryand/Documents/Dev/SDL3_POLAR-STAR/include
 
 CXX_FLAGS = 
 

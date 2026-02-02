@@ -1,11 +1,18 @@
 cmake_minimum_required(VERSION 3.7)
-
 project(SDL3_Shmup)
 
-find_package(SDL3 REQUIRED)
-include_directories(${SDL3_INCLUDE_DIRS})
+# 1. Use CONFIG mode to ensure CMake finds the official SDL3 package config
+find_package(SDL3 REQUIRED CONFIG)
 
-add_executable(SDL3_Shmup ./src/main.cpp)
-set_target_properties(SDL3_Shmup PROPERTIES OUTPUT_NAME "game")	
+file(GLOB SOURCES "src/*.cpp")
+add_executable(SDL3_Shmup ${SOURCES})
 
-target_link_libraries(SDL3_Shmup ${SDL3_LIBRARIES})
+# 2. Add your local project headers
+target_include_directories(SDL3_Shmup PRIVATE include)
+
+# 3. Link against the SDL3 Target instead of global variables
+# This automatically handles include paths and library flags for you
+target_link_libraries(SDL3_Shmup PRIVATE SDL3::SDL3)
+
+# Optional: Clean up output name
+set_target_properties(SDL3_Shmup PROPERTIES OUTPUT_NAME "game")

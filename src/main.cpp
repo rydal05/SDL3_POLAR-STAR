@@ -2,12 +2,16 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+
 #include <stdio.h>
 #include <vector>
+#include <iostream>	
+
+#include "ResourceManager.hpp"
+#include "Sprite.hpp"
 
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
-#define MOVEMENT_SPEED 250
 
 void _draw();
 void _update();
@@ -30,45 +34,22 @@ int main(int argc, char *argv[]) {
 	}
 
 	// make the window
-	if (!SDL_CreateWindowAndRenderer("SDL3 Shmup", 640, 480, SDL_WINDOW_OPENGL, &window, &renderer)) {
+	if (!SDL_CreateWindowAndRenderer("POLAR STAR", 640, 480, SDL_WINDOW_OPENGL, &window, &renderer)) {
 		SDL_Log("Failed to create window and/or renderer: %s", SDL_GetError());
 		return SDL_APP_FAILURE;
 	}
 
 	SDL_SetRenderLogicalPresentation(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 
-	SDL_Texture *texture = NULL;
-	SDL_Surface *surface = NULL;
-
-	char *png_path = NULL;
-
-	SDL_asprintf(&png_path, "%s/asset/img/ship.bmp", SDL_GetBasePath());
-	surface = SDL_LoadBMP(png_path);
-
-	int texture_width = surface->w;
-	int texture_height = surface->h;
-	if (!surface) {
-		SDL_Log("Failed to load bitmap: %s", SDL_GetError());
-		return SDL_APP_FAILURE;
-	}
-
-	SDL_free(png_path);
-
-	texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-	SDL_DestroySurface(surface);
-
-	SDL_FRect dst_rect;
-	dst_rect.h = 64;
-	dst_rect.x = 64;
-	dst_rect.w = 64;
-	dst_rect.y = 64;
-	// end to above
 	SDL_Event event;
 	bool running = true;
 	Uint64 NOW = SDL_GetPerformanceCounter();
 	Uint64 LAST = 0;
 	double dt = 0;
+
+	Sprite player(renderer, "asset/img/Ship.bmp");
+	player.Draw_Src(0, 0, 16, 16);
+	player.Draw_Dst(64, 64, 64, 64);
 
 	// game loop begins
 	while (running) {
@@ -89,15 +70,17 @@ int main(int argc, char *argv[]) {
 		}
 
 		// update & run simulations
+		player.Update(dt);
+		
+		// render everything that occured within the frame
+		// wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
+		SDL_RenderClear(renderer);									 // clear canvas
 
-		const bool *keys = SDL_GetKeyboardState(NULL);
+		// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
 
-		if (keys[SDL_SCANCODE_UP]) dst_rect.y -= MOVEMENT_SPEED * dt;
-		if (keys[SDL_SCANCODE_DOWN]) dst_rect.y += MOVEMENT_SPEED * dt;
-		if (keys[SDL_SCANCODE_LEFT]) dst_rect.x -= MOVEMENT_SPEED * dt;
-		if (keys[SDL_SCANCODE_RIGHT]) dst_rect.x += MOVEMENT_SPEED * dt; // TODO: Implement gamepad movement
-
-		_draw();
+		player.Render(renderer);
+		SDL_RenderPresent(renderer);
 	}
 
 	// cleanup

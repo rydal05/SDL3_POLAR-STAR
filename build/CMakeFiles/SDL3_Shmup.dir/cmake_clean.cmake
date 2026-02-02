@@ -1,5 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/SDL3_Shmup.dir/link.d"
+  "CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o"
+  "CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o.d"
+  "CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o"
+  "CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o.d"
   "CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o"
   "CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o.d"
   "game"

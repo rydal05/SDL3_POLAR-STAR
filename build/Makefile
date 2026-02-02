@@ -129,6 +129,54 @@ SDL3_Shmup/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/build
 .PHONY : SDL3_Shmup/fast
 
+src/ResourceManager.o: src/ResourceManager.cpp.o
+.PHONY : src/ResourceManager.o
+
+# target to build an object file
+src/ResourceManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o
+.PHONY : src/ResourceManager.cpp.o
+
+src/ResourceManager.i: src/ResourceManager.cpp.i
+.PHONY : src/ResourceManager.i
+
+# target to preprocess a source file
+src/ResourceManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.i
+.PHONY : src/ResourceManager.cpp.i
+
+src/ResourceManager.s: src/ResourceManager.cpp.s
+.PHONY : src/ResourceManager.s
+
+# target to generate assembly for a file
+src/ResourceManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.s
+.PHONY : src/ResourceManager.cpp.s
+
+src/Sprite.o: src/Sprite.cpp.o
+.PHONY : src/Sprite.o
+
+# target to build an object file
+src/Sprite.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o
+.PHONY : src/Sprite.cpp.o
+
+src/Sprite.i: src/Sprite.cpp.i
+.PHONY : src/Sprite.i
+
+# target to preprocess a source file
+src/Sprite.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.i
+.PHONY : src/Sprite.cpp.i
+
+src/Sprite.s: src/Sprite.cpp.s
+.PHONY : src/Sprite.s
+
+# target to generate assembly for a file
+src/Sprite.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.s
+.PHONY : src/Sprite.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +210,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SDL3_Shmup"
+	@echo "... src/ResourceManager.o"
+	@echo "... src/ResourceManager.i"
+	@echo "... src/ResourceManager.s"
+	@echo "... src/Sprite.o"
+	@echo "... src/Sprite.i"
+	@echo "... src/Sprite.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

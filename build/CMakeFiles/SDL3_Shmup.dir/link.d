@@ -2,6 +2,8 @@ game: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
+  CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o \
+  CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o \
   /usr/lib/libSDL3.so.0.4.0 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
@@ -37,6 +39,10 @@ game: \
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o:
+
+CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
+
+CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o:
 

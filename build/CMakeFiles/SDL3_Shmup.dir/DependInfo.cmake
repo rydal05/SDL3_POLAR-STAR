@@ -8,6 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.cpp" "CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o" "gcc" "CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o.d"
+  "/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.cpp" "CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o" "gcc" "CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o.d"
   "/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/main.cpp" "CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o" "gcc" "CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o.d"
   "" "game" "gcc" "CMakeFiles/SDL3_Shmup.dir/link.d"
   )

@@ -4,25 +4,41 @@
 #include "ResourceManager.hpp"
 #include "Sprite.hpp"
 
-Sprite::Sprite(SDL_Renderer *&renderer, std::string filepath) {
-	SDL_Surface *retrieveSurface = ResourceManager::GetInstance().GetSurface(filepath);
+Sprite::Sprite(SDL_Renderer *&renderer, const char* filepath) {
+	char *new_filepath = NULL;
+	SDL_asprintf(&new_filepath, "%s%s", SDL_GetBasePath(),filepath);
+	SDL_Surface *retrieveSurface = ResourceManager::GetInstance().GetSurface(new_filepath);
 	m_texture = SDL_CreateTextureFromSurface(renderer, retrieveSurface);
+	SDL_free(new_filepath);
 }
 
 Sprite::~Sprite() {
 	SDL_DestroyTexture(m_texture);
 }
 
-void Sprite::Draw(float x, float y, float w, float h) {
-	m_rectangle.x = x;
-	m_rectangle.y = y;
-	m_rectangle.w = w;
-	m_rectangle.h = h;
+void Sprite::Draw_Src(int x, int y, int w, int h) {
+	m_src.x = x;
+	m_src.y = y;
+	m_src.w = w;
+	m_src.h = h;
 }
 
-void Sprite::Update() {
+void Sprite::Draw_Dst(int x, int y, int w, int h) {
+	m_dst.x = x;
+	m_dst.y = y;
+	m_dst.w = w;
+	m_dst.h = h;
+}
+
+void Sprite::Update(double dt) {
 }
 
 void Sprite::Render(SDL_Renderer *&renderer) {
-	SDL_RenderTexture(renderer, m_texture, NULL, &m_rectangle);
+	SDL_FRect temp_src;
+	SDL_RectToFRect(&m_src, &temp_src);
+
+	SDL_FRect temp_dst;
+	SDL_RectToFRect(&m_dst, &temp_dst);
+
+	SDL_RenderTexture(renderer, m_texture, &temp_src, &temp_dst);
 }
