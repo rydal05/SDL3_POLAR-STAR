@@ -2,21 +2,23 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
-
 #include <stdio.h>
+#include <vector>
 
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 #define MOVEMENT_SPEED 250
 
+void _draw();
+void _update();
+void _init();
+
 static SDL_Window *window = nullptr;
 static SDL_Renderer *renderer = nullptr;
 
-
-
 int main(int argc, char *argv[]) {
 	// setup
-	SDL_SetAppMetadata("TEXT TEXT LALALALLALA", "Version Very Early 0.0.1", "com.cantisresort.polarstar");
+	SDL_SetAppMetadata("TEXT TEXT LALALALLALA", "Version Very Very Friend 0.0.1", "com.cantisresort.polarstar");
 
 	if (!SDL_Init(SDL_INIT_VIDEO)) {
 		SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
@@ -34,15 +36,6 @@ int main(int argc, char *argv[]) {
 	}
 
 	SDL_SetRenderLogicalPresentation(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_LOGICAL_PRESENTATION_LETTERBOX);
-
-	// hypothetical functions and features between init and the beginning of the game loop that get abstracted into their own headers and functions once the testing phase of things ends
-
-	// things that need to be done
-	// creating a sprite
-	// creating a pointer to the sprite of the player char (add 1-3 system for controlling multiple and being able to hand off the controls)
-	// hitbox testing stuff
-	// text system maybe
-	//
 
 	SDL_Texture *texture = NULL;
 	SDL_Surface *surface = NULL;
@@ -76,13 +69,13 @@ int main(int argc, char *argv[]) {
 	Uint64 NOW = SDL_GetPerformanceCounter();
 	Uint64 LAST = 0;
 	double dt = 0;
-	
+
 	// game loop begins
 	while (running) {
-		LAST = NOW; //deltatime calculations
+		LAST = NOW; // deltatime calculations
 		NOW = SDL_GetPerformanceCounter();
-		dt = (double)((NOW-LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
-		dt *= 0.001;//convert ms -> s
+		dt = (double)((NOW - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
+		dt *= 0.001; // convert ms -> s
 
 		while (SDL_PollEvent(&event)) { // event handler
 			if (event.type == SDL_EVENT_QUIT) {
@@ -96,22 +89,15 @@ int main(int argc, char *argv[]) {
 		}
 
 		// update & run simulations
-		
+
 		const bool *keys = SDL_GetKeyboardState(NULL);
 
-		if(keys[SDL_SCANCODE_UP]) dst_rect.y -= MOVEMENT_SPEED*dt;
-		if(keys[SDL_SCANCODE_DOWN]) dst_rect.y += MOVEMENT_SPEED*dt;
-		if(keys[SDL_SCANCODE_LEFT]) dst_rect.x -= MOVEMENT_SPEED*dt;
-		if(keys[SDL_SCANCODE_RIGHT]) dst_rect.x += MOVEMENT_SPEED*dt; //TODO: Implement gamepad movement
+		if (keys[SDL_SCANCODE_UP]) dst_rect.y -= MOVEMENT_SPEED * dt;
+		if (keys[SDL_SCANCODE_DOWN]) dst_rect.y += MOVEMENT_SPEED * dt;
+		if (keys[SDL_SCANCODE_LEFT]) dst_rect.x -= MOVEMENT_SPEED * dt;
+		if (keys[SDL_SCANCODE_RIGHT]) dst_rect.x += MOVEMENT_SPEED * dt; // TODO: Implement gamepad movement
 
-		// render everything that occured within the frame
-		// wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
-		SDL_RenderClear(renderer);									 // clear canvas
-
-		SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
-
-		SDL_RenderPresent(renderer);
+		_draw();
 	}
 
 	// cleanup
@@ -120,4 +106,21 @@ int main(int argc, char *argv[]) {
 	SDL_Quit();
 
 	return 0;
+}
+
+void _draw() {
+	// render everything that occured within the frame
+	// wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
+	SDL_RenderClear(renderer);									 // clear canvas
+
+	// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
+
+	SDL_RenderPresent(renderer);
+}
+
+void _update() {
+}
+
+void _init() {
 }
