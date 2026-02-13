@@ -34,11 +34,6 @@ void Sprite::Update(double dt) {
 }
 
 void Sprite::Render(SDL_Renderer *&renderer) {
-	SDL_FRect temp_src;
-	SDL_RectToFRect(&m_src, &temp_src);
 
-	SDL_FRect temp_dst;
-	SDL_RectToFRect(&m_dst, &temp_dst);
-
-	SDL_RenderTexture(renderer, m_texture, &temp_src, &temp_dst);
+	SDL_RenderTexture(renderer, m_texture, &m_src, &m_dst);
 }

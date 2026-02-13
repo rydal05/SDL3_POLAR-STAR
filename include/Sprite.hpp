@@ -11,13 +11,12 @@ class Sprite {
         void Draw_Src(int x, int y, int w, int h);
         void Draw_Dst(int x, int y, int w, int h);
         void Update(double dt);
-        void Render(SDL_Renderer*& renderer);
-        
+        void Render(SDL_Renderer*& renderer);        
+        SDL_FRect m_dst;//move to private when i have a better method of moving the player lol
         
     private:
-        SDL_Rect m_src;
-        SDL_Rect m_dst;
-        SDL_Texture* m_texture;      
+        SDL_FRect m_src;
+        SDL_Texture* m_texture;
 };
 
 #endif

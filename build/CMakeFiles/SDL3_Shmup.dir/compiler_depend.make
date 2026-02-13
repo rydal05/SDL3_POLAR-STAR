@@ -580,9 +580,19 @@ CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o: /home/ryand/Documents/Dev/SDL3_POLAR-S
   /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
   /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-macros.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/mathcalls.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
@@ -680,6 +690,7 @@ CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o: /home/ryand/Documents/Dev/SDL3_POLAR-S
   /usr/include/c++/15.2.1/bits/range_access.h \
   /usr/include/c++/15.2.1/bits/refwrap.h \
   /usr/include/c++/15.2.1/bits/requires_hosted.h \
+  /usr/include/c++/15.2.1/bits/specfun.h \
   /usr/include/c++/15.2.1/bits/std_abs.h \
   /usr/include/c++/15.2.1/bits/stl_algobase.h \
   /usr/include/c++/15.2.1/bits/stl_bvector.h \
@@ -704,6 +715,7 @@ CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o: /home/ryand/Documents/Dev/SDL3_POLAR-S
   /usr/include/c++/15.2.1/cctype \
   /usr/include/c++/15.2.1/cerrno \
   /usr/include/c++/15.2.1/clocale \
+  /usr/include/c++/15.2.1/cmath \
   /usr/include/c++/15.2.1/concepts \
   /usr/include/c++/15.2.1/cstddef \
   /usr/include/c++/15.2.1/cstdio \
@@ -724,6 +736,8 @@ CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o: /home/ryand/Documents/Dev/SDL3_POLAR-S
   /usr/include/c++/15.2.1/iosfwd \
   /usr/include/c++/15.2.1/iostream \
   /usr/include/c++/15.2.1/istream \
+  /usr/include/c++/15.2.1/limits \
+  /usr/include/c++/15.2.1/math.h \
   /usr/include/c++/15.2.1/new \
   /usr/include/c++/15.2.1/ostream \
   /usr/include/c++/15.2.1/pstl/pstl_config.h \
@@ -732,6 +746,18 @@ CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o: /home/ryand/Documents/Dev/SDL3_POLAR-S
   /usr/include/c++/15.2.1/string \
   /usr/include/c++/15.2.1/string_view \
   /usr/include/c++/15.2.1/system_error \
+  /usr/include/c++/15.2.1/tr1/bessel_function.tcc \
+  /usr/include/c++/15.2.1/tr1/beta_function.tcc \
+  /usr/include/c++/15.2.1/tr1/ell_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/exp_integral.tcc \
+  /usr/include/c++/15.2.1/tr1/gamma.tcc \
+  /usr/include/c++/15.2.1/tr1/hypergeometric.tcc \
+  /usr/include/c++/15.2.1/tr1/legendre_function.tcc \
+  /usr/include/c++/15.2.1/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_hermite.tcc \
+  /usr/include/c++/15.2.1/tr1/poly_laguerre.tcc \
+  /usr/include/c++/15.2.1/tr1/riemann_zeta.tcc \
+  /usr/include/c++/15.2.1/tr1/special_function_util.h \
   /usr/include/c++/15.2.1/tuple \
   /usr/include/c++/15.2.1/type_traits \
   /usr/include/c++/15.2.1/typeinfo \
@@ -761,6 +787,7 @@ CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o: /home/ryand/Documents/Dev/SDL3_POLAR-S
   /usr/include/linux/stddef.h \
   /usr/include/linux/types.h \
   /usr/include/locale.h \
+  /usr/include/math.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -792,11 +819,83 @@ game: /usr/lib/Scrt1.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/libgcc.a \
   /usr/lib/ld-linux-x86-64.so.2 \
+  /usr/lib/libFLAC.so.14 \
   /usr/lib/libSDL3.so.0.4.0 \
+  /usr/lib/libX11.so.6 \
+  /usr/lib/libXau.so.6 \
+  /usr/lib/libXcursor.so.1 \
+  /usr/lib/libXdmcp.so.6 \
+  /usr/lib/libXext.so.6 \
+  /usr/lib/libXfixes.so.3 \
+  /usr/lib/libXi.so.6 \
+  /usr/lib/libXrandr.so.2 \
+  /usr/lib/libXrender.so.1 \
+  /usr/lib/libXss.so.1 \
+  /usr/lib/libXtst.so.6 \
+  /usr/lib/libasound.so.2 \
+  /usr/lib/libasyncns.so.0 \
+  /usr/lib/libbsd.so.0 \
   /usr/lib/libc.so.6 \
   /usr/lib/libc_nonshared.a \
+  /usr/lib/libdatrie.so.1 \
+  /usr/lib/libdbus-1.so.3 \
+  /usr/lib/libdecor-0.so.0 \
+  /usr/lib/libdrm.so.2 \
+  /usr/lib/libexpat.so.1 \
+  /usr/lib/libffi.so.8 \
+  /usr/lib/libfribidi.so.0 \
+  /usr/lib/libgbm.so.1 \
+  /usr/lib/libjack.so.0 \
   /usr/lib/libm.so.6 \
+  /usr/lib/libmd.so.0 \
+  /usr/lib/libmp3lame.so.0 \
+  /usr/lib/libmpg123.so.0 \
   /usr/lib/libmvec.so.1 \
+  /usr/lib/libogg.so.0 \
+  /usr/lib/libopus.so.0 \
+  /usr/lib/libpipewire-0.3.so.0 \
+  /usr/lib/libpulse.so.0 \
+  /usr/lib/libsndfile.so.1 \
+  /usr/lib/libsndio.so.7 \
+  /usr/lib/libsystemd.so.0 \
+  /usr/lib/libthai.so.0 \
+  /usr/lib/libudev.so.1 \
+  /usr/lib/libusb-1.0.so.0 \
+  /usr/lib/libvorbis.so.0 \
+  /usr/lib/libvorbisenc.so.2 \
+  /usr/lib/libwayland-client.so.0 \
+  /usr/lib/libwayland-cursor.so.0 \
+  /usr/lib/libwayland-egl.so.1 \
+  /usr/lib/libxcb.so.1 \
+  /usr/lib/libxkbcommon.so.0 \
+  /usr/lib/pulseaudio/libpulsecommon-17.0.so \
+  /usr/lib32/libFLAC.so.14 \
+  /usr/lib32/libX11.so.6 \
+  /usr/lib32/libXau.so.6 \
+  /usr/lib32/libXdmcp.so.6 \
+  /usr/lib32/libXext.so.6 \
+  /usr/lib32/libXfixes.so.3 \
+  /usr/lib32/libXss.so.1 \
+  /usr/lib32/libasound.so.2 \
+  /usr/lib32/libasyncns.so.0 \
+  /usr/lib32/libdbus-1.so.3 \
+  /usr/lib32/libdrm.so.2 \
+  /usr/lib32/libexpat.so.1 \
+  /usr/lib32/libffi.so.8 \
+  /usr/lib32/libgbm.so.1 \
+  /usr/lib32/libogg.so.0 \
+  /usr/lib32/libopus.so.0 \
+  /usr/lib32/libpipewire-0.3.so.0 \
+  /usr/lib32/libpulse.so.0 \
+  /usr/lib32/libsndfile.so.1 \
+  /usr/lib32/libsystemd.so.0 \
+  /usr/lib32/libudev.so.1 \
+  /usr/lib32/libvorbis.so.0 \
+  /usr/lib32/libvorbisenc.so.2 \
+  /usr/lib32/libwayland-client.so.0 \
+  /usr/lib32/libwayland-cursor.so.0 \
+  /usr/lib32/libwayland-egl.so.1 \
+  /usr/lib32/libxcb.so.1 \
   CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o
@@ -806,13 +905,95 @@ CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o:
 
 CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
-/usr/lib/libmvec.so.1:
+/usr/lib32/libxcb.so.1:
+
+/usr/lib32/libwayland-cursor.so.0:
+
+/usr/lib32/libvorbis.so.0:
+
+/usr/lib32/libsystemd.so.0:
+
+/usr/lib32/libdrm.so.2:
+
+/usr/lib32/libpulse.so.0:
+
+/usr/lib32/libasyncns.so.0:
+
+/usr/lib32/libXfixes.so.3:
+
+/usr/lib32/libXext.so.6:
+
+/usr/lib32/libXau.so.6:
+
+/usr/lib32/libX11.so.6:
+
+/usr/lib/libwayland-client.so.0:
+
+/usr/lib/libvorbisenc.so.2:
+
+/usr/lib/libvorbis.so.0:
+
+/usr/lib/libusb-1.0.so.0:
+
+/usr/lib32/libdbus-1.so.3:
+
+/usr/lib/libthai.so.0:
+
+/usr/lib/libsystemd.so.0:
+
+/usr/lib/libsndio.so.7:
+
+/usr/lib/libsndfile.so.1:
+
+/usr/lib/libpipewire-0.3.so.0:
+
+/usr/lib/libmpg123.so.0:
+
+/usr/lib/libmd.so.0:
 
 /usr/lib/libm.so.6:
+
+/usr/lib/libffi.so.8:
+
+/usr/lib/libexpat.so.1:
+
+/usr/lib/libdrm.so.2:
+
+/usr/lib/libdbus-1.so.3:
+
+/usr/lib/libdatrie.so.1:
 
 /usr/lib/libc_nonshared.a:
 
 /usr/lib/libc.so.6:
+
+/usr/lib/libbsd.so.0:
+
+/usr/lib/libasyncns.so.0:
+
+/usr/lib/libasound.so.2:
+
+/usr/lib/libXtst.so.6:
+
+/usr/lib/libXss.so.1:
+
+/usr/lib/libXrender.so.1:
+
+/usr/lib/libmvec.so.1:
+
+/usr/lib/libXrandr.so.2:
+
+/usr/lib/libXi.so.6:
+
+/usr/lib/libXfixes.so.3:
+
+/usr/lib/libXext.so.6:
+
+/usr/lib/libXdmcp.so.6:
+
+/usr/lib/libXcursor.so.1:
+
+/usr/lib/libX11.so.6:
 
 /usr/lib/libSDL3.so.0.4.0:
 
@@ -832,13 +1013,47 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/lib/Scrt1.o:
 
+/usr/include/c++/15.2.1/tr1/special_function_util.h:
+
+/usr/include/c++/15.2.1/tr1/modified_bessel_func.tcc:
+
+/usr/include/c++/15.2.1/tr1/legendre_function.tcc:
+
+/usr/include/c++/15.2.1/tr1/hypergeometric.tcc:
+
+/usr/include/c++/15.2.1/tr1/exp_integral.tcc:
+
+/usr/include/c++/15.2.1/tr1/ell_integral.tcc:
+
+/usr/include/c++/15.2.1/math.h:
+
 /usr/include/c++/15.2.1/bits/vector.tcc:
 
 /usr/include/c++/15.2.1/bits/stl_bvector.h:
 
+/usr/include/c++/15.2.1/bits/specfun.h:
+
+/usr/include/bits/mathcalls-narrow.h:
+
+/usr/include/bits/mathcalls-macros.h:
+
+/usr/lib32/libopus.so.0:
+
+/usr/include/bits/libm-simd-decl-stubs.h:
+
+/usr/include/bits/iscanonical.h:
+
+/usr/lib/libdecor-0.so.0:
+
+/usr/include/bits/fp-logb.h:
+
+/usr/include/bits/flt-eval-method.h:
+
 /usr/include/SDL3/SDL_main.h:
 
 /home/ryand/Documents/Dev/SDL3_POLAR-STAR/include/Sprite.hpp:
+
+/usr/lib/libxkbcommon.so.0:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h:
 
@@ -852,11 +1067,15 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/include/sys/cdefs.h:
 
+/usr/include/c++/15.2.1/tr1/poly_laguerre.tcc:
+
 /usr/include/strings.h:
 
 /usr/include/string.h:
 
 /usr/include/stdc-predef.h:
+
+/usr/include/bits/fp-fast.h:
 
 /usr/include/wctype.h:
 
@@ -870,6 +1089,8 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/include/locale.h:
 
+/usr/include/c++/15.2.1/tr1/poly_hermite.tcc:
+
 /usr/include/bits/types/timer_t.h:
 
 /usr/include/SDL3/SDL_metal.h:
@@ -879,6 +1100,8 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 /usr/include/bits/types/mbstate_t.h:
 
 /usr/include/bits/types/locale_t.h:
+
+/usr/include/c++/15.2.1/tr1/riemann_zeta.tcc:
 
 /usr/include/bits/types/__fpos_t.h:
 
@@ -896,6 +1119,8 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/include/bits/types/time_t.h:
 
+/usr/lib32/libwayland-client.so.0:
+
 /usr/include/wchar.h:
 
 /usr/include/SDL3/SDL_keycode.h:
@@ -906,11 +1131,17 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/include/bits/types/error_t.h:
 
+/usr/lib32/libogg.so.0:
+
+/usr/lib32/libXdmcp.so.6:
+
 /usr/include/SDL3/SDL_loadso.h:
 
 /usr/include/bits/select.h:
 
 /usr/lib/libc.so:
+
+/usr/include/c++/15.2.1/tr1/beta_function.tcc:
 
 /usr/include/bits/pthreadtypes.h:
 
@@ -919,6 +1150,8 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 /usr/include/bits/pthreadtypes-arch.h:
 
 /usr/include/gnu/stubs.h:
+
+/usr/lib32/libFLAC.so.14:
 
 /usr/include/bits/pthread_stack_min-dynamic.h:
 
@@ -930,9 +1163,13 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/include/bits/floatn.h:
 
+/usr/lib/libFLAC.so.14:
+
 /usr/include/bits/floatn-common.h:
 
 /usr/include/SDL3/SDL_tray.h:
+
+/usr/lib/libpulse.so.0:
 
 /usr/include/bits/stdint-intn.h:
 
@@ -945,6 +1182,8 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 /usr/include/SDL3/SDL_close_code.h:
 
 /usr/include/bits/types/struct_FILE.h:
+
+/usr/lib/libgbm.so.1:
 
 /usr/include/stdlib.h:
 
@@ -968,13 +1207,19 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/include/asm-generic/errno.h:
 
+/usr/lib32/libasound.so.2:
+
 /usr/include/asm-generic/errno-base.h:
+
+/usr/include/c++/15.2.1/tr1/bessel_function.tcc:
 
 /usr/include/SDL3/SDL_process.h:
 
 /usr/include/SDL3/SDL_version.h:
 
 /usr/include/c++/15.2.1/bits/ostream.h:
+
+/usr/lib32/libudev.so.1:
 
 /usr/include/SDL3/SDL_video.h:
 
@@ -988,7 +1233,11 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/include/bits/types/cookie_io_functions_t.h:
 
+/usr/lib/libudev.so.1:
+
 /usr/include/SDL3/SDL_properties.h:
+
+/usr/lib32/libsndfile.so.1:
 
 /usr/include/c++/15.2.1/bits/stl_algobase.h:
 
@@ -1010,6 +1259,8 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/include/SDL3/SDL_gamepad.h:
 
+/usr/lib/libwayland-cursor.so.0:
+
 /usr/include/SDL3/SDL_camera.h:
 
 /usr/include/bits/waitflags.h:
@@ -1018,11 +1269,15 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/include/ctype.h:
 
+/usr/lib32/libffi.so.8:
+
 /usr/include/c++/15.2.1/bits/cpp_type_traits.h:
 
 /usr/include/SDL3/SDL_cpuinfo.h:
 
 /usr/include/SDL3/SDL_mutex.h:
+
+/usr/lib32/libwayland-egl.so.1:
 
 /usr/include/bits/byteswap.h:
 
@@ -1050,7 +1305,11 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/include/bits/timesize.h:
 
+/usr/lib/libxcb.so.1:
+
 /usr/include/bits/endian.h:
+
+/usr/include/math.h:
 
 /usr/include/c++/15.2.1/bits/invoke.h:
 
@@ -1097,6 +1356,8 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 /usr/include/c++/15.2.1/iosfwd:
 
 /usr/include/bits/stdint-least.h:
+
+/usr/include/c++/15.2.1/tr1/gamma.tcc:
 
 /usr/include/SDL3/SDL_mouse.h:
 
@@ -1148,6 +1409,8 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /usr/include/bits/setjmp.h:
 
+/usr/lib32/libXss.so.1:
+
 /usr/include/c++/15.2.1/ext/aligned_buffer.h:
 
 /usr/include/SDL3/SDL_sensor.h:
@@ -1180,11 +1443,15 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 
+/usr/lib32/libgbm.so.1:
+
 /usr/include/bits/wctype-wchar.h:
 
 /usr/include/stdio.h:
 
 /usr/include/bits/wordsize.h:
+
+/usr/include/bits/math-vector.h:
 
 /usr/include/c++/15.2.1/bits/exception.h:
 
@@ -1206,6 +1473,8 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 
 /usr/include/c++/15.2.1/ext/atomicity.h:
 
+/usr/include/bits/mathcalls-helper-functions.h:
+
 /usr/include/c++/15.2.1/bits/charconv.h:
 
 /usr/include/c++/15.2.1/bits/concept_check.h:
@@ -1214,15 +1483,21 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 
 /usr/include/c++/15.2.1/stdexcept:
 
+/usr/lib/libXau.so.6:
+
 /usr/include/c++/15.2.1/bits/erase_if.h:
 
 /usr/include/c++/15.2.1/vector:
 
 /usr/include/c++/15.2.1/bits/exception_defines.h:
 
+/usr/lib/libogg.so.0:
+
 /usr/include/c++/15.2.1/bits/functexcept.h:
 
 /usr/include/c++/15.2.1/streambuf:
+
+/usr/lib/libfribidi.so.0:
 
 /usr/lib/crtn.o:
 
@@ -1238,7 +1513,11 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 
 /usr/include/c++/15.2.1/bits/ios_base.h:
 
+/usr/lib/libwayland-egl.so.1:
+
 /usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h:
+
+/usr/include/c++/15.2.1/limits:
 
 /usr/include/bits/struct_mutex.h:
 
@@ -1251,6 +1530,8 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 /usr/include/alloca.h:
 
 /usr/include/c++/15.2.1/bits/locale_classes.h:
+
+/usr/lib32/libpipewire-0.3.so.0:
 
 /usr/include/SDL3/SDL_clipboard.h:
 
@@ -1302,6 +1583,8 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 
 /usr/include/c++/15.2.1/bits/streambuf.tcc:
 
+/usr/lib32/libvorbisenc.so.2:
+
 /usr/include/c++/15.2.1/unordered_map:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h:
@@ -1311,6 +1594,8 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 /usr/include/SDL3/SDL_haptic.h:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/error_constants.h:
+
+/usr/lib/libmp3lame.so.0:
 
 /usr/include/c++/15.2.1/bits/ostream_insert.h:
 
@@ -1322,6 +1607,8 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 
 /usr/include/c++/15.2.1/bits/range_access.h:
 
+/usr/lib/libjack.so.0:
+
 /usr/include/linux/types.h:
 
 /usr/include/c++/15.2.1/bits/std_abs.h:
@@ -1332,6 +1619,8 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 
 /usr/include/c++/15.2.1/bits/stl_iterator_base_types.h:
 
+/usr/lib/libopus.so.0:
+
 /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.cpp:
 
 /usr/include/c++/15.2.1/bits/streambuf_iterator.h:
@@ -1339,6 +1628,8 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 /usr/include/bits/typesizes.h:
 
 /usr/include/c++/15.2.1/bits/string_view.tcc:
+
+/usr/lib32/libexpat.so.1:
 
 /usr/include/c++/15.2.1/bits/unordered_map.h:
 
@@ -1368,7 +1659,11 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 
 /usr/include/c++/15.2.1/ext/numeric_traits.h:
 
+/usr/lib/pulseaudio/libpulsecommon-17.0.so:
+
 /usr/include/c++/15.2.1/ext/type_traits.h:
+
+/usr/include/bits/mathcalls.h:
 
 /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.cpp:
 
@@ -1377,6 +1672,8 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 /usr/include/c++/15.2.1/string:
 
 /usr/include/c++/15.2.1/string_view:
+
+/usr/include/c++/15.2.1/cmath:
 
 /usr/include/stdint.h:
 

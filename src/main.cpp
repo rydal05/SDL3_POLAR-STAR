@@ -3,15 +3,17 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
+#include <iostream>
+#include <math.h>
 #include <stdio.h>
 #include <vector>
-#include <iostream>	
 
 #include "ResourceManager.hpp"
 #include "Sprite.hpp"
 
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
+#define PLR_SPEED 0.25f
 
 void _draw();
 void _update();
@@ -43,42 +45,57 @@ int main(int argc, char *argv[]) {
 
 	SDL_Event event;
 	bool running = true;
-	Uint64 NOW = SDL_GetPerformanceCounter();
-	Uint64 LAST = 0;
+	Uint64 LAST = SDL_GetPerformanceCounter();
+	Uint64 NOW = LAST;
 	double dt = 0;
 
-	Sprite player(renderer, "asset/img/Ship.bmp");
+	Sprite player(renderer, "asset/img/stg_story.bmp");
 	player.Draw_Src(0, 0, 16, 16);
-	player.Draw_Dst(64, 64, 64, 64);
+	player.Draw_Dst(64, 64, 32, 32);
 
 	// game loop begins
 	while (running) {
-		LAST = NOW; // deltatime calculations
 		NOW = SDL_GetPerformanceCounter();
 		dt = (double)((NOW - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
-		dt *= 0.001; // convert ms -> s
+		LAST = NOW; // deltatime calculations
+		const bool *state = SDL_GetKeyboardState(NULL);
 
 		while (SDL_PollEvent(&event)) { // event handler
 			if (event.type == SDL_EVENT_QUIT) {
 				running = false;
 			}
 			if (event.type == SDL_EVENT_KEY_DOWN) {
-				if (event.key.scancode == SDLK_ESCAPE) {
+				if (event.key.scancode == SDL_SCANCODE_ESCAPE) {
 					running = false;
 				}
 			}
 		}
 
+		if (state[SDL_SCANCODE_UP]) {
+			player.m_dst.y -= (float)(PLR_SPEED * dt);
+		}
+		if (state[SDL_SCANCODE_LEFT]) {
+			player.m_dst.x -= (float)(PLR_SPEED * dt);
+		}
+		if (state[SDL_SCANCODE_DOWN]) {
+			player.m_dst.y += (float)(PLR_SPEED * dt);
+		}
+		if (state[SDL_SCANCODE_RIGHT]) {
+			player.m_dst.x += (float)(PLR_SPEED * dt);
+		}
+
 		// update & run simulations
-		player.Update(dt);
-		
+		// player.Update(dt);
+
 		// render everything that occured within the frame
 		// wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
 		SDL_RenderClear(renderer);									 // clear canvas
 
-		// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
 
+		
+		// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
+		
 		player.Render(renderer);
 		SDL_RenderPresent(renderer);
 	}
