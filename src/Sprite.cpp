@@ -4,9 +4,9 @@
 #include "ResourceManager.hpp"
 #include "Sprite.hpp"
 
-Sprite::Sprite(SDL_Renderer *&renderer, const char* filepath) {
+Sprite::Sprite(SDL_Renderer *&renderer, const char *filepath) {
 	char *new_filepath = NULL;
-	SDL_asprintf(&new_filepath, "%s%s", SDL_GetBasePath(),filepath);
+	SDL_asprintf(&new_filepath, "%s%s", SDL_GetBasePath(), filepath);
 	SDL_Surface *retrieveSurface = ResourceManager::GetInstance().GetSurface(new_filepath);
 	m_texture = SDL_CreateTextureFromSurface(renderer, retrieveSurface);
 	SDL_free(new_filepath);
@@ -35,5 +35,6 @@ void Sprite::Update(double dt) {
 
 void Sprite::Render(SDL_Renderer *&renderer) {
 
+	SDL_SetTextureScaleMode(m_texture, SDL_SCALEMODE_PIXELART);
 	SDL_RenderTexture(renderer, m_texture, &m_src, &m_dst);
 }

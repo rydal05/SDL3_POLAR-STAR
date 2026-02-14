@@ -50,8 +50,12 @@ int main(int argc, char *argv[]) {
 	double dt = 0;
 
 	Sprite player(renderer, "asset/img/stg_story.bmp");
-	player.Draw_Src(0, 0, 16, 16);
+	player.Draw_Src(0, 0, 15, 15);
 	player.Draw_Dst(64, 64, 32, 32);
+
+	Sprite HPLV(renderer, "asset/img/stg_story_ui.bmp");
+	HPLV.Draw_Src(0, 0, 63, 31);
+	HPLV.Draw_Dst(0, 0, 64 * 2, 32 * 2);
 
 	// game loop begins
 	while (running) {
@@ -84,6 +88,10 @@ int main(int argc, char *argv[]) {
 			player.m_dst.x += (float)(PLR_SPEED * dt);
 		}
 
+		if (player.m_dst.y > 448) player.m_dst.y = 448;
+		if (player.m_dst.y < 64) player.m_dst.y = 64;
+		if (player.m_dst.x < 0) player.m_dst.x = 0;
+		if (player.m_dst.x > 608) player.m_dst.x = 608;
 		// update & run simulations
 		// player.Update(dt);
 
@@ -92,11 +100,10 @@ int main(int argc, char *argv[]) {
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
 		SDL_RenderClear(renderer);									 // clear canvas
 
-
-		
 		// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
-		
+
 		player.Render(renderer);
+		HPLV.Render(renderer);
 		SDL_RenderPresent(renderer);
 	}
 

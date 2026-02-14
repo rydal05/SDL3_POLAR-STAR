@@ -136,7 +136,7 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o: \
  /usr/include/c++/15.2.1/bits/uses_allocator.h \
  /usr/include/c++/15.2.1/bits/uses_allocator_args.h \
  /usr/include/c++/15.2.1/tuple \
- /home/ryand/Documents/Dev/SDL3_POLAR-STAR/include/ResourceManager.hpp \
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.hpp \
  /usr/include/c++/15.2.1/unordered_map \
  /usr/include/c++/15.2.1/bits/unordered_map.h \
  /usr/include/c++/15.2.1/bits/hashtable.h \
@@ -145,4 +145,4 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o: \
  /usr/include/c++/15.2.1/bits/enable_special_members.h \
  /usr/include/c++/15.2.1/bits/node_handle.h \
  /usr/include/c++/15.2.1/bits/erase_if.h \
- /home/ryand/Documents/Dev/SDL3_POLAR-STAR/include/Sprite.hpp
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.hpp

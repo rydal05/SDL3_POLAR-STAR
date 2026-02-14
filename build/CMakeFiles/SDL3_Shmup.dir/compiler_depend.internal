@@ -3,7 +3,7 @@
 
 CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o
  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.cpp
- /home/ryand/Documents/Dev/SDL3_POLAR-STAR/include/ResourceManager.hpp
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.hpp
  /usr/include/SDL3/SDL.h
  /usr/include/SDL3/SDL_assert.h
  /usr/include/SDL3/SDL_asyncio.h
@@ -281,8 +281,8 @@ CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o
 
 CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o
  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.cpp
- /home/ryand/Documents/Dev/SDL3_POLAR-STAR/include/ResourceManager.hpp
- /home/ryand/Documents/Dev/SDL3_POLAR-STAR/include/Sprite.hpp
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.hpp
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.hpp
  /usr/include/SDL3/SDL.h
  /usr/include/SDL3/SDL_assert.h
  /usr/include/SDL3/SDL_asyncio.h
@@ -500,8 +500,8 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o
 
 CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o
  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/main.cpp
- /home/ryand/Documents/Dev/SDL3_POLAR-STAR/include/ResourceManager.hpp
- /home/ryand/Documents/Dev/SDL3_POLAR-STAR/include/Sprite.hpp
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.hpp
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.hpp
  /usr/include/SDL3/SDL.h
  /usr/include/SDL3/SDL_assert.h
  /usr/include/SDL3/SDL_asyncio.h

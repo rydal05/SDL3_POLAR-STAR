@@ -1,7 +1,7 @@
 CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o: \
  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.cpp \
  /usr/include/stdc-predef.h \
- /home/ryand/Documents/Dev/SDL3_POLAR-STAR/include/ResourceManager.hpp \
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.hpp \
  /usr/include/c++/15.2.1/string \
  /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
