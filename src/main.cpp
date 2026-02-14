@@ -14,6 +14,8 @@
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 #define PLR_SPEED 0.25f
+#define PLR_SPRITE_SIZE 32
+#define SCALE 2
 
 void _draw();
 void _update();
@@ -50,14 +52,58 @@ int main(int argc, char *argv[]) {
 	double dt = 0;
 
 	Sprite player(renderer, "asset/img/stg_story.bmp");
-	player.Draw_Src(0, 0, 15, 15);
-	player.Draw_Dst(64, 64, 32, 32);
+	player.Draw_Src(0, 0, 16, 16);
+	player.Draw_Dst(640 / 2, 480 / 2, PLR_SPRITE_SIZE, PLR_SPRITE_SIZE);
 
 	Sprite HPLV(renderer, "asset/img/stg_story_ui.bmp");
-	HPLV.Draw_Src(0, 0, 63, 31);
-	HPLV.Draw_Dst(0, 0, 64 * 2, 32 * 2);
+	HPLV.Draw_Src(0, 0, 64, 32);
+	HPLV.Draw_Dst(0, 0, 64 * SCALE, 32 * SCALE);
 
-	// game loop begins
+	Sprite gunIcon(renderer, "asset/img/stg_story_ui.bmp");
+	gunIcon.Draw_Src(0, 32, 16, 16);
+	gunIcon.Draw_Dst(0, 0, 16 * SCALE, 16 * SCALE);
+
+	Sprite levelIcon(renderer, "asset/img/stg_story_ui.bmp");
+	levelIcon.Draw_Src(8, 64, 8, 8);
+	levelIcon.Draw_Dst(16 * SCALE, 16 * SCALE, 8 * SCALE, 8 * SCALE);
+
+	Sprite bg1(renderer, "asset/img/stg_story_bgs.bmp");
+	bg1.Draw_Src(0, 0, 640, 176);
+	bg1.Draw_Dst(0, WINDOW_HEIGHT - 176, 640, 176);
+
+	Sprite bg2(renderer, "asset/img/stg_story_bgs.bmp");
+	bg2.Draw_Src(640, 0, 640, 192);
+	bg2.Draw_Dst(0, WINDOW_HEIGHT - 192, 640, 192);
+
+	Sprite bg4(renderer, "asset/img/stg_story_bgs.bmp");
+	bg4.Draw_Src(0, 176, 640, 304);
+	bg4.Draw_Dst(0, WINDOW_HEIGHT - 304, 640, 192);
+
+	Sprite bg3(renderer, "asset/img/stg_story_bgs.bmp");
+	bg3.Draw_Src(640, 192, 640, 288);
+	bg3.Draw_Dst(0, WINDOW_HEIGHT - 288, 640, 288); // game loop begins
+
+	Sprite bg12(renderer, "asset/img/stg_story_bgs.bmp");
+	bg12.Draw_Src(0, 0, 640, 176);
+	bg12.Draw_Dst(-639, WINDOW_HEIGHT - 176, 641, 176);
+
+	Sprite bg22(renderer, "asset/img/stg_story_bgs.bmp");
+	bg22.Draw_Src(640, 0, 640, 192);
+	bg22.Draw_Dst(-639, WINDOW_HEIGHT - 192, 641, 192);
+
+	Sprite bg42(renderer, "asset/img/stg_story_bgs.bmp");
+	bg42.Draw_Src(0, 176, 640, 304);
+	bg42.Draw_Dst(-639, WINDOW_HEIGHT - 304, 641, 192);
+
+	Sprite bg32(renderer, "asset/img/stg_story_bgs.bmp");
+	bg32.Draw_Src(640, 192, 640, 288);
+	bg32.Draw_Dst(-639, WINDOW_HEIGHT - 288, 641, 288);
+
+	float speed1 = 0.05f;
+	float speed2 = 0.03f;
+	float speed3 = 0.02f;
+	float speed4 = 0.01f;
+
 	while (running) {
 		NOW = SDL_GetPerformanceCounter();
 		dt = (double)((NOW - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
@@ -89,7 +135,7 @@ int main(int argc, char *argv[]) {
 		}
 
 		if (player.m_dst.y > 448) player.m_dst.y = 448;
-		if (player.m_dst.y < 64) player.m_dst.y = 64;
+		if (player.m_dst.y < 64) player.m_dst.y = 64; // bounds
 		if (player.m_dst.x < 0) player.m_dst.x = 0;
 		if (player.m_dst.x > 608) player.m_dst.x = 608;
 		// update & run simulations
@@ -102,8 +148,46 @@ int main(int argc, char *argv[]) {
 
 		// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
 
+		bg1.m_dst.x += speed1 * dt;
+		if (bg1.m_dst.x >= 640.0f) bg1.m_dst.x = -640.0f;
+		bg2.m_dst.x += speed2 * dt;
+
+		if (bg2.m_dst.x >= 640.0f) bg2.m_dst.x = -640.0f;
+		bg3.m_dst.x += speed3 * dt;
+
+		if (bg3.m_dst.x >= 640.0f) bg3.m_dst.x = -640.0f;
+		bg4.m_dst.x += speed4 * dt;
+
+		if (bg4.m_dst.x >= 640.0f) bg4.m_dst.x = -640.0f;
+
+		bg12.m_dst.x += speed1 * dt;
+
+		if (bg12.m_dst.x >= 640.0f) bg12.m_dst.x = -640.0f;
+		bg22.m_dst.x += speed2 * dt;
+
+		if (bg22.m_dst.x >= 640.0f) bg22.m_dst.x = -640.0f;
+		bg32.m_dst.x += speed3 * dt;
+
+		if (bg32.m_dst.x >= 640.0f) bg32.m_dst.x = -640.0f;
+		bg42.m_dst.x += speed4 * dt;
+		if (bg42.m_dst.x >= 640.0f) bg42.m_dst.x = -640.0f;
+
+		bg4.Render(renderer);
+
+		bg42.Render(renderer);
+		bg3.Render(renderer);
+		bg32.Render(renderer);
+		bg2.Render(renderer);
+		bg22.Render(renderer);
+		bg1.Render(renderer);
+
+		bg12.Render(renderer);
+
 		player.Render(renderer);
 		HPLV.Render(renderer);
+		gunIcon.Render(renderer);
+		levelIcon.Render(renderer);
+
 		SDL_RenderPresent(renderer);
 	}
 
