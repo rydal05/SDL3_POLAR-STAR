@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
 	Uint64 LAST = SDL_GetPerformanceCounter();
 	Uint64 NOW = LAST;
 	double dt = 0;
-
+	// like all of this needs to be moved over to sprite factories and abstracted spaces eventually but not now
 	Sprite player(renderer, "asset/img/stg_story.bmp");
 	player.Draw_Src(0, 0, 16, 16);
 	player.Draw_Dst(640 / 2, 480 / 2, PLR_SPRITE_SIZE, PLR_SPRITE_SIZE);
@@ -71,35 +71,35 @@ int main(int argc, char *argv[]) {
 	levelIcon.Draw_Dst(16 * SCALE, 16 * SCALE, 8 * SCALE, 8 * SCALE);
 
 	Sprite bg1(renderer, "asset/img/stg_story_bgs.bmp");
-	bg1.Draw_Src(0, 0, 640, 176);
+	bg1.Draw_Src(0, 0, 640 / 2, 176 / 2);
 	bg1.Draw_Dst(0, WINDOW_HEIGHT - 176, 640, 176);
 
 	Sprite bg2(renderer, "asset/img/stg_story_bgs.bmp");
-	bg2.Draw_Src(640, 0, 640, 192);
+	bg2.Draw_Src(640 / 2, 0, 640 / 2, 192 / 2);
 	bg2.Draw_Dst(0, WINDOW_HEIGHT - 192, 640, 192);
 
 	Sprite bg4(renderer, "asset/img/stg_story_bgs.bmp");
-	bg4.Draw_Src(0, 176, 640, 304);
+	bg4.Draw_Src(0, 176 / 2, 640 / 2, 304 / 2);
 	bg4.Draw_Dst(0, WINDOW_HEIGHT - 304, 640, 192);
 
 	Sprite bg3(renderer, "asset/img/stg_story_bgs.bmp");
-	bg3.Draw_Src(640, 192, 640, 288);
+	bg3.Draw_Src(640 / 2, 192 / 2, 640 / 2, 288 / 2);
 	bg3.Draw_Dst(0, WINDOW_HEIGHT - 288, 640, 288); // game loop begins
 
 	Sprite bg12(renderer, "asset/img/stg_story_bgs.bmp");
-	bg12.Draw_Src(0, 0, 640, 176);
+	bg12.Draw_Src(0, 0, 640 / 2, 176 / 2);
 	bg12.Draw_Dst(-640, WINDOW_HEIGHT - 176, 640, 176);
 
 	Sprite bg22(renderer, "asset/img/stg_story_bgs.bmp");
-	bg22.Draw_Src(640, 0, 640, 192);
+	bg22.Draw_Src(640 / 2, 0, 640 / 2, 192 / 2);
 	bg22.Draw_Dst(-640, WINDOW_HEIGHT - 192, 640, 192);
 
 	Sprite bg32(renderer, "asset/img/stg_story_bgs.bmp");
-	bg32.Draw_Src(640, 192, 640, 288);
+	bg32.Draw_Src(640 / 2, 192 / 2, 640 / 2, 288 / 2);
 	bg32.Draw_Dst(-640, WINDOW_HEIGHT - 288, 640, 288);
 
 	Sprite bg42(renderer, "asset/img/stg_story_bgs.bmp");
-	bg42.Draw_Src(0, 176, 640, 304);
+	bg42.Draw_Src(0, 176 / 2, 640 / 2, 304 / 2);
 	bg42.Draw_Dst(-640, WINDOW_HEIGHT - 304, 640, 192);
 
 	Sprite bul(renderer, "asset/img/stg_story.bmp");
@@ -187,22 +187,22 @@ int main(int argc, char *argv[]) {
 		bul.m_dst.x += BUL_SPD * dt;
 
 		// background things
-		bg4.Render(renderer);
-		bg42.Render(renderer);
-		bg3.Render(renderer);
-		bg32.Render(renderer);
-		bg2.Render(renderer);
-		bg22.Render(renderer);
-		bg1.Render(renderer);
-		bg12.Render(renderer);
+		bg4.Render();
+		bg42.Render();
+		bg3.Render();
+		bg32.Render();
+		bg2.Render();
+		bg22.Render();
+		bg1.Render();
+		bg12.Render();
 
 		// player and enemies and things like that
-		player.Render(renderer);
-		bul.Render(renderer);
+		player.Render();
+		bul.Render();
 		// hud things and whatever else that should be drawn over the player or maybe we swap it i really dont know atm i cant lie
-		HPLV.Render(renderer);
-		gunIcon.Render(renderer);
-		levelIcon.Render(renderer);
+		HPLV.Render();
+		gunIcon.Render();
+		levelIcon.Render();
 
 		SDL_RenderPresent(renderer); // put it all together now
 	}

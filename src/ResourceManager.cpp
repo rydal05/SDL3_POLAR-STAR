@@ -30,7 +30,6 @@ SDL_Surface *ResourceManager::GetSurface(std::string filepath) {
 		return m_surfaces[filepath];
 	}
 	std::cout << "[RESOURCEMANAGER] Panic" << std::endl;
-	
 
 	return nullptr;
 }
