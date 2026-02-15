@@ -3,6 +3,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
+#include <SDL3/SDL_scancode.h>
 #include <iostream>
 #include <math.h>
 #include <stdio.h>
@@ -16,6 +17,8 @@
 #define PLR_SPEED 0.25f
 #define PLR_SPRITE_SIZE 32
 #define SCALE 2
+#define BUL_SPD 0.5f
+#define FIRE_RATE 1.5f
 
 void _draw();
 void _update();
@@ -85,24 +88,31 @@ int main(int argc, char *argv[]) {
 
 	Sprite bg12(renderer, "asset/img/stg_story_bgs.bmp");
 	bg12.Draw_Src(0, 0, 640, 176);
-	bg12.Draw_Dst(-639, WINDOW_HEIGHT - 176, 641, 176);
+	bg12.Draw_Dst(-640, WINDOW_HEIGHT - 176, 640, 176);
 
 	Sprite bg22(renderer, "asset/img/stg_story_bgs.bmp");
 	bg22.Draw_Src(640, 0, 640, 192);
-	bg22.Draw_Dst(-639, WINDOW_HEIGHT - 192, 641, 192);
-
-	Sprite bg42(renderer, "asset/img/stg_story_bgs.bmp");
-	bg42.Draw_Src(0, 176, 640, 304);
-	bg42.Draw_Dst(-639, WINDOW_HEIGHT - 304, 641, 192);
+	bg22.Draw_Dst(-640, WINDOW_HEIGHT - 192, 640, 192);
 
 	Sprite bg32(renderer, "asset/img/stg_story_bgs.bmp");
 	bg32.Draw_Src(640, 192, 640, 288);
-	bg32.Draw_Dst(-639, WINDOW_HEIGHT - 288, 641, 288);
+	bg32.Draw_Dst(-640, WINDOW_HEIGHT - 288, 640, 288);
+
+	Sprite bg42(renderer, "asset/img/stg_story_bgs.bmp");
+	bg42.Draw_Src(0, 176, 640, 304);
+	bg42.Draw_Dst(-640, WINDOW_HEIGHT - 304, 640, 192);
+
+	Sprite bul(renderer, "asset/img/stg_story.bmp");
+	bul.Draw_Src(64, 0, 16, 16);
+	bul.Draw_Dst(0, 0, 16 * SCALE, 16 * SCALE);
 
 	float speed1 = 0.05f;
 	float speed2 = 0.03f;
 	float speed3 = 0.02f;
 	float speed4 = 0.01f;
+
+	bool wait = false;
+	float curWait = FIRE_RATE;
 
 	while (running) {
 		NOW = SDL_GetPerformanceCounter();
@@ -120,7 +130,7 @@ int main(int argc, char *argv[]) {
 				}
 			}
 		}
-
+		// player input and things like that
 		if (state[SDL_SCANCODE_UP]) {
 			player.m_dst.y -= (float)(PLR_SPEED * dt);
 		}
@@ -133,13 +143,39 @@ int main(int argc, char *argv[]) {
 		if (state[SDL_SCANCODE_RIGHT]) {
 			player.m_dst.x += (float)(PLR_SPEED * dt);
 		}
-
+		if (!wait) {
+			if (state[SDL_SCANCODE_X]) {
+				bul.m_dst.x = player.m_dst.x;
+				bul.m_dst.y = player.m_dst.y;
+				wait = true;
+			}
+		}
+		if (wait) {
+			curWait -= 0.01f * dt;
+			if (curWait < 0.0f) {
+				curWait = FIRE_RATE;
+				wait = false;
+			}
+		}
 		if (player.m_dst.y > 448) player.m_dst.y = 448;
 		if (player.m_dst.y < 64) player.m_dst.y = 64; // bounds
 		if (player.m_dst.x < 0) player.m_dst.x = 0;
 		if (player.m_dst.x > 608) player.m_dst.x = 608;
 		// update & run simulations
 		// player.Update(dt);
+		bg1.m_dst.x += speed1 * dt;
+		bg2.m_dst.x += speed2 * dt;
+		bg3.m_dst.x += speed3 * dt;
+		bg4.m_dst.x += speed4 * dt;
+		bg12.m_dst.x = bg1.m_dst.x - 640.0f;
+		bg22.m_dst.x = bg2.m_dst.x - 640.0f;
+		bg32.m_dst.x = bg3.m_dst.x - 640.0f;
+		bg42.m_dst.x = bg4.m_dst.x - 640.0f;
+
+		if (bg1.m_dst.x >= 640.0f) bg1.m_dst.x = 0.0f;
+		if (bg2.m_dst.x >= 640.0f) bg2.m_dst.x = 0.0f;
+		if (bg3.m_dst.x >= 640.0f) bg3.m_dst.x = 0.0f;
+		if (bg4.m_dst.x >= 640.0f) bg4.m_dst.x = 0.0f;
 
 		// render everything that occured within the frame
 		// wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
@@ -148,47 +184,27 @@ int main(int argc, char *argv[]) {
 
 		// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
 
-		bg1.m_dst.x += speed1 * dt;
-		if (bg1.m_dst.x >= 640.0f) bg1.m_dst.x = -640.0f;
-		bg2.m_dst.x += speed2 * dt;
+		bul.m_dst.x += BUL_SPD * dt;
 
-		if (bg2.m_dst.x >= 640.0f) bg2.m_dst.x = -640.0f;
-		bg3.m_dst.x += speed3 * dt;
-
-		if (bg3.m_dst.x >= 640.0f) bg3.m_dst.x = -640.0f;
-		bg4.m_dst.x += speed4 * dt;
-
-		if (bg4.m_dst.x >= 640.0f) bg4.m_dst.x = -640.0f;
-
-		bg12.m_dst.x += speed1 * dt;
-
-		if (bg12.m_dst.x >= 640.0f) bg12.m_dst.x = -640.0f;
-		bg22.m_dst.x += speed2 * dt;
-
-		if (bg22.m_dst.x >= 640.0f) bg22.m_dst.x = -640.0f;
-		bg32.m_dst.x += speed3 * dt;
-
-		if (bg32.m_dst.x >= 640.0f) bg32.m_dst.x = -640.0f;
-		bg42.m_dst.x += speed4 * dt;
-		if (bg42.m_dst.x >= 640.0f) bg42.m_dst.x = -640.0f;
-
+		// background things
 		bg4.Render(renderer);
-
 		bg42.Render(renderer);
 		bg3.Render(renderer);
 		bg32.Render(renderer);
 		bg2.Render(renderer);
 		bg22.Render(renderer);
 		bg1.Render(renderer);
-
 		bg12.Render(renderer);
 
+		// player and enemies and things like that
 		player.Render(renderer);
+		bul.Render(renderer);
+		// hud things and whatever else that should be drawn over the player or maybe we swap it i really dont know atm i cant lie
 		HPLV.Render(renderer);
 		gunIcon.Render(renderer);
 		levelIcon.Render(renderer);
 
-		SDL_RenderPresent(renderer);
+		SDL_RenderPresent(renderer); // put it all together now
 	}
 
 	// cleanup
