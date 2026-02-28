@@ -15,7 +15,7 @@
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 #define PLR_SPEED 0.25f
-#define PLR_SPRITE_SIZE 32
+#define PLR_SPRITE_SIZE 64
 #define SCALE 2
 #define BUL_SPD 0.5f
 #define FIRE_RATE 1.5f
@@ -24,8 +24,15 @@ void _draw();
 void _update();
 void _init();
 
+typedef enum {
+	GAME,
+	START,
+	OVER
+} gameMode;
+
 static SDL_Window *window = nullptr;
 static SDL_Renderer *renderer = nullptr;
+static gameMode mode = START;
 
 int main(int argc, char *argv[]) {
 	// setup
@@ -56,7 +63,7 @@ int main(int argc, char *argv[]) {
 	// like all of this needs to be moved over to sprite factories and abstracted spaces eventually but not now
 	Sprite player(renderer, "asset/img/stg_story.bmp");
 	player.Draw_Src(0, 0, 16, 16);
-	player.Draw_Dst(640 / 2, 480 / 2, PLR_SPRITE_SIZE, PLR_SPRITE_SIZE);
+	player.Draw_Dst(640 / 2, 480 / 2, 16 * SCALE, 16 * SCALE);
 
 	Sprite HPLV(renderer, "asset/img/stg_story_ui.bmp");
 	HPLV.Draw_Src(0, 0, 64, 32);
@@ -106,10 +113,10 @@ int main(int argc, char *argv[]) {
 	bul.Draw_Src(64, 0, 16, 16);
 	bul.Draw_Dst(0, 0, 16 * SCALE, 16 * SCALE);
 
-	float speed1 = 0.05f;
-	float speed2 = 0.03f;
-	float speed3 = 0.02f;
-	float speed4 = 0.01f;
+	float speed1 = -0.5f;
+	float speed2 = -0.3f;
+	float speed3 = -0.2f;
+	float speed4 = -0.1f;
 
 	bool wait = false;
 	float curWait = FIRE_RATE;
@@ -167,15 +174,15 @@ int main(int argc, char *argv[]) {
 		bg2.m_dst.x += speed2 * dt;
 		bg3.m_dst.x += speed3 * dt;
 		bg4.m_dst.x += speed4 * dt;
-		bg12.m_dst.x = bg1.m_dst.x - 640.0f;
-		bg22.m_dst.x = bg2.m_dst.x - 640.0f;
-		bg32.m_dst.x = bg3.m_dst.x - 640.0f;
-		bg42.m_dst.x = bg4.m_dst.x - 640.0f;
+		bg12.m_dst.x = bg1.m_dst.x + 640.0f;
+		bg22.m_dst.x = bg2.m_dst.x + 640.0f;
+		bg32.m_dst.x = bg3.m_dst.x + 640.0f;
+		bg42.m_dst.x = bg4.m_dst.x + 640.0f;
 
-		if (bg1.m_dst.x >= 640.0f) bg1.m_dst.x = 0.0f;
-		if (bg2.m_dst.x >= 640.0f) bg2.m_dst.x = 0.0f;
-		if (bg3.m_dst.x >= 640.0f) bg3.m_dst.x = 0.0f;
-		if (bg4.m_dst.x >= 640.0f) bg4.m_dst.x = 0.0f;
+		if (bg1.m_dst.x <= -640.0f) bg1.m_dst.x = 0.0f;
+		if (bg2.m_dst.x <= -640.0f) bg2.m_dst.x = 0.0f;
+		if (bg3.m_dst.x <= -640.0f) bg3.m_dst.x = 0.0f;
+		if (bg4.m_dst.x <= -640.0f) bg4.m_dst.x = 0.0f;
 
 		// render everything that occured within the frame
 		// wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
@@ -229,5 +236,18 @@ void _draw() {
 void _update() {
 }
 
-void _init() {
+void startgame() {
+	// set game's mode
+	mode = GAME;
+	// init character info
+	struct player {
+		int xpos = 0;
+		int ypos = 0;
+
+	} playercharacter;
+	// init stats
+	// reset background stuff
+	// reset bullets vector
+	// reset enemies vector
+	//
 }
