@@ -17,7 +17,7 @@ private:
 
 	std::vector<std::unique_ptr<Sprite>> moon;
 	std::vector<std::unique_ptr<Sprite>> moon_paral;
-	std::vector<float> moon_speeds = {-0.5f, -0.3f, -0.2f, -0.1f};
+	std::vector<float> moon_speeds = {-0.1f, -0.2f, -0.3f, -0.5f};
 	SDL_Renderer *m_renderer = nullptr;
 
 public:

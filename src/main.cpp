@@ -13,11 +13,11 @@
 #include "Sprite.hpp"
 #include "bgManager.hpp"
 
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 480
 #define PLR_SPEED 0.25f
 #define PLR_SPRITE_SIZE 64
 #define SCALE 2
+#define WINDOW_WIDTH 640
+#define WINDOW_HEIGHT 480
 #define BUL_SPD 0.5f
 #define FIRE_RATE 1.5f
 
@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	// make the window
-	if (!SDL_CreateWindowAndRenderer("POLAR STAR", 640, 480, SDL_WINDOW_OPENGL, &window, &renderer)) {
+	if (!SDL_CreateWindowAndRenderer("POLAR STAR", WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2, SDL_WINDOW_OPENGL, &window, &renderer)) {
 		SDL_Log("Failed to create window and/or renderer: %s", SDL_GetError());
 		return SDL_APP_FAILURE;
 	}
