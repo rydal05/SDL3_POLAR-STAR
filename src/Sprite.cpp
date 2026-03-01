@@ -35,7 +35,6 @@ void Sprite::Update(double dt) {
 }
 
 void Sprite::Render() {
-
 	SDL_SetTextureScaleMode(m_texture, SDL_SCALEMODE_NEAREST);
 	SDL_RenderTexture(m_renderer, m_texture, &m_src, &m_dst);
 }

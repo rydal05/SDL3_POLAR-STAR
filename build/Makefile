@@ -177,6 +177,78 @@ src/Sprite.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.s
 .PHONY : src/Sprite.cpp.s
 
+src/bgManager.o: src/bgManager.cpp.o
+.PHONY : src/bgManager.o
+
+# target to build an object file
+src/bgManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o
+.PHONY : src/bgManager.cpp.o
+
+src/bgManager.i: src/bgManager.cpp.i
+.PHONY : src/bgManager.i
+
+# target to preprocess a source file
+src/bgManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.i
+.PHONY : src/bgManager.cpp.i
+
+src/bgManager.s: src/bgManager.cpp.s
+.PHONY : src/bgManager.s
+
+# target to generate assembly for a file
+src/bgManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.s
+.PHONY : src/bgManager.cpp.s
+
+src/hud.o: src/hud.cpp.o
+.PHONY : src/hud.o
+
+# target to build an object file
+src/hud.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.o
+.PHONY : src/hud.cpp.o
+
+src/hud.i: src/hud.cpp.i
+.PHONY : src/hud.i
+
+# target to preprocess a source file
+src/hud.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.i
+.PHONY : src/hud.cpp.i
+
+src/hud.s: src/hud.cpp.s
+.PHONY : src/hud.s
+
+# target to generate assembly for a file
+src/hud.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.s
+.PHONY : src/hud.cpp.s
+
+src/hudManager.o: src/hudManager.cpp.o
+.PHONY : src/hudManager.o
+
+# target to build an object file
+src/hudManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o
+.PHONY : src/hudManager.cpp.o
+
+src/hudManager.i: src/hudManager.cpp.i
+.PHONY : src/hudManager.i
+
+# target to preprocess a source file
+src/hudManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.i
+.PHONY : src/hudManager.cpp.i
+
+src/hudManager.s: src/hudManager.cpp.s
+.PHONY : src/hudManager.s
+
+# target to generate assembly for a file
+src/hudManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.s
+.PHONY : src/hudManager.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -201,6 +273,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/player.o: src/player.cpp.o
+.PHONY : src/player.o
+
+# target to build an object file
+src/player.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/player.cpp.o
+.PHONY : src/player.cpp.o
+
+src/player.i: src/player.cpp.i
+.PHONY : src/player.i
+
+# target to preprocess a source file
+src/player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/player.cpp.i
+.PHONY : src/player.cpp.i
+
+src/player.s: src/player.cpp.s
+.PHONY : src/player.s
+
+# target to generate assembly for a file
+src/player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/player.cpp.s
+.PHONY : src/player.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -216,9 +312,21 @@ help:
 	@echo "... src/Sprite.o"
 	@echo "... src/Sprite.i"
 	@echo "... src/Sprite.s"
+	@echo "... src/bgManager.o"
+	@echo "... src/bgManager.i"
+	@echo "... src/bgManager.s"
+	@echo "... src/hud.o"
+	@echo "... src/hud.i"
+	@echo "... src/hud.s"
+	@echo "... src/hudManager.o"
+	@echo "... src/hudManager.i"
+	@echo "... src/hudManager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/player.o"
+	@echo "... src/player.i"
+	@echo "... src/player.s"
 .PHONY : help
 
 

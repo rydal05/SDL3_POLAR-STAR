@@ -11,6 +11,7 @@
 
 #include "ResourceManager.hpp"
 #include "Sprite.hpp"
+#include "bgManager.hpp"
 
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
@@ -19,10 +20,6 @@
 #define SCALE 2
 #define BUL_SPD 0.5f
 #define FIRE_RATE 1.5f
-
-void _draw();
-void _update();
-void _init();
 
 typedef enum {
 	GAME,
@@ -33,6 +30,13 @@ typedef enum {
 static SDL_Window *window = nullptr;
 static SDL_Renderer *renderer = nullptr;
 static gameMode mode = START;
+
+void _draw();
+void _update();
+void _init();
+
+bgManager *bgManager::instancePtr = nullptr;
+std::mutex bgManager::mtx;
 
 int main(int argc, char *argv[]) {
 	// setup
@@ -64,6 +68,9 @@ int main(int argc, char *argv[]) {
 	Sprite player(renderer, "asset/img/stg_story.bmp");
 	player.Draw_Src(0, 0, 16, 16);
 	player.Draw_Dst(640 / 2, 480 / 2, 16 * SCALE, 16 * SCALE);
+	Sprite bul(renderer, "asset/img/stg_story.bmp");
+	bul.Draw_Src(64, 0, 16, 16);
+	bul.Draw_Dst(0, 0, 16 * SCALE, 16 * SCALE);
 
 	Sprite HPLV(renderer, "asset/img/stg_story_ui.bmp");
 	HPLV.Draw_Src(0, 0, 64, 32);
@@ -76,50 +83,12 @@ int main(int argc, char *argv[]) {
 	Sprite levelIcon(renderer, "asset/img/stg_story_ui.bmp");
 	levelIcon.Draw_Src(8, 64, 8, 8);
 	levelIcon.Draw_Dst(16 * SCALE, 16 * SCALE, 8 * SCALE, 8 * SCALE);
-
-	Sprite bg1(renderer, "asset/img/stg_story_bgs.bmp");
-	bg1.Draw_Src(0, 0, 640 / 2, 176 / 2);
-	bg1.Draw_Dst(0, WINDOW_HEIGHT - 176, 640, 176);
-
-	Sprite bg2(renderer, "asset/img/stg_story_bgs.bmp");
-	bg2.Draw_Src(640 / 2, 0, 640 / 2, 192 / 2);
-	bg2.Draw_Dst(0, WINDOW_HEIGHT - 192, 640, 192);
-
-	Sprite bg4(renderer, "asset/img/stg_story_bgs.bmp");
-	bg4.Draw_Src(0, 176 / 2, 640 / 2, 304 / 2);
-	bg4.Draw_Dst(0, WINDOW_HEIGHT - 304, 640, 192);
-
-	Sprite bg3(renderer, "asset/img/stg_story_bgs.bmp");
-	bg3.Draw_Src(640 / 2, 192 / 2, 640 / 2, 288 / 2);
-	bg3.Draw_Dst(0, WINDOW_HEIGHT - 288, 640, 288); // game loop begins
-
-	Sprite bg12(renderer, "asset/img/stg_story_bgs.bmp");
-	bg12.Draw_Src(0, 0, 640 / 2, 176 / 2);
-	bg12.Draw_Dst(-640, WINDOW_HEIGHT - 176, 640, 176);
-
-	Sprite bg22(renderer, "asset/img/stg_story_bgs.bmp");
-	bg22.Draw_Src(640 / 2, 0, 640 / 2, 192 / 2);
-	bg22.Draw_Dst(-640, WINDOW_HEIGHT - 192, 640, 192);
-
-	Sprite bg32(renderer, "asset/img/stg_story_bgs.bmp");
-	bg32.Draw_Src(640 / 2, 192 / 2, 640 / 2, 288 / 2);
-	bg32.Draw_Dst(-640, WINDOW_HEIGHT - 288, 640, 288);
-
-	Sprite bg42(renderer, "asset/img/stg_story_bgs.bmp");
-	bg42.Draw_Src(0, 176 / 2, 640 / 2, 304 / 2);
-	bg42.Draw_Dst(-640, WINDOW_HEIGHT - 304, 640, 192);
-
-	Sprite bul(renderer, "asset/img/stg_story.bmp");
-	bul.Draw_Src(64, 0, 16, 16);
-	bul.Draw_Dst(0, 0, 16 * SCALE, 16 * SCALE);
-
-	float speed1 = -0.5f;
-	float speed2 = -0.3f;
-	float speed3 = -0.2f;
-	float speed4 = -0.1f;
-
 	bool wait = false;
 	float curWait = FIRE_RATE;
+
+	bgManager *backgroundManager = bgManager::getInstance();
+	backgroundManager->passRenderer(renderer);
+	backgroundManager->moonSceneInit();
 
 	while (running) {
 		NOW = SDL_GetPerformanceCounter();
@@ -169,21 +138,8 @@ int main(int argc, char *argv[]) {
 		if (player.m_dst.x < 0) player.m_dst.x = 0;
 		if (player.m_dst.x > 608) player.m_dst.x = 608;
 		// update & run simulations
-		// player.Update(dt);
-		bg1.m_dst.x += speed1 * dt;
-		bg2.m_dst.x += speed2 * dt;
-		bg3.m_dst.x += speed3 * dt;
-		bg4.m_dst.x += speed4 * dt;
-		bg12.m_dst.x = bg1.m_dst.x + 640.0f;
-		bg22.m_dst.x = bg2.m_dst.x + 640.0f;
-		bg32.m_dst.x = bg3.m_dst.x + 640.0f;
-		bg42.m_dst.x = bg4.m_dst.x + 640.0f;
-
-		if (bg1.m_dst.x <= -640.0f) bg1.m_dst.x = 0.0f;
-		if (bg2.m_dst.x <= -640.0f) bg2.m_dst.x = 0.0f;
-		if (bg3.m_dst.x <= -640.0f) bg3.m_dst.x = 0.0f;
-		if (bg4.m_dst.x <= -640.0f) bg4.m_dst.x = 0.0f;
-
+		player.Update(dt);
+		backgroundManager->moonSceneUpdate(dt);
 		// render everything that occured within the frame
 		// wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
@@ -193,15 +149,7 @@ int main(int argc, char *argv[]) {
 
 		bul.m_dst.x += BUL_SPD * dt;
 
-		// background things
-		bg4.Render();
-		bg42.Render();
-		bg3.Render();
-		bg32.Render();
-		bg2.Render();
-		bg22.Render();
-		bg1.Render();
-		bg12.Render();
+		backgroundManager->moonSceneRender();
 
 		// player and enemies and things like that
 		player.Render();
@@ -225,12 +173,12 @@ int main(int argc, char *argv[]) {
 void _draw() {
 	// render everything that occured within the frame
 	// wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
-	SDL_RenderClear(renderer);									 // clear canvas
+	// SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
+	// SDL_RenderClear(renderer);									 // clear canvas
 
 	// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
-
-	SDL_RenderPresent(renderer);
+	//
+	// SDL_RenderPresent(renderer);
 }
 
 void _update() {

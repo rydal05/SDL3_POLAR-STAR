@@ -10,7 +10,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.cpp" "CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o" "gcc" "CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o.d"
   "/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.cpp" "CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o" "gcc" "CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o.d"
+  "/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/bgManager.cpp" "CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o" "gcc" "CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o.d"
+  "/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/hud.cpp" "CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.o" "gcc" "CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.o.d"
+  "/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/hudManager.cpp" "CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o" "gcc" "CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o.d"
   "/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/main.cpp" "CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o" "gcc" "CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o.d"
+  "/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/player.cpp" "CMakeFiles/SDL3_Shmup.dir/src/player.cpp.o" "gcc" "CMakeFiles/SDL3_Shmup.dir/src/player.cpp.o.d"
   "" "game" "gcc" "CMakeFiles/SDL3_Shmup.dir/link.d"
   )
 

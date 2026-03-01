@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "/home/ryand/Documents/Dev/SDL3_POLAR-STAR/CMakeLists.txt"
-  "CMakeFiles/4.2.2-dirty/CMakeCCompiler.cmake"
-  "CMakeFiles/4.2.2-dirty/CMakeCXXCompiler.cmake"
-  "CMakeFiles/4.2.2-dirty/CMakeSystem.cmake"
+  "CMakeFiles/4.2.3/CMakeCCompiler.cmake"
+  "CMakeFiles/4.2.3/CMakeCXXCompiler.cmake"
+  "CMakeFiles/4.2.3/CMakeSystem.cmake"
   "/usr/lib/cmake/SDL3/SDL3Config.cmake"
   "/usr/lib/cmake/SDL3/SDL3ConfigVersion.cmake"
   "/usr/lib/cmake/SDL3/SDL3headersTargets.cmake"
