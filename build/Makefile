@@ -201,29 +201,53 @@ src/bgManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.s
 .PHONY : src/bgManager.cpp.s
 
-src/hud.o: src/hud.cpp.o
-.PHONY : src/hud.o
+src/enemyFactory.o: src/enemyFactory.cpp.o
+.PHONY : src/enemyFactory.o
 
 # target to build an object file
-src/hud.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.o
-.PHONY : src/hud.cpp.o
+src/enemyFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/enemyFactory.cpp.o
+.PHONY : src/enemyFactory.cpp.o
 
-src/hud.i: src/hud.cpp.i
-.PHONY : src/hud.i
+src/enemyFactory.i: src/enemyFactory.cpp.i
+.PHONY : src/enemyFactory.i
 
 # target to preprocess a source file
-src/hud.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.i
-.PHONY : src/hud.cpp.i
+src/enemyFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/enemyFactory.cpp.i
+.PHONY : src/enemyFactory.cpp.i
 
-src/hud.s: src/hud.cpp.s
-.PHONY : src/hud.s
+src/enemyFactory.s: src/enemyFactory.cpp.s
+.PHONY : src/enemyFactory.s
 
 # target to generate assembly for a file
-src/hud.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.s
-.PHONY : src/hud.cpp.s
+src/enemyFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/enemyFactory.cpp.s
+.PHONY : src/enemyFactory.cpp.s
+
+src/entity.o: src/entity.cpp.o
+.PHONY : src/entity.o
+
+# target to build an object file
+src/entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/entity.cpp.o
+.PHONY : src/entity.cpp.o
+
+src/entity.i: src/entity.cpp.i
+.PHONY : src/entity.i
+
+# target to preprocess a source file
+src/entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/entity.cpp.i
+.PHONY : src/entity.cpp.i
+
+src/entity.s: src/entity.cpp.s
+.PHONY : src/entity.s
+
+# target to generate assembly for a file
+src/entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/entity.cpp.s
+.PHONY : src/entity.cpp.s
 
 src/hudManager.o: src/hudManager.cpp.o
 .PHONY : src/hudManager.o
@@ -248,6 +272,30 @@ src/hudManager.s: src/hudManager.cpp.s
 src/hudManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.s
 .PHONY : src/hudManager.cpp.s
+
+src/inputManager.o: src/inputManager.cpp.o
+.PHONY : src/inputManager.o
+
+# target to build an object file
+src/inputManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/inputManager.cpp.o
+.PHONY : src/inputManager.cpp.o
+
+src/inputManager.i: src/inputManager.cpp.i
+.PHONY : src/inputManager.i
+
+# target to preprocess a source file
+src/inputManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/inputManager.cpp.i
+.PHONY : src/inputManager.cpp.i
+
+src/inputManager.s: src/inputManager.cpp.s
+.PHONY : src/inputManager.s
+
+# target to generate assembly for a file
+src/inputManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/inputManager.cpp.s
+.PHONY : src/inputManager.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -315,12 +363,18 @@ help:
 	@echo "... src/bgManager.o"
 	@echo "... src/bgManager.i"
 	@echo "... src/bgManager.s"
-	@echo "... src/hud.o"
-	@echo "... src/hud.i"
-	@echo "... src/hud.s"
+	@echo "... src/enemyFactory.o"
+	@echo "... src/enemyFactory.i"
+	@echo "... src/enemyFactory.s"
+	@echo "... src/entity.o"
+	@echo "... src/entity.i"
+	@echo "... src/entity.s"
 	@echo "... src/hudManager.o"
 	@echo "... src/hudManager.i"
 	@echo "... src/hudManager.s"
+	@echo "... src/inputManager.o"
+	@echo "... src/inputManager.i"
+	@echo "... src/inputManager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -503,6 +503,7 @@ CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o
  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.hpp
  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.hpp
  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/bgManager.hpp
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/gamedefs.hpp
  /usr/include/SDL3/SDL.h
  /usr/include/SDL3/SDL_assert.h
  /usr/include/SDL3/SDL_asyncio.h
@@ -806,10 +807,6 @@ CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h
-
-CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.o
- /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/hud.cpp
- /usr/include/stdc-predef.h
 
 CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o
  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/hudManager.cpp

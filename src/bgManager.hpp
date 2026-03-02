@@ -12,8 +12,7 @@ private:
 	static bgManager *instancePtr;
 	static std::mutex mtx;
 
-	bgManager() {
-	}
+	bgManager() {}
 
 	std::vector<std::unique_ptr<Sprite>> moon;
 	std::vector<std::unique_ptr<Sprite>> moon_paral;

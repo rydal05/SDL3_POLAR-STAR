@@ -1,5 +1,5 @@
 // my awesome 2d game engine framework thing
-
+#include "gamedefs.hpp"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
@@ -12,14 +12,6 @@
 #include "ResourceManager.hpp"
 #include "Sprite.hpp"
 #include "bgManager.hpp"
-
-#define PLR_SPEED 0.25f
-#define PLR_SPRITE_SIZE 64
-#define SCALE 2
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 480
-#define BUL_SPD 0.5f
-#define FIRE_RATE 1.5f
 
 typedef enum {
 	GAME,
@@ -72,17 +64,6 @@ int main(int argc, char *argv[]) {
 	bul.Draw_Src(64, 0, 16, 16);
 	bul.Draw_Dst(0, 0, 16 * SCALE, 16 * SCALE);
 
-	Sprite HPLV(renderer, "asset/img/stg_story_ui.bmp");
-	HPLV.Draw_Src(0, 0, 64, 32);
-	HPLV.Draw_Dst(0, 0, 64 * SCALE, 32 * SCALE);
-
-	Sprite gunIcon(renderer, "asset/img/stg_story_ui.bmp");
-	gunIcon.Draw_Src(0, 32, 16, 16);
-	gunIcon.Draw_Dst(0, 0, 16 * SCALE, 16 * SCALE);
-
-	Sprite levelIcon(renderer, "asset/img/stg_story_ui.bmp");
-	levelIcon.Draw_Src(8, 64, 8, 8);
-	levelIcon.Draw_Dst(16 * SCALE, 16 * SCALE, 8 * SCALE, 8 * SCALE);
 	bool wait = false;
 	float curWait = FIRE_RATE;
 
@@ -155,9 +136,9 @@ int main(int argc, char *argv[]) {
 		player.Render();
 		bul.Render();
 		// hud things and whatever else that should be drawn over the player or maybe we swap it i really dont know atm i cant lie
-		HPLV.Render();
-		gunIcon.Render();
-		levelIcon.Render();
+		//		HPLV.Render();
+		//		gunIcon.Render();
+		//		levelIcon.Render();
 
 		SDL_RenderPresent(renderer); // put it all together now
 	}

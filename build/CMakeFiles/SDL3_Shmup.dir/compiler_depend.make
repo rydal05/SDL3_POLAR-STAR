@@ -500,6 +500,7 @@ CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o: /home/ryand/Documents/Dev/SDL3_PO
   /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/ResourceManager.hpp \
   /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.hpp \
   /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/bgManager.hpp \
+  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/gamedefs.hpp \
   /usr/include/SDL3/SDL.h \
   /usr/include/SDL3/SDL_assert.h \
   /usr/include/SDL3/SDL_asyncio.h \
@@ -803,9 +804,6 @@ CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o: /home/ryand/Documents/Dev/SDL3_PO
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h
-
-CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.o: /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/hud.cpp \
-  /usr/include/stdc-predef.h
 
 CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o: /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/hudManager.cpp \
   /usr/include/stdc-predef.h
@@ -1238,8 +1236,6 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/hudManager.cpp:
 
-/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/hud.cpp:
-
 /usr/include/c++/15.2.1/pstl/glue_memory_defs.h:
 
 /usr/include/c++/15.2.1/pstl/execution_defs.h:
@@ -1267,6 +1263,8 @@ CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o:
 /usr/include/c++/15.2.1/bits/atomic_base.h:
 
 /usr/include/c++/15.2.1/backward/auto_ptr.h:
+
+/home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/gamedefs.hpp:
 
 /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/bgManager.hpp:
 

@@ -5,8 +5,10 @@ game: \
   CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o \
-  CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.o \
+  CMakeFiles/SDL3_Shmup.dir/src/enemyFactory.cpp.o \
+  CMakeFiles/SDL3_Shmup.dir/src/entity.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o \
+  CMakeFiles/SDL3_Shmup.dir/src/inputManager.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/player.cpp.o \
   /usr/lib/libSDL3.so.0.4.2 \
@@ -50,9 +52,13 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
 
 CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o:
 
-CMakeFiles/SDL3_Shmup.dir/src/hud.cpp.o:
+CMakeFiles/SDL3_Shmup.dir/src/enemyFactory.cpp.o:
+
+CMakeFiles/SDL3_Shmup.dir/src/entity.cpp.o:
 
 CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o:
+
+CMakeFiles/SDL3_Shmup.dir/src/inputManager.cpp.o:
 
 CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o:
 

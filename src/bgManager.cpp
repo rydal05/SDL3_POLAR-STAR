@@ -1,9 +1,8 @@
 #include "bgManager.hpp"
+#include "gamedefs.hpp"
 #include <SDL3/SDL_events.h>
 #include <SDL3/SDL_oldnames.h>
 #include <iostream>
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 480
 
 void bgManager::moonSceneInit() {
 	auto bg1 = std::make_unique<Sprite>(m_renderer, "asset/img/stg_story_bgs.bmp");

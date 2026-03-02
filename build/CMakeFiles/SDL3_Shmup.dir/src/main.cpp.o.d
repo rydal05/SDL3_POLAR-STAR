@@ -1,7 +1,9 @@
 CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o: \
  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/main.cpp \
- /usr/include/stdc-predef.h /usr/include/SDL3/SDL.h \
- /usr/include/SDL3/SDL_stdinc.h /usr/include/SDL3/SDL_platform_defines.h \
+ /usr/include/stdc-predef.h \
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/gamedefs.hpp \
+ /usr/include/SDL3/SDL.h /usr/include/SDL3/SDL_stdinc.h \
+ /usr/include/SDL3/SDL_platform_defines.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
  /usr/include/string.h /usr/include/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \

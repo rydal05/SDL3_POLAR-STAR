@@ -196,6 +196,7 @@ CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o: \
  /usr/include/c++/15.2.1/bits/std_mutex.h \
  /usr/include/c++/15.2.1/bits/unique_lock.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/gamedefs.hpp \
  /usr/include/c++/15.2.1/iostream /usr/include/c++/15.2.1/ostream \
  /usr/include/c++/15.2.1/bits/ostream.h /usr/include/c++/15.2.1/ios \
  /usr/include/c++/15.2.1/bits/ios_base.h \

@@ -7,7 +7,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PkgConfig::PC_LIBUNWIND::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PkgConfig__PC_LIBUNWIND-4f35c4c1767b42286f8a.json",
+					"jsonFile" : "target-PkgConfig__PC_LIBUNWIND-08f25a6b767976bf8428.json",
 					"name" : "PkgConfig::PC_LIBUNWIND",
 					"projectIndex" : 0
 				},
@@ -84,7 +84,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "SDL3_Shmup::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-SDL3_Shmup-45c7de32b91ff2f0e205.json",
+					"jsonFile" : "target-SDL3_Shmup-f16bd8b93b6f78af01fd.json",
 					"name" : "SDL3_Shmup",
 					"projectIndex" : 0
 				}
