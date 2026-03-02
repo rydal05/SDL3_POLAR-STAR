@@ -145,4 +145,5 @@ CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o: \
  /usr/include/c++/15.2.1/bits/enable_special_members.h \
  /usr/include/c++/15.2.1/bits/node_handle.h \
  /usr/include/c++/15.2.1/bits/erase_if.h \
- /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.hpp
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.hpp \
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/gamedefs.hpp

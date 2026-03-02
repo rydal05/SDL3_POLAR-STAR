@@ -3,9 +3,10 @@
 
 #include "ResourceManager.hpp"
 #include "Sprite.hpp"
+#include "gamedefs.hpp"
 
-Sprite::Sprite(SDL_Renderer *&renderer, const char *filepath) {
-	m_renderer = renderer;
+Sprite::Sprite(const char *filepath) {
+
 	char *new_filepath = NULL;
 	SDL_asprintf(&new_filepath, "%s%s", SDL_GetBasePath(), filepath);
 	SDL_Surface *retrieveSurface = ResourceManager::GetInstance().GetSurface(new_filepath);
@@ -36,5 +37,5 @@ void Sprite::Update(double dt) {
 
 void Sprite::Render() {
 	SDL_SetTextureScaleMode(m_texture, SDL_SCALEMODE_NEAREST);
-	SDL_RenderTexture(m_renderer, m_texture, &m_src, &m_dst);
+	SDL_RenderTexture(renderer, m_texture, &m_src, &m_dst);
 }

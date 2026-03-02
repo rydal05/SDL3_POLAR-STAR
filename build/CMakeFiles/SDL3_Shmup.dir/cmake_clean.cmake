@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/SDL3_Shmup.dir/link.d"
+  "CMakeFiles/SDL3_Shmup.dir/src/HudManager.cpp.o"
+  "CMakeFiles/SDL3_Shmup.dir/src/HudManager.cpp.o.d"
   "CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o"
   "CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o.d"
   "CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o"
@@ -10,8 +12,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/SDL3_Shmup.dir/src/enemyFactory.cpp.o.d"
   "CMakeFiles/SDL3_Shmup.dir/src/entity.cpp.o"
   "CMakeFiles/SDL3_Shmup.dir/src/entity.cpp.o.d"
-  "CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o"
-  "CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o.d"
   "CMakeFiles/SDL3_Shmup.dir/src/inputManager.cpp.o"
   "CMakeFiles/SDL3_Shmup.dir/src/inputManager.cpp.o.d"
   "CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o"

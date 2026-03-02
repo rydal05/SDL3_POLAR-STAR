@@ -3,6 +3,7 @@ CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o: \
  /usr/include/stdc-predef.h \
  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/hudManager.hpp \
  /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/Sprite.hpp \
+ /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/gamedefs.hpp \
  /usr/include/SDL3/SDL.h /usr/include/SDL3/SDL_stdinc.h \
  /usr/include/SDL3/SDL_platform_defines.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
@@ -187,5 +188,4 @@ CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o: \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
  /usr/include/c++/15.2.1/vector /usr/include/c++/15.2.1/bits/stl_vector.h \
  /usr/include/c++/15.2.1/bits/stl_bvector.h \
- /usr/include/c++/15.2.1/bits/vector.tcc \
- /home/ryand/Documents/Dev/SDL3_POLAR-STAR/src/gamedefs.hpp
+ /usr/include/c++/15.2.1/bits/vector.tcc

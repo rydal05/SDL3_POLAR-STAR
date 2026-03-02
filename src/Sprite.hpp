@@ -1,11 +1,13 @@
 #ifndef SPRITE_HPP
 #define SPRITE_HPP
+
+#include "gamedefs.hpp"
 #include <SDL3/SDL.h>
 #include <string>
 
 class Sprite {
 public:
-	Sprite(SDL_Renderer *&renderer, const char *filepath);
+	Sprite(const char *filepath);
 	~Sprite();
 
 	void Draw_Src(int x, int y, int w, int h);
@@ -17,7 +19,6 @@ public:
 private:
 	SDL_FRect m_src;
 	SDL_Texture *m_texture;
-	SDL_Renderer *m_renderer;
 };
 
 #endif

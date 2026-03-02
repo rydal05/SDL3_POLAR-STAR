@@ -2,12 +2,12 @@ game: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
+  CMakeFiles/SDL3_Shmup.dir/src/HudManager.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/enemyFactory.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/entity.cpp.o \
-  CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/inputManager.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/main.cpp.o \
   CMakeFiles/SDL3_Shmup.dir/src/player.cpp.o \
@@ -46,6 +46,8 @@ game: \
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o:
 
+CMakeFiles/SDL3_Shmup.dir/src/HudManager.cpp.o:
+
 CMakeFiles/SDL3_Shmup.dir/src/ResourceManager.cpp.o:
 
 CMakeFiles/SDL3_Shmup.dir/src/Sprite.cpp.o:
@@ -55,8 +57,6 @@ CMakeFiles/SDL3_Shmup.dir/src/bgManager.cpp.o:
 CMakeFiles/SDL3_Shmup.dir/src/enemyFactory.cpp.o:
 
 CMakeFiles/SDL3_Shmup.dir/src/entity.cpp.o:
-
-CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o:
 
 CMakeFiles/SDL3_Shmup.dir/src/inputManager.cpp.o:
 

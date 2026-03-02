@@ -129,6 +129,30 @@ SDL3_Shmup/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/build
 .PHONY : SDL3_Shmup/fast
 
+src/HudManager.o: src/HudManager.cpp.o
+.PHONY : src/HudManager.o
+
+# target to build an object file
+src/HudManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/HudManager.cpp.o
+.PHONY : src/HudManager.cpp.o
+
+src/HudManager.i: src/HudManager.cpp.i
+.PHONY : src/HudManager.i
+
+# target to preprocess a source file
+src/HudManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/HudManager.cpp.i
+.PHONY : src/HudManager.cpp.i
+
+src/HudManager.s: src/HudManager.cpp.s
+.PHONY : src/HudManager.s
+
+# target to generate assembly for a file
+src/HudManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/HudManager.cpp.s
+.PHONY : src/HudManager.cpp.s
+
 src/ResourceManager.o: src/ResourceManager.cpp.o
 .PHONY : src/ResourceManager.o
 
@@ -249,30 +273,6 @@ src/entity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/entity.cpp.s
 .PHONY : src/entity.cpp.s
 
-src/hudManager.o: src/hudManager.cpp.o
-.PHONY : src/hudManager.o
-
-# target to build an object file
-src/hudManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.o
-.PHONY : src/hudManager.cpp.o
-
-src/hudManager.i: src/hudManager.cpp.i
-.PHONY : src/hudManager.i
-
-# target to preprocess a source file
-src/hudManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.i
-.PHONY : src/hudManager.cpp.i
-
-src/hudManager.s: src/hudManager.cpp.s
-.PHONY : src/hudManager.s
-
-# target to generate assembly for a file
-src/hudManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL3_Shmup.dir/build.make CMakeFiles/SDL3_Shmup.dir/src/hudManager.cpp.s
-.PHONY : src/hudManager.cpp.s
-
 src/inputManager.o: src/inputManager.cpp.o
 .PHONY : src/inputManager.o
 
@@ -354,6 +354,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SDL3_Shmup"
+	@echo "... src/HudManager.o"
+	@echo "... src/HudManager.i"
+	@echo "... src/HudManager.s"
 	@echo "... src/ResourceManager.o"
 	@echo "... src/ResourceManager.i"
 	@echo "... src/ResourceManager.s"
@@ -369,9 +372,6 @@ help:
 	@echo "... src/entity.o"
 	@echo "... src/entity.i"
 	@echo "... src/entity.s"
-	@echo "... src/hudManager.o"
-	@echo "... src/hudManager.i"
-	@echo "... src/hudManager.s"
 	@echo "... src/inputManager.o"
 	@echo "... src/inputManager.i"
 	@echo "... src/inputManager.s"

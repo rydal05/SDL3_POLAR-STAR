@@ -1,27 +1,15 @@
 // my awesome 2d game engine framework thing
-#include "gamedefs.hpp"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
 #include <SDL3/SDL_scancode.h>
-#include <iostream>
 #include <math.h>
 #include <stdio.h>
-#include <vector>
 
-#include "ResourceManager.hpp"
+#include "HudManager.hpp"
 #include "Sprite.hpp"
 #include "bgManager.hpp"
-
-typedef enum {
-	GAME,
-	START,
-	OVER
-} gameMode;
-
-static SDL_Window *window = nullptr;
-static SDL_Renderer *renderer = nullptr;
-static gameMode mode = START;
+#include "gamedefs.hpp"
 
 void _draw();
 void _update();
@@ -29,6 +17,9 @@ void _init();
 
 bgManager *bgManager::instancePtr = nullptr;
 std::mutex bgManager::mtx;
+
+HudManager *HudManager::instancePtr = nullptr;
+std::mutex HudManager::mtx;
 
 int main(int argc, char *argv[]) {
 	// setup
@@ -57,10 +48,10 @@ int main(int argc, char *argv[]) {
 	Uint64 NOW = LAST;
 	double dt = 0;
 	// like all of this needs to be moved over to sprite factories and abstracted spaces eventually but not now
-	Sprite player(renderer, "asset/img/stg_story.bmp");
+	Sprite player("asset/img/stg_story.bmp");
 	player.Draw_Src(0, 0, 16, 16);
 	player.Draw_Dst(640 / 2, 480 / 2, 16 * SCALE, 16 * SCALE);
-	Sprite bul(renderer, "asset/img/stg_story.bmp");
+	Sprite bul("asset/img/stg_story.bmp");
 	bul.Draw_Src(64, 0, 16, 16);
 	bul.Draw_Dst(0, 0, 16 * SCALE, 16 * SCALE);
 
@@ -68,8 +59,10 @@ int main(int argc, char *argv[]) {
 	float curWait = FIRE_RATE;
 
 	bgManager *backgroundManager = bgManager::getInstance();
-	backgroundManager->passRenderer(renderer);
 	backgroundManager->moonSceneInit();
+
+	HudManager *hudMgr = HudManager::getInstance();
+	hudMgr->gameplayHudInit();
 
 	while (running) {
 		NOW = SDL_GetPerformanceCounter();
@@ -121,8 +114,9 @@ int main(int argc, char *argv[]) {
 		// update & run simulations
 		player.Update(dt);
 		backgroundManager->moonSceneUpdate(dt);
-		// render everything that occured within the frame
-		// wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
+		// hudMgr->HudUpdate();
+		//  render everything that occured within the frame
+		//  wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
 		SDL_RenderClear(renderer);									 // clear canvas
 
@@ -131,6 +125,7 @@ int main(int argc, char *argv[]) {
 		bul.m_dst.x += BUL_SPD * dt;
 
 		backgroundManager->moonSceneRender();
+		hudMgr->HudRender();
 
 		// player and enemies and things like that
 		player.Render();

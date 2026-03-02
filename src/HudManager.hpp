@@ -13,8 +13,6 @@ private:
 
 	std::vector<std::unique_ptr<Sprite>> gameplayElements;
 
-	SDL_Renderer *m_renderer = nullptr;
-
 public:
 	HudManager(const HudManager &obj) = delete;
 
@@ -28,10 +26,8 @@ public:
 		return instancePtr;
 	}
 
-	void passRenderer(SDL_Renderer *renderer) { m_renderer = renderer; }
-
-	void hudUpdate();
-	void hudDraw();
+	void HudUpdate();
+	void HudRender();
 	void hudStateManager();
 
 	void gameplayHudInit();
