@@ -11,6 +11,8 @@ private:
 
 	HudManager() {}
 
+	bool visible = true;
+
 	std::vector<std::unique_ptr<Sprite>> gameplayElements;
 
 public:
@@ -29,6 +31,8 @@ public:
 	void HudUpdate();
 	void HudRender();
 	void hudStateManager();
+	void makeTranslucent();
+	void makeOpaque();
 
 	void gameplayHudInit();
 };

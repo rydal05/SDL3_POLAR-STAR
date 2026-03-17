@@ -1,5 +1,7 @@
 #include "HudManager.hpp"
 #include "gamedefs.hpp"
+#include <SDL3/SDL_pixels.h>
+#include <SDL3/SDL_render.h>
 
 void HudManager::gameplayHudInit() {
 
@@ -27,4 +29,20 @@ void HudManager::HudRender() {
 	for (size_t i = 0; i < gameplayElements.size(); i++) {
 		gameplayElements[i]->Render();
 	}
+}
+
+void HudManager::makeTranslucent() {
+	if (!visible) return;
+	for (size_t i = 0; i < gameplayElements.size(); i++) {
+		SDL_SetTextureAlphaMod(gameplayElements[i]->GetTexture(), 128);
+	}
+	visible = false;
+}
+
+void HudManager::makeOpaque() {
+	if (visible) return;
+	for (size_t i = 0; i < gameplayElements.size(); i++) {
+		SDL_SetTextureAlphaMod(gameplayElements[i]->GetTexture(), 255);
+	}
+	visible = true;
 }

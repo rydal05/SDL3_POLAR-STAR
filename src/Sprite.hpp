@@ -14,6 +14,8 @@ public:
 	void Draw_Dst(int x, int y, int w, int h);
 	void Update(double dt);
 	void Render();
+	SDL_Texture *GetTexture() { return m_texture; }
+
 	SDL_FRect m_dst; // move to private when i have a better method of moving the player lol
 
 private:

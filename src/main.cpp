@@ -108,9 +108,18 @@ int main(int argc, char *argv[]) {
 			}
 		}
 		if (player.m_dst.y > 448) player.m_dst.y = 448;
-		if (player.m_dst.y < 64) player.m_dst.y = 64; // bounds
+		if (player.m_dst.y < 0) player.m_dst.y = 0; // bounds
 		if (player.m_dst.x < 0) player.m_dst.x = 0;
 		if (player.m_dst.x > 608) player.m_dst.x = 608;
+
+		if (player.m_dst.y < 64) {
+			hudMgr->makeTranslucent();
+		} // bounds for when player is hidden behind UI elements
+
+		if (player.m_dst.y > 64) {
+			hudMgr->makeOpaque();
+		} // bounds for when player isnt hidden behind ui elements
+
 		// update & run simulations
 		player.Update(dt);
 		backgroundManager->moonSceneUpdate(dt);
