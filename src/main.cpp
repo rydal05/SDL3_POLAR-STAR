@@ -50,10 +50,12 @@ int main(int argc, char *argv[]) {
 	// like all of this needs to be moved over to sprite factories and abstracted spaces eventually but not now
 	Sprite player("asset/img/stg_story.bmp");
 	player.Draw_Src(0, 0, 16, 16);
-	player.Draw_Dst(640 / 2, 480 / 2, 16 * SCALE, 16 * SCALE);
+	player.Draw_Dst(640 / 2, 480 / 2);
+	player.Draw_Siz(16 * SCALE, 16 * SCALE);
 	Sprite bul("asset/img/stg_story.bmp");
 	bul.Draw_Src(64, 0, 16, 16);
-	bul.Draw_Dst(0, 0, 16 * SCALE, 16 * SCALE);
+	bul.Draw_Dst(0, 0);
+	bul.Draw_Siz(16 * SCALE, 16 * SCALE);
 
 	bool wait = false;
 	float curWait = FIRE_RATE;
