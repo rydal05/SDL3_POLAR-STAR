@@ -25,9 +25,12 @@ void Sprite::Draw_Src(int x, int y, int w, int h) {
 	m_src.h = h;
 }
 
-void Sprite::Draw_Dst(int x, int y, int w, int h) {
+void Sprite::Draw_Dst(int x, int y) {
 	m_dst.x = x;
 	m_dst.y = y;
+}
+
+void Sprite::Draw_Siz(int w, int h) {
 	m_dst.w = w;
 	m_dst.h = h;
 }

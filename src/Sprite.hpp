@@ -1,9 +1,7 @@
 #ifndef SPRITE_HPP
 #define SPRITE_HPP
 
-#include "gamedefs.hpp"
 #include <SDL3/SDL.h>
-#include <string>
 
 class Sprite {
 public:
@@ -11,7 +9,8 @@ public:
 	~Sprite();
 
 	void Draw_Src(int x, int y, int w, int h);
-	void Draw_Dst(int x, int y, int w, int h);
+	void Draw_Dst(int x, int y);
+	void Draw_Siz(int w, int h);
 	void Update(double dt);
 	void Render();
 	SDL_Texture *GetTexture() { return m_texture; }

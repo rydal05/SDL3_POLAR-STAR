@@ -5,5 +5,4 @@
 class Player {
 private:
 public:
-	// YEAH IM NOT making this right now
 };
