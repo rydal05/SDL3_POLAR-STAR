@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.7)
-project(SDL3_Shmup C++)
+project(SDL3_Shmup CXX)
 
 find_package(SDL3 REQUIRED CONFIG)
 
