@@ -1,0 +1,21 @@
+THE BIG TODO LIST:
+
+actual shooting that doesn't just loop 1 bullet
+storage of player bullets
+storage of enemy bullets
+enemy class
+enemy spawner
+enemy shooting
+figuring out enemy movement
+player weapons
+player button mappings system
+player class vars (hp weapons and weapon levels, shit like that)
+weapon level ups
+lots and lots and lots of sound effects
+sound manager
+title screen
+actual pause screen
+settings configurations of some sort + window resizing stuff
+refactoring current version of the game to be cleaner in the gameloop and also incorporate state machine / manager
+fix rendering pipeline and maybe clean up classes too
+
