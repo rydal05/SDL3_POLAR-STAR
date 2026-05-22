@@ -48,17 +48,18 @@ int main(int argc, char *argv[]) {
 	Uint64 NOW = LAST;
 	double dt = 0;
 	// like all of this needs to be moved over to sprite factories and abstracted spaces eventually but not now
-	Sprite player("asset/img/stg_story.bmp");
+	Sprite player("assets/img/stg_story.bmp");
 	player.Draw_Src(0, 0, 16, 16);
 	player.Draw_Dst(640 / 2, 480 / 2);
 	player.Draw_Siz(16 * SCALE, 16 * SCALE);
-	Sprite bul("asset/img/stg_story.bmp");
+	Sprite bul("assets/img/stg_story.bmp");
 	bul.Draw_Src(64, 0, 16, 16);
 	bul.Draw_Dst(0, 0);
 	bul.Draw_Siz(16 * SCALE, 16 * SCALE);
 
 	bool wait = false;
 	float curWait = FIRE_RATE;
+	bool paused = false;
 
 	bgManager *backgroundManager = bgManager::getInstance();
 	backgroundManager->moonSceneInit();
@@ -80,8 +81,14 @@ int main(int argc, char *argv[]) {
 				if (event.key.scancode == SDL_SCANCODE_ESCAPE) {
 					running = false;
 				}
+				if(event.key.scancode == SDL_SCANCODE_P){
+					paused = !paused;
+				}
 			}
 		}
+
+		if(paused) goto renderPresent;
+
 		// player input and things like that
 		if (state[SDL_SCANCODE_UP]) {
 			player.m_dst.y -= (float)(PLR_SPEED * dt);
@@ -97,7 +104,7 @@ int main(int argc, char *argv[]) {
 		}
 		if (!wait) {
 			if (state[SDL_SCANCODE_X]) {
-				bul.m_dst.x = player.m_dst.x;
+				bul.m_dst.x = player.m_dst.x + 10;
 				bul.m_dst.y = player.m_dst.y;
 				wait = true;
 			}
@@ -109,10 +116,30 @@ int main(int argc, char *argv[]) {
 				wait = false;
 			}
 		}
+
+		/*
+			Bounds Checking
+		*/
 		if (player.m_dst.y > 448) player.m_dst.y = 448;
-		if (player.m_dst.y < 0) player.m_dst.y = 0; // bounds
+		if (player.m_dst.y < 0) player.m_dst.y = 0;
 		if (player.m_dst.x < 0) player.m_dst.x = 0;
-		if (player.m_dst.x > 608) player.m_dst.x = 608;
+		if (player.m_dst.x > 608) player.m_dst.x = 608;		
+
+		// update & run simulations
+		player.Update(dt);
+		backgroundManager->moonSceneUpdate(dt);
+		// hudMgr->HudUpdate();
+		//  render everything that occured within the frame
+		//  wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
+		
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
+		SDL_RenderClear(renderer);									 // clear canvas
+
+		// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
+		bul.m_dst.x += BUL_SPD * dt; 
+		
+		//gotolabel to implement pausing
+		renderPresent:
 
 		if (player.m_dst.y < 64) {
 			hudMgr->makeTranslucent();
@@ -121,19 +148,6 @@ int main(int argc, char *argv[]) {
 		if (player.m_dst.y > 64) {
 			hudMgr->makeOpaque();
 		} // bounds for when player isnt hidden behind ui elements
-
-		// update & run simulations
-		player.Update(dt);
-		backgroundManager->moonSceneUpdate(dt);
-		// hudMgr->HudUpdate();
-		//  render everything that occured within the frame
-		//  wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
-		SDL_RenderClear(renderer);									 // clear canvas
-
-		// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
-
-		bul.m_dst.x += BUL_SPD * dt;
 
 		backgroundManager->moonSceneRender();
 		hudMgr->HudRender();

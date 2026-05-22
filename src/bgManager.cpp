@@ -5,42 +5,42 @@
 #include <iostream>
 
 void bgManager::moonSceneInit() {
-	auto bg1 = std::make_unique<Sprite>("asset/img/stg_story_bgs.bmp");
+	auto bg1 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	bg1->Draw_Src(0, 0, 640 / 2, 176 / 2);
 	bg1->Draw_Dst(0, WINDOW_HEIGHT - 176);
 	bg1->Draw_Siz(640, 176);
 
-	auto bg2 = std::make_unique<Sprite>("asset/img/stg_story_bgs.bmp");
+	auto bg2 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	bg2->Draw_Src(640 / 2, 0, 640 / 2, 192 / 2);
 	bg2->Draw_Dst(0, WINDOW_HEIGHT - 192);
 	bg2->Draw_Siz(640, 192);
 
-	auto bg3 = std::make_unique<Sprite>("asset/img/stg_story_bgs.bmp");
+	auto bg3 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	bg3->Draw_Src(640 / 2, 192 / 2, 640 / 2, 288 / 2);
 	bg3->Draw_Dst(0, WINDOW_HEIGHT - 288); // game loop begins
 	bg3->Draw_Siz(640, 288);
 
-	auto bg4 = std::make_unique<Sprite>("asset/img/stg_story_bgs.bmp");
+	auto bg4 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	bg4->Draw_Src(0, 176 / 2, 640 / 2, 304 / 2);
 	bg4->Draw_Dst(0, WINDOW_HEIGHT - 304);
 	bg4->Draw_Siz(640, 192);
 
-	auto bg12 = std::make_unique<Sprite>("asset/img/stg_story_bgs.bmp");
+	auto bg12 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	bg12->Draw_Src(0, 0, 640 / 2, 176 / 2);
 	bg12->Draw_Dst(-640, WINDOW_HEIGHT - 176);
 	bg12->Draw_Siz(640, 176);
 
-	auto bg22 = std::make_unique<Sprite>("asset/img/stg_story_bgs.bmp");
+	auto bg22 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	bg22->Draw_Src(640 / 2, 0, 640 / 2, 192 / 2);
 	bg22->Draw_Dst(-640, WINDOW_HEIGHT - 192);
 	bg22->Draw_Siz(640, 192);
 
-	auto bg32 = std::make_unique<Sprite>("asset/img/stg_story_bgs.bmp");
+	auto bg32 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	bg32->Draw_Src(640 / 2, 192 / 2, 640 / 2, 288 / 2);
 	bg32->Draw_Dst(-640, WINDOW_HEIGHT - 288);
 	bg32->Draw_Siz(640, 288);
 
-	auto bg42 = std::make_unique<Sprite>("asset/img/stg_story_bgs.bmp");
+	auto bg42 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	bg42->Draw_Src(0, 176 / 2, 640 / 2, 304 / 2);
 	bg42->Draw_Dst(-640, WINDOW_HEIGHT - 304);
 	bg42->Draw_Siz(640, 192);
