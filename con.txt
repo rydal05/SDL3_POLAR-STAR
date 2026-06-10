@@ -1,0 +1,4 @@
+Finite State Machines
+Event Queues
+Input Polling
+Lots of OOP class inheritance shenanigans
