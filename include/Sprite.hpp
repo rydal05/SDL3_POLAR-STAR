@@ -1,5 +1,8 @@
-#include <string>
+#ifndef SPRITE_HPP
+#define SPRITE_HPP
+
 #include <SDL3/SDL.h>
+#include <string>
 
 class Sprite {
 public:
@@ -20,21 +23,23 @@ private:
 	SDL_Texture *m_texture;
 };
 
-class AnimatedSprite{
-    public:
-        AnimatedSprite(SDL_Renderer*& renderer, std::string filepath);
+class AnimatedSprite {
+public:
+	AnimatedSprite(SDL_Renderer *&renderer, std::string filepath);
 
-        ~AnimatedSprite();
+	~AnimatedSprite();
 
-        void Draw(int x, int y, int w, int h);
+	void Draw(int x, int y, int w, int h);
 
-        void PlayFrame(int x, int y, int w, int h, int frame);
+	void PlayFrame(int x, int y, int w, int h, int frame);
 
-        void Update();
+	void Update();
 
-        void Render(SDL_Renderer *& renderer);
+	void Render(SDL_Renderer *&renderer);
 
-    private:
-        SDL_FRect m_src;
-        SDL_Texture *m_texture;
+private:
+	SDL_FRect m_src;
+	SDL_Texture *m_texture;
 };
+
+#endif

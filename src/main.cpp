@@ -7,13 +7,23 @@
 #include <stdio.h>
 
 #include "HudManager.hpp"
-#include "Sprite.hpp"
+#include "SDLApplication.hpp"
 #include "bgManager.hpp"
+#include "bullets.hpp"
 #include "gamedefs.hpp"
+#include "player.hpp"
 
 void _draw();
 void _update();
 void _init();
+void _framesetup();
+
+Player player;
+Bullet bul;
+bgManager *backgroundManager = nullptr;
+HudManager *hudMgr = nullptr;
+double dt = 0.0;
+bool paused = false;
 
 bgManager *bgManager::instancePtr = nullptr;
 std::mutex bgManager::mtx;
@@ -23,55 +33,27 @@ std::mutex HudManager::mtx;
 
 int main(int argc, char *argv[]) {
 	// setup
-	SDL_SetAppMetadata("TEXT TEXT LALALALLALA", "Version Very Very Friend 0.0.1", "com.cantisresort.polarstar");
 
-	if (!SDL_Init(SDL_INIT_VIDEO)) {
-		SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
-		return SDL_APP_FAILURE;
-	}
-	if (!SDL_Init(SDL_INIT_GAMEPAD)) {
-		SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
-		return SDL_APP_FAILURE;
-	}
-
-	// make the window
-	if (!SDL_CreateWindowAndRenderer("POLAR STAR", WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2, SDL_WINDOW_OPENGL, &window, &renderer)) {
-		SDL_Log("Failed to create window and/or renderer: %s", SDL_GetError());
-		return SDL_APP_FAILURE;
-	}
-
-	SDL_SetRenderLogicalPresentation(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+	SDLApplication app("POLAR STAR", 640, 480);
+	const double targetFrameMs = 1000.0 / 60.0;
 
 	SDL_Event event;
 	bool running = true;
 	Uint64 LAST = SDL_GetPerformanceCounter();
-	Uint64 NOW = LAST;
-	double dt = 0;
 	// like all of this needs to be moved over to sprite factories and abstracted spaces eventually but not now
-	Sprite player("assets/img/stg_story.bmp");
-	player.Draw_Src(0, 0, 16, 16);
-	player.Draw_Dst(640 / 2, 480 / 2);
-	player.Draw_Siz(16 * SCALE, 16 * SCALE);
-	Sprite bul("assets/img/stg_story.bmp");
-	bul.Draw_Src(64, 0, 16, 16);
-	bul.Draw_Dst(0, 0);
-	bul.Draw_Siz(16 * SCALE, 16 * SCALE);
 
-	bool wait = false;
-	float curWait = FIRE_RATE;
-	bool paused = false;
-
-	bgManager *backgroundManager = bgManager::getInstance();
+	backgroundManager = bgManager::getInstance();
 	backgroundManager->moonSceneInit();
 
-	HudManager *hudMgr = HudManager::getInstance();
+	hudMgr = HudManager::getInstance();
 	hudMgr->gameplayHudInit();
 
 	while (running) {
-		NOW = SDL_GetPerformanceCounter();
-		dt = (double)((NOW - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
-		LAST = NOW; // deltatime calculations
-		const bool *state = SDL_GetKeyboardState(NULL);
+		const Uint64 frameStart = SDL_GetPerformanceCounter();
+		const Uint64 now = frameStart;
+		dt = (double)((now - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
+		LAST = now; // deltatime calculations
+		SDL_GetKeyboardState(NULL);
 
 		while (SDL_PollEvent(&event)) { // event handler
 			if (event.type == SDL_EVENT_QUIT) {
@@ -81,97 +63,70 @@ int main(int argc, char *argv[]) {
 				if (event.key.scancode == SDL_SCANCODE_ESCAPE) {
 					running = false;
 				}
-				if(event.key.scancode == SDL_SCANCODE_P){
+				if (event.key.scancode == SDL_SCANCODE_P) {
 					paused = !paused;
 				}
 			}
 		}
 
-		if(paused) goto renderPresent;
-
-		// player input and things like that
-		if (state[SDL_SCANCODE_UP]) {
-			player.m_dst.y -= (float)(PLR_SPEED * dt);
-		}
-		if (state[SDL_SCANCODE_LEFT]) {
-			player.m_dst.x -= (float)(PLR_SPEED * dt);
-		}
-		if (state[SDL_SCANCODE_DOWN]) {
-			player.m_dst.y += (float)(PLR_SPEED * dt);
-		}
-		if (state[SDL_SCANCODE_RIGHT]) {
-			player.m_dst.x += (float)(PLR_SPEED * dt);
-		}
-		if (!wait) {
-			if (state[SDL_SCANCODE_X]) {
-				bul.m_dst.x = player.m_dst.x + 10;
-				bul.m_dst.y = player.m_dst.y;
-				wait = true;
-			}
-		}
-		if (wait) {
-			curWait -= 0.01f * dt;
-			if (curWait < 0.0f) {
-				curWait = FIRE_RATE;
-				wait = false;
-			}
-		}
+		if (paused) goto renderPresent;
 
 		/*
 			Bounds Checking
 		*/
-		if (player.m_dst.y > 448) player.m_dst.y = 448;
-		if (player.m_dst.y < 0) player.m_dst.y = 0;
-		if (player.m_dst.x < 0) player.m_dst.x = 0;
-		if (player.m_dst.x > 608) player.m_dst.x = 608;		
-
+		_update();
 		// update & run simulations
-		player.Update(dt);
-		backgroundManager->moonSceneUpdate(dt);
 		// hudMgr->HudUpdate();
 		//  render everything that occured within the frame
 		//  wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
-		
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
-		SDL_RenderClear(renderer);									 // clear canvas
 
-		// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
-		bul.m_dst.x += BUL_SPD * dt; 
-		
-		//gotolabel to implement pausing
-		renderPresent:
+		_framesetup();
 
-		if (player.m_dst.y < 64) {
-			hudMgr->makeTranslucent();
-		} // bounds for when player is hidden behind UI elements
+	// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
 
-		if (player.m_dst.y > 64) {
-			hudMgr->makeOpaque();
-		} // bounds for when player isnt hidden behind ui elements
+	// gotolabel to implement pausing
+	renderPresent:
+		_draw();
 
-		backgroundManager->moonSceneRender();
-		hudMgr->HudRender();
-
-		// player and enemies and things like that
-		player.Render();
-		bul.Render();
-		// hud things and whatever else that should be drawn over the player or maybe we swap it i really dont know atm i cant lie
-		//		HPLV.Render();
-		//		gunIcon.Render();
-		//		levelIcon.Render();
-
-		SDL_RenderPresent(renderer); // put it all together now
+		const Uint64 frameEnd = SDL_GetPerformanceCounter();
+		const double frameMs = (double)((frameEnd - frameStart) * 1000 / (double)SDL_GetPerformanceFrequency());
+		if (frameMs < targetFrameMs) {
+			SDL_Delay((Uint32)(targetFrameMs - frameMs));
+		}
 	}
 
 	// cleanup
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
+	SDL_DestroyRenderer(g_renderer);
+	SDL_DestroyWindow(g_window);
 	SDL_Quit();
 
 	return 0;
 }
 
+void _framesetup() {
+	SDL_SetRenderDrawColor(g_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
+	SDL_RenderClear(g_renderer);								   // clear canvas
+}
+
 void _draw() {
+	if (player.m_dst.y < 64) {
+		hudMgr->makeTranslucent();
+	} // bounds for when player is hidden behind UI elements
+
+	if (player.m_dst.y > 64) {
+		hudMgr->makeOpaque();
+	} // bounds for when player isnt hidden behind ui elements
+
+	backgroundManager->moonSceneRender();
+	hudMgr->HudRender();
+
+	// player and enemies and things like that
+	player.Render();
+	bul.Render();
+	// hud things and whatever else that should be drawn over the player or maybe we swap it i really dont know atm i cant lie
+	//		HPLV.Render();
+	//		gunIcon.Render();
+	//		levelIcon.Render();
 	// render everything that occured within the frame
 	// wayland requires that something must be drawn to the screen in order for the window to actually exist i spent 2 hours figuring this out
 	// SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); // bg color
@@ -180,20 +135,22 @@ void _draw() {
 	// SDL_RenderTexture(renderer, texture, NULL, &dst_rect);
 	//
 	// SDL_RenderPresent(renderer);
+
+	SDL_RenderPresent(g_renderer); // put it all together now
 }
 
 void _update() {
+	player.Update(dt, bul);
+	bul.Update(dt);
+
+	backgroundManager->moonSceneUpdate(dt);
 }
 
 void startgame() {
 	// set game's mode
 	mode = GAME;
 	// init character info
-	struct player {
-		int xpos = 0;
-		int ypos = 0;
-
-	} playercharacter;
+	// playercharacter;
 	// init stats
 	// reset background stuff
 	// reset bullets vector

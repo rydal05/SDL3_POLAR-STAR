@@ -16,8 +16,8 @@ typedef enum {
 	OVER
 } gameMode;
 
-inline SDL_Window *window = nullptr;
-inline SDL_Renderer *renderer = nullptr;
+inline SDL_Window *g_window = nullptr;
+inline SDL_Renderer *g_renderer = nullptr;
 inline gameMode mode = START;
 
 #endif
