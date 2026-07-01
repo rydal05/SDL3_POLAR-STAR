@@ -9,9 +9,9 @@
 #include "HudManager.hpp"
 #include "SDLApplication.hpp"
 #include "bgManager.hpp"
-#include "bullets.hpp"
+#include "bullet.h"
 #include "gamedefs.hpp"
-#include "player.hpp"
+#include "player.h"
 
 void _draw();
 void _update();
