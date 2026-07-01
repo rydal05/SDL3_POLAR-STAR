@@ -1,11 +1,11 @@
-#ifndef ENEMY_H
-#define ENEMY_H
+#ifndef ENTITY_H
+#define ENTITY_H
 
-class Enemy {
+class Entity {
 public:
     virtual void update() = 0;
     virtual void render() = 0;
-    virtual ~Enemy() {}
+    virtual ~Entity() {}
 };
 
 #endif
