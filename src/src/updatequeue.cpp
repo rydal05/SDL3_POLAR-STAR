@@ -5,8 +5,17 @@
 
 class Game {
 public:
-	void update() {
+	void update_queue() {
 		for (auto &player : players) {
+            player->update();
+		}
+
+        for (auto &enemy : enemies) {
+            enemy->update();
+		}
+
+        for (auto &bullet : bullets) {
+            bullet->update();
 		}
 	}
 
@@ -17,7 +26,7 @@ public:
     void insert_enemy(){
 
     }
-    
+
     void insert_bullets(){
 
     }
