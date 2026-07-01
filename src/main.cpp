@@ -69,8 +69,6 @@ int main(int argc, char *argv[]) {
 			}
 		}
 
-		if (paused) goto renderPresent;
-
 		/*
 			Bounds Checking
 		*/
