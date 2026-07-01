@@ -1,4 +1,0 @@
-/* 
-array of fixed size that addresses all types of things in the game to be rendered in order 
-
-*/
