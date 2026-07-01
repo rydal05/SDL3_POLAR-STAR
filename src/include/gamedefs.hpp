@@ -1,23 +1,26 @@
 #ifndef GAMEDEFS_H
 #define GAMEDEFS_H
+
 #include <SDL3/SDL.h>
 
-#define PLR_SPEED 0.25f
-#define PLR_SPRITE_SIZE 64
-#define SCALE 2
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 480
-#define BUL_SPD 0.5f
-#define FIRE_RATE 1.5f
+namespace GameDefs {
+	constexpr float PlayerSpeed = 0.25f;
+	constexpr int PlayerSpriteSize = 64;
+	constexpr int ScaleFactor = 2;
+	
+	constexpr int WindowHeight = 640;
+	constexpr int WindowWidth = 480;
 
-typedef enum {
-	GAME,
-	START,
-	OVER
-} gameMode;
+	enum class GameMode {
+		GAME,
+		START,
+		OVER,
+		PAUSED,
+		SETTINGS
+	};
 
-inline SDL_Window *g_window = nullptr;
-inline SDL_Renderer *g_renderer = nullptr;
-inline gameMode mode = START;
+	extern SDL_Window *g_window;
+	extern SDL_Renderer *g_renderer;
+}
 
 #endif

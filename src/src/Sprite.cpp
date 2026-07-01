@@ -10,7 +10,7 @@ Sprite::Sprite(const char *filepath) {
 	char *new_filepath = NULL;
 	SDL_asprintf(&new_filepath, "%s%s", SDL_GetBasePath(), filepath);
 	SDL_Surface *retrieveSurface = ResourceManager::GetInstance().GetSurface(new_filepath);
-	m_texture = SDL_CreateTextureFromSurface(g_renderer, retrieveSurface);
+	m_texture = SDL_CreateTextureFromSurface(GameDefs::g_renderer, retrieveSurface);
 	SDL_free(new_filepath);
 }
 
@@ -40,5 +40,5 @@ void Sprite::Update(double dt) {
 
 void Sprite::Render() {
 	SDL_SetTextureScaleMode(m_texture, SDL_SCALEMODE_NEAREST);
-	SDL_RenderTexture(g_renderer, m_texture, &m_src, &m_dst);
+	SDL_RenderTexture(GameDefs::g_renderer, m_texture, &m_src, &m_dst);
 }

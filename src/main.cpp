@@ -18,8 +18,6 @@ void _update();
 void _init();
 void _framesetup();
 
-Player player;
-Bullet bul;
 bgManager *backgroundManager = nullptr;
 HudManager *hudMgr = nullptr;
 double dt = 0.0;
@@ -81,15 +79,15 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
-	SDL_DestroyRenderer(g_renderer);
-	SDL_DestroyWindow(g_window);
+	SDL_DestroyRenderer(GameDefs::g_renderer);
+	SDL_DestroyWindow(GameDefs::g_window);
 	SDL_Quit();
 
 	return 0;
 }
 
 void _framesetup() {
-	SDL_SetRenderDrawColor(g_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); 
+	SDL_SetRenderDrawColor(GameDefs::g_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE); 
 	SDL_RenderClear(g_renderer);								   
 }
 
@@ -105,10 +103,10 @@ void _draw() {
 	backgroundManager->moonSceneRender();
 	hudMgr->HudRender();
 
-	player.Render();
-	bul.Render();
+	update_queue();
+	render_queue();
 
-	SDL_RenderPresent(g_renderer);
+	SDL_RenderPresent(GameDefs::g_renderer);
 
 void _update() {
 	player.Update(dt, bul);
