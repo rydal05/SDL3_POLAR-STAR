@@ -16,8 +16,7 @@ public:
 	void Render();
 	SDL_Texture *GetTexture() { return m_texture; }
 
-	SDL_FRect m_dst; // move to private when i have a better method of moving the player lol
-
+	SDL_FRect m_dst;
 private:
 	SDL_FRect m_src;
 	SDL_Texture *m_texture;
@@ -25,7 +24,7 @@ private:
 
 class AnimatedSprite {
 public:
-	AnimatedSprite(SDL_Renderer *&renderer, std::string filepath);
+	AnimatedSprite(std::string filepath);
 
 	~AnimatedSprite();
 
@@ -35,7 +34,7 @@ public:
 
 	void Update();
 
-	void Render(SDL_Renderer *&renderer);
+	void Render(); //TODO: migrate rendering system from using passed in renderer (global, reference, etc) to using shared pointer stored in class
 
 private:
 	SDL_FRect m_src;

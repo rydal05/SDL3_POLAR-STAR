@@ -17,7 +17,6 @@ private:
 	std::vector<std::unique_ptr<Sprite>> moon;
 	std::vector<std::unique_ptr<Sprite>> moon_paral;
 	std::vector<float> moon_speeds = {-0.1f, -0.2f, -0.3f, -0.5f};
-	SDL_Renderer *m_renderer = nullptr;
 
 public:
 	bgManager(const bgManager &obj) = delete;
@@ -31,8 +30,6 @@ public:
 		}
 		return instancePtr;
 	}
-
-	void passRenderer(SDL_Renderer *renderer) { m_renderer = renderer; }
 
 	void moonSceneInit();
 	void moonSceneUpdate(double dt);
