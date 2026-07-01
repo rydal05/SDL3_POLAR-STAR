@@ -1,6 +1,17 @@
-#include "bullets.hpp"
+#include "bullet.h"
 
 #include "gamedefs.hpp"
+
+class PlayerBullet : public Bullet { 
+	public:
+		void update() override {
+
+		}
+
+		void render() override {
+			
+		}
+}
 
 Bullet::Bullet()
 	: m_sprite("assets/img/stg_story.bmp"), m_dst(m_sprite.m_dst), m_active(false) {
