@@ -4,6 +4,7 @@
 #include "Bullet.h"
 #include "Entity.h"
 #include "Player.h"
+#include "GameDefs.h"
 
 #include <vector>
 
@@ -24,6 +25,7 @@ public:
     }
 
 	void update_queue() {
+        if(GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
 		for (auto &player : players) {
             player->update();
 		}

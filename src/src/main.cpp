@@ -31,7 +31,7 @@ std::mutex HudManager::mtx;
 
 int main(int argc, char *argv[]) {
 	// setup
-
+	GameDefs::GAME_STATUS = GameDefs::GameMode::GAME;
 	SDLApplication app("POLAR STAR", 640, 480);
 	const double targetFrameMs = 1000.0 / 60.0;
 
@@ -61,15 +61,17 @@ int main(int argc, char *argv[]) {
 					running = false;
 				}
 				if (event.key.scancode == SDL_SCANCODE_P) {
-					paused = !paused;
+					if(GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) {
+						GameDefs::GAME_STATUS = GameDefs::GameMode::GAME;
+					} else if(GameDefs::GAME_STATUS == GameDefs::GameMode::GAME) {
+						GameDefs::GAME_STATUS = GameDefs::GameMode::PAUSED;
+					}
 				}
 			}
 		}
 
 		_update();
 		_framesetup();
-
-	renderPresent:
 		_draw();
 
 		const Uint64 frameEnd = SDL_GetPerformanceCounter();
@@ -110,6 +112,7 @@ void _draw() {
 }
 
 void _update() {
+	if(GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
 	// player.Update(dt, bul);
 	// bul.Update(dt);
 

@@ -21,6 +21,8 @@ namespace GameDefs {
 
 	inline SDL_Window *g_window = nullptr;
 	inline SDL_Renderer *g_renderer = nullptr;
+
+	inline GameMode GAME_STATUS;
 }
 
 #endif
