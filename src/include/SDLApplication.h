@@ -19,12 +19,12 @@ public:
 		}
 
 		// make the window
-		if (!SDL_CreateWindowAndRenderer("POLAR STAR", w * 2, h * 2, SDL_WINDOW_OPENGL, &g_window, &g_renderer)) {
+		if (!SDL_CreateWindowAndRenderer("POLAR STAR", w * 2, h * 2, SDL_WINDOW_OPENGL, &GameDefs::g_window, &GameDefs::g_renderer)) {
 			SDL_Log("Failed to create window and/or renderer: %s", SDL_GetError());
 			success = false;
 		}
 
-		SDL_SetRenderLogicalPresentation(g_renderer, w, h, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+		SDL_SetRenderLogicalPresentation(GameDefs::g_renderer, w, h, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 	}
 
 private:
