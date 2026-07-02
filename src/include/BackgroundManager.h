@@ -1,7 +1,6 @@
 #ifndef BACKGROUND_MANANGER_H
 #define BACKGROUND_MANANGER_H
 
-
 #include "ResourceManager.h"
 #include "Sprite.h"
 
@@ -20,8 +19,7 @@ private:
 	bgManager() {}
 
 	std::vector<std::unique_ptr<Sprite>> moon;
-	std::vector<std::unique_ptr<Sprite>> moon_paral;
-	std::vector<float> moon_speeds = {-0.1f, -0.2f, -0.3f, -0.5f};
+	std::vector<float> moon_speeds = {-0.1f, -0.1f, -0.2f, -0.2f, -0.3f, -0.3f, -0.5f, -0.5f};
 
 public:
 	bgManager(const bgManager &obj) = delete;
