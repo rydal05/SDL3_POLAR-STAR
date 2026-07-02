@@ -1,59 +1,66 @@
-#include "bgManager.hpp"
-#include "gamedefs.hpp"
+#include "BackgroundManager.h"
+#include "GameDefs.h"
 #include <SDL3/SDL_events.h>
 #include <SDL3/SDL_oldnames.h>
 #include <iostream>
 
 void bgManager::moonSceneInit() {
-	auto bg1 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
-	bg1->Draw_Src(0, 0, 640 / 2, 176 / 2);
-	bg1->Draw_Dst(0, WINDOW_HEIGHT - 176);
-	bg1->Draw_Siz(640, 176);
+	int width = 640;
+	int l1h = 63 * GameDefs::ScaleFactor;
+	int l2h = 94 * GameDefs::ScaleFactor;
+	int l3h = 117 * GameDefs::ScaleFactor;
+	int l4h = 151 * GameDefs::ScaleFactor;
 
-	auto bg2 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
-	bg2->Draw_Src(640 / 2, 0, 640 / 2, 192 / 2);
-	bg2->Draw_Dst(0, WINDOW_HEIGHT - 192);
-	bg2->Draw_Siz(640, 192);
+	
+	auto layer1 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
+	layer1->Draw_Src(0, 0, 320, l1h/GameDefs::ScaleFactor);
+	layer1->Draw_Dst(0, GameDefs::WindowHeight-l1h);
+	layer1->Draw_Siz(width, l1h);
 
-	auto bg3 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
-	bg3->Draw_Src(640 / 2, 192 / 2, 640 / 2, 288 / 2);
-	bg3->Draw_Dst(0, WINDOW_HEIGHT - 288); // game loop begins
-	bg3->Draw_Siz(640, 288);
+	auto layer2 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
+	layer2->Draw_Src(0, 63, 320, l2h/GameDefs::ScaleFactor);
+	layer2->Draw_Dst(0, GameDefs::WindowHeight-l2h);
+	layer2->Draw_Siz(width, l2h);
 
-	auto bg4 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
-	bg4->Draw_Src(0, 176 / 2, 640 / 2, 304 / 2);
-	bg4->Draw_Dst(0, WINDOW_HEIGHT - 304);
-	bg4->Draw_Siz(640, 192);
+	auto layer3 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
+	layer3->Draw_Src(0, 157, 320, l3h/GameDefs::ScaleFactor);
+	layer3->Draw_Dst(0, GameDefs::WindowHeight-l3h);
+	layer3->Draw_Siz(width, l3h);
 
-	auto bg12 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
-	bg12->Draw_Src(0, 0, 640 / 2, 176 / 2);
-	bg12->Draw_Dst(-640, WINDOW_HEIGHT - 176);
-	bg12->Draw_Siz(640, 176);
+	auto layer4 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
+	layer4->Draw_Src(0, 274, 320, l4h/GameDefs::ScaleFactor);
+	layer4->Draw_Dst(0, GameDefs::WindowHeight-l4h);
+	layer4->Draw_Siz(width, l4h);
 
-	auto bg22 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
-	bg22->Draw_Src(640 / 2, 0, 640 / 2, 192 / 2);
-	bg22->Draw_Dst(-640, WINDOW_HEIGHT - 192);
-	bg22->Draw_Siz(640, 192);
+	auto layer1_c = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
+	layer1_c->Draw_Src(0, 0, 320, l1h/GameDefs::ScaleFactor);
+	layer1_c->Draw_Dst(-640, GameDefs::WindowHeight-l1h);
+	layer1_c->Draw_Siz(width, l1h);
 
-	auto bg32 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
-	bg32->Draw_Src(640 / 2, 192 / 2, 640 / 2, 288 / 2);
-	bg32->Draw_Dst(-640, WINDOW_HEIGHT - 288);
-	bg32->Draw_Siz(640, 288);
+	auto layer2_c = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
+	layer2_c->Draw_Src(0, 63, 320, l2h/GameDefs::ScaleFactor);
+	layer2_c->Draw_Dst(-640, GameDefs::WindowHeight-l2h);
+	layer2_c->Draw_Siz(width, l2h);
 
-	auto bg42 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
-	bg42->Draw_Src(0, 176 / 2, 640 / 2, 304 / 2);
-	bg42->Draw_Dst(-640, WINDOW_HEIGHT - 304);
-	bg42->Draw_Siz(640, 192);
+	auto layer3_c = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
+	layer3_c->Draw_Src(0, 157, 320, l3h/GameDefs::ScaleFactor);
+	layer3_c->Draw_Dst(-640, GameDefs::WindowHeight-l3h);
+	layer3_c->Draw_Siz(width, l3h);
 
-	moon.push_back(std::move(bg4));
-	moon.push_back(std::move(bg3));
-	moon.push_back(std::move(bg2));
-	moon.push_back(std::move(bg1));
+	auto layer4_c = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
+	layer4_c->Draw_Src(0, 274, 320, l4h/GameDefs::ScaleFactor);
+	layer4_c->Draw_Dst(-640, GameDefs::WindowHeight-l4h);
+	layer4_c->Draw_Siz(width, l4h);
 
-	moon_paral.push_back(std::move(bg42));
-	moon_paral.push_back(std::move(bg32));
-	moon_paral.push_back(std::move(bg22));
-	moon_paral.push_back(std::move(bg12));
+	moon.push_back(std::move(layer4));
+	moon.push_back(std::move(layer3));
+	moon.push_back(std::move(layer2));
+	moon.push_back(std::move(layer1));
+
+	moon_paral.push_back(std::move(layer4_c));
+	moon_paral.push_back(std::move(layer3_c));
+	moon_paral.push_back(std::move(layer2_c));
+	moon_paral.push_back(std::move(layer1_c));
 }
 
 void bgManager::moonSceneUpdate(double dt) {

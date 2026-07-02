@@ -8,8 +8,8 @@ namespace GameDefs {
 	constexpr int PlayerSpriteSize = 64;
 	constexpr int ScaleFactor = 2;
 	
-	constexpr int WindowHeight = 640;
-	constexpr int WindowWidth = 480;
+	constexpr int WindowWidth = 640;
+	constexpr int WindowHeight = 480;
 
 	enum class GameMode {
 		GAME,
@@ -19,8 +19,8 @@ namespace GameDefs {
 		SETTINGS
 	};
 
-	extern SDL_Window *g_window;
-	extern SDL_Renderer *g_renderer;
+	inline SDL_Window *g_window = nullptr;
+	inline SDL_Renderer *g_renderer = nullptr;
 }
 
 #endif

@@ -1,5 +1,10 @@
+#ifndef BACKGROUND_MANANGER_H
+#define BACKGROUND_MANANGER_H
+
+
 #include "ResourceManager.h"
 #include "Sprite.h"
+
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_render.h>
 #include <memory>
@@ -38,3 +43,5 @@ public:
 	void renderScene();
 	void switchScene();
 };
+
+#endif
