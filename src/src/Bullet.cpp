@@ -1,6 +1,5 @@
-#include "bullet.h"
-
-#include "gamedefs.hpp"
+#include "Bullet.h"
+#include "GameDefs.h"
 
 class PlayerBullet : public Bullet { 
 	public:
