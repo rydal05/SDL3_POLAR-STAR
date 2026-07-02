@@ -42,12 +42,6 @@ public:
 	void switchScene();
 };
 
-#include "Sprite.h"
-#include <SDL3/SDL.h>
-#include <memory>
-#include <mutex>
-#include <vector>
-
 class HudManager {
 private:
 	static HudManager *instancePtr;
