@@ -1,7 +1,5 @@
-#include "HudManager.hpp"
-#include "gamedefs.hpp"
-#include <SDL3/SDL_pixels.h>
-#include <SDL3/SDL_render.h>
+#include "GameDefs.h"
+#include <SDL3/SDL.h>
 
 void HudManager::gameplayHudInit() {
 

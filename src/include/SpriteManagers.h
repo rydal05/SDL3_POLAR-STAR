@@ -1,0 +1,84 @@
+#ifndef SPRITEMANAGERS_H
+#define SPRITEMANAGERS_H
+
+#include "ResourceManager.h"
+#include "Sprite.h"
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_render.h>
+#include <memory>
+#include <vector>
+
+#include <mutex>
+
+class bgManager {
+private:
+	static bgManager *instancePtr;
+	static std::mutex mtx;
+
+	bgManager() {}
+
+	std::vector<std::unique_ptr<Sprite>> moon;
+	std::vector<std::unique_ptr<Sprite>> moon_paral;
+	std::vector<float> moon_speeds = {-0.1f, -0.2f, -0.3f, -0.5f};
+
+public:
+	bgManager(const bgManager &obj) = delete;
+
+	static bgManager *getInstance() {
+		if (instancePtr == nullptr) {
+			std::lock_guard<std::mutex> lock(mtx);
+			if (instancePtr == nullptr) {
+				instancePtr = new bgManager();
+			}
+		}
+		return instancePtr;
+	}
+
+	void moonSceneInit();
+	void moonSceneUpdate(double dt);
+	void moonSceneRender();
+
+	void renderScene();
+	void switchScene();
+};
+
+#include "Sprite.h"
+#include <SDL3/SDL.h>
+#include <memory>
+#include <mutex>
+#include <vector>
+
+class HudManager {
+private:
+	static HudManager *instancePtr;
+	static std::mutex mtx;
+
+	HudManager() {}
+
+	bool visible = true;
+
+	std::vector<std::unique_ptr<Sprite>> gameplayElements;
+
+public:
+	HudManager(const HudManager &obj) = delete;
+
+	static HudManager *getInstance() {
+		if (instancePtr == nullptr) {
+			std::lock_guard<std::mutex> lock(mtx);
+			if (instancePtr == nullptr) {
+				instancePtr = new HudManager();
+			}
+		}
+		return instancePtr;
+	}
+
+	void HudUpdate();
+	void HudRender();
+	void hudStateManager();
+	void makeTranslucent();
+	void makeOpaque();
+
+	void gameplayHudInit();
+};
+
+#endif

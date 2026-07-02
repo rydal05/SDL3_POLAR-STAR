@@ -1,5 +1,8 @@
+#ifndef SDLAPP_H
+#define SDLAPP_H
+
 #include <SDL3/SDL.h>
-#include <gamedefs.hpp>
+#include <GameDefs.h>
 
 class SDLApplication {
 public:
@@ -27,3 +30,5 @@ public:
 private:
 	bool success = true;
 };
+
+#endif

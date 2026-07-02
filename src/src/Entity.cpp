@@ -1,6 +1,6 @@
-#include "enemy.h"
+#include "entity.h"
 
-class VariantEnemy : public Enemy {
+class EntityVariant : public Entity {
     public:
         void update() override {
 

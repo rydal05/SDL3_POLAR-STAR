@@ -1,5 +1,5 @@
-#ifndef SPRITE_HPP
-#define SPRITE_HPP
+#ifndef SPRITE_H
+#define SPRITE_H
 
 #include <SDL3/SDL.h>
 #include <string>

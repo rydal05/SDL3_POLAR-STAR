@@ -1,4 +1,4 @@
-#include "Sprite.hpp"
+#include "Sprite.h"
 #include <SDL3/SDL.h>
 #include <memory>
 #include <mutex>

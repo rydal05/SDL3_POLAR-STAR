@@ -1,6 +1,6 @@
-#include "bullet.h"
-#include "entity.h"
-#include "player.h"
+#include "Bullet.h"
+#include "Entity.h"
+#include "Player.h"
 #include <vector>
 
 class Game {
