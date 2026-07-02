@@ -1,3 +1,6 @@
+#ifndef INPUT_MANANGER_H
+#define INPUT_MANAGER_H
+
 
 class Command {
 public:
@@ -16,3 +19,5 @@ private:
 	Command *buttonA_;
 	Command *buttonB_;
 };
+
+#endif

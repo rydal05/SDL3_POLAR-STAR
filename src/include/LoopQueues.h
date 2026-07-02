@@ -1,6 +1,10 @@
+#ifndef LOOP_QUEUES_H
+#define LOOP_QUEUES_H
+
 #include "Bullet.h"
 #include "Entity.h"
 #include "Player.h"
+
 #include <vector>
 
 class Game {
@@ -50,3 +54,5 @@ private:
 	std::vector<Entity *> entities;
 	std::vector<Bullet *> bullets;
 };
+
+#endif
