@@ -12,10 +12,10 @@
 #include "HudManager.h"
 #include "ActorPlayer.h"
 #include "SDLApplication.h"
-#include "LoopQueues.h"
+#include "QueueManager.h"
 
 void _draw();
-void _update();
+void _update(double dt);
 void _init();
 void _framesetup();
 
@@ -99,18 +99,10 @@ void _framesetup() {
 }
 
 void _draw() {
-	Game& game = Game::getInstance();
-	// if (player.m_dst.y < 64) {
-	// 	hudMgr->makeTranslucent();
-	// }
-
-	// if (player.m_dst.y > 64) {
-	// 	hudMgr->makeOpaque();
-	// }
-
 	backgroundManager->moonSceneRender();
 	hudMgr->HudRender();
-
+	
+	Game& game = Game::getInstance();
 	game.render_queue();
 
 	SDL_RenderPresent(GameDefs::g_renderer);
