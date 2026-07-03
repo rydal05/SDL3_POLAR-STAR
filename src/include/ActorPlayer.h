@@ -6,50 +6,14 @@
 
 class ActorPlayer : public Player {
 public:
-	ActorPlayer() : Player(), m_sprite("assets/img/stg_story.bmp") {
-		m_dst->x = 0.0f;
-		m_dst->y = 0.0f;
-		m_dst->w = 16 * GameDefs::ScaleFactor;
-		m_dst->h = 16 * GameDefs::ScaleFactor;
-
-		m_sprite.Draw_Src(0, 0, 16, 16);
-		m_sprite.Draw_Dst(m_dst->x, m_dst->y);
-		m_sprite.Draw_Siz(m_dst->w, m_dst->h);
-	}
-
-	void ActorPlayer::update(double dt) override {
-		const bool *state = SDL_GetKeyboardState(nullptr);
-		if (state[SDL_SCANCODE_UP]) {
-			m_dst->y -= static_cast<float>(SPEED * dt);
-		}
-		if (state[SDL_SCANCODE_LEFT]) {
-			m_dst->x -= static_cast<float>(SPEED * dt);
-		}
-		if (state[SDL_SCANCODE_DOWN]) {
-			m_dst->y += static_cast<float>(SPEED * dt);
-		}
-		if (state[SDL_SCANCODE_RIGHT]) {
-			m_dst->x += static_cast<float>(SPEED * dt);
-		}
-
-		if (m_dst->y > 448.0f) m_dst->y = 448.0f;
-		if (m_dst->x > 608.0f) m_dst->x = 608.0f;
-		if (m_dst->y < 0.0f) m_dst->y = 0.0f;
-		if (m_dst->x < 0.0f) m_dst->x = 0.0f;
-	}
-
-	void ActorPlayer::render() override {
-		m_sprite.Render();
-	}
-
-	void move(int x, int y) {
-		m_dst->x += SPEED * x;
-		m_dst->y += SPEED * y;
-	}
+	ActorPlayer();
+	void update(double dt) override;
+	void render() override;
+	void move(float x, float y);
 
 private:
 	Sprite m_sprite;
-	SDL_FRect *m_dst;
+	SDL_FRect m_dst;
 
-	float SPEED = 1.0f;
+	float SPEED = 0.250f;
 };
