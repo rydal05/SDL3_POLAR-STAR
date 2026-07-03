@@ -20,8 +20,7 @@ void _framesetup();
 
 bgManager *backgroundManager = nullptr;
 HudManager *hudMgr = nullptr;
-double dt = 0.0;
-bool paused = false;
+
 
 bgManager *bgManager::instancePtr = nullptr;
 std::mutex bgManager::mtx;
@@ -44,7 +43,7 @@ int main(int argc, char *argv[]) {
 
 	hudMgr = HudManager::getInstance();
 	hudMgr->gameplayHudInit();
-
+	double dt = 0.0;
 	while (running) {
 		const Uint64 frameStart = SDL_GetPerformanceCounter();
 		const Uint64 now = frameStart;
@@ -70,7 +69,7 @@ int main(int argc, char *argv[]) {
 			}
 		}
 
-		_update();
+		_update(dt);
 		_framesetup();
 		_draw();
 
@@ -111,7 +110,7 @@ void _draw() {
 	SDL_RenderPresent(GameDefs::g_renderer);
 }
 
-void _update() {
+void _update(double dt) {
 	if(GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
 	// player.Update(dt, bul);
 	// bul.Update(dt);
