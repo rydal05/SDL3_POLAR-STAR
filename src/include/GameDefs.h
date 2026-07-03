@@ -5,8 +5,8 @@
 
 namespace GameDefs {
 	constexpr float PlayerSpeed = 0.25f;
-	constexpr int PlayerSpriteSize = 64;
-	constexpr int ScaleFactor = 2;
+	constexpr float PlayerSpriteSize = 64.0f;
+	constexpr float ScaleFactor = 2.0f;
 	
 	constexpr int WindowWidth = 640;
 	constexpr int WindowHeight = 480;

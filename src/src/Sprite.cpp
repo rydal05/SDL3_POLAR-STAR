@@ -18,19 +18,19 @@ Sprite::~Sprite() {
 	SDL_DestroyTexture(m_texture);
 }
 
-void Sprite::Draw_Src(int x, int y, int w, int h) {
+void Sprite::Draw_Src(float x, float y, float w, float h) {
 	m_src.x = x;
 	m_src.y = y;
 	m_src.w = w;
 	m_src.h = h;
 }
 
-void Sprite::Draw_Dst(int x, int y) {
+void Sprite::Draw_Dst(float x, float y) {
 	m_dst.x = x;
 	m_dst.y = y;
 }
 
-void Sprite::Draw_Siz(int w, int h) {
+void Sprite::Draw_Siz(float w, float h) {
 	m_dst.w = w;
 	m_dst.h = h;
 }

@@ -9,9 +9,9 @@ public:
 	Sprite(const char *filepath);
 	~Sprite();
 
-	void Draw_Src(int x, int y, int w, int h);
-	void Draw_Dst(int x, int y);
-	void Draw_Siz(int w, int h);
+	void Draw_Src(float x, float y, float w, float h);
+	void Draw_Dst(float x, float y);
+	void Draw_Siz(float w, float h);
 	void Update(double dt);
 	void Render();
 	SDL_Texture *GetTexture() { return m_texture; }
