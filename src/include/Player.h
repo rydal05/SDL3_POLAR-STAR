@@ -1,9 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-class Player {
+#include "Entity.h"
+
+class Player : public Entity {
 public:
-    virtual void update() = 0;
+    virtual void update(double dt) = 0;
     virtual void render() = 0;
     virtual ~Player() {}
 };
