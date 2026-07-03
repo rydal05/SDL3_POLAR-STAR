@@ -1,7 +1,6 @@
 #ifndef INPUT_MANANGER_H
 #define INPUT_MANAGER_H
 
-
 class Command {
 public:
 	virtual ~Command() {}
@@ -11,6 +10,7 @@ public:
 class InputHandler {
 public:
 	void handleInput();
+
 private:
 	Command *buttonX_;
 	Command *buttonY_;

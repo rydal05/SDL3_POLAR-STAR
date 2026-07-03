@@ -1,5 +1,5 @@
-#include "Player.h"
 #include "GameDefs.h"
+#include "Player.h"
 #include "Sprite.h"
 
 #include <SDL3/SDL_scancode.h>

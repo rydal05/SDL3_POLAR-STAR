@@ -1,9 +1,9 @@
 #ifndef SDLAPP_H
 #define SDLAPP_H
 
-#include <SDL3/SDL.h>
 #include <GameDefs.h>
-//TODO: conversion to singleton interface to decouple from GameDefs.h | 7/3/2026
+#include <SDL3/SDL.h>
+// TODO: conversion to singleton interface to decouple from GameDefs.h | 7/3/2026
 class SDLApplication {
 public:
 	SDLApplication(const char *title, int w, int h) {

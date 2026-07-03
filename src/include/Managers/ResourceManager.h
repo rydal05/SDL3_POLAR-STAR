@@ -6,18 +6,18 @@
 
 #include <SDL3/SDL.h>
 
-class ResourceManager{
-    private:
-        ResourceManager();
-        ResourceManager(ResourceManager const&);
-        ResourceManager operator=(ResourceManager const&);
-        
-        std::unordered_map<std::string, SDL_Surface*> m_surfaces;
+class ResourceManager {
+private:
+	ResourceManager();
+	ResourceManager(ResourceManager const &);
+	ResourceManager operator=(ResourceManager const &);
 
-    public:
-        static ResourceManager& GetInstance();
+	std::unordered_map<std::string, SDL_Surface *> m_surfaces;
 
-        SDL_Surface* GetSurface(std::string filepath);
+public:
+	static ResourceManager &GetInstance();
+
+	SDL_Surface *GetSurface(std::string filepath);
 };
 
 #endif

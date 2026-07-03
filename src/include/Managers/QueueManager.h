@@ -3,72 +3,72 @@
 
 #include "Bullet.h"
 #include "Entity.h"
-#include "Player.h"
 #include "GameDefs.h"
+#include "Player.h"
 
 #include <mutex>
 #include <vector>
 
 class Game {
 public:
-    static Game& getInstance() {
-        std::call_once(initInstanceFlag, [](){
-            instance = new Game();
-        });
-        return *instance;
-    }
+	static Game &getInstance() {
+		std::call_once(initInstanceFlag, []() {
+			instance = new Game();
+		});
+		return *instance;
+	}
 
-    void render_queue() {
-        for (auto &player : players) {
-            player->render();
-		}
-
-        for (auto &entity : entities) {
-            entity->render();
-		}
-
-        for (auto &bullet : bullets) {
-            bullet->render();
-		}
-    }
-
-	void update_queue(double dt) {
-        if(GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
+	void render_queue() {
 		for (auto &player : players) {
-            player->update(dt);
+			player->render();
 		}
 
-        for (auto &entity : entities) {
-            entity->update(dt);
+		for (auto &entity : entities) {
+			entity->render();
 		}
 
-        for (auto &bullet : bullets) {
-            bullet->update();
+		for (auto &bullet : bullets) {
+			bullet->render();
 		}
 	}
 
-    void insert_player(Player *plr){
-        players.push_back(plr);
-    }
+	void update_queue(double dt) {
+		if (GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
+		for (auto &player : players) {
+			player->update(dt);
+		}
 
-    void insert_entity(Entity *enm){
-        entities.push_back(enm);
-    }
+		for (auto &entity : entities) {
+			entity->update(dt);
+		}
 
-    void insert_bullets(Bullet *bul){
-        bullets.push_back(bul);
-    }
+		for (auto &bullet : bullets) {
+			bullet->update();
+		}
+	}
+
+	void insert_player(Player *plr) {
+		players.push_back(plr);
+	}
+
+	void insert_entity(Entity *enm) {
+		entities.push_back(enm);
+	}
+
+	void insert_bullets(Bullet *bul) {
+		bullets.push_back(bul);
+	}
 
 private:
-    Game() = default;
-    ~Game() = default;;
+	Game() = default;
+	~Game() = default;
 
-    Game(const Game&) = delete;
-    Game& operator=(const Game&) = delete;
+	Game(const Game &) = delete;
+	Game &operator=(const Game &) = delete;
 
-    static std::mutex mtx;
-    static std::once_flag initInstanceFlag;
-    static Game* instance;
+	static std::mutex mtx;
+	static std::once_flag initInstanceFlag;
+	static Game *instance;
 
 	std::vector<Player *> players;
 	std::vector<Entity *> entities;
@@ -77,6 +77,6 @@ private:
 
 std::mutex Game::mtx;
 std::once_flag Game::initInstanceFlag;
-Game* Game::instance = nullptr;
+Game *Game::instance = nullptr;
 
 #endif

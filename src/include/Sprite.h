@@ -17,6 +17,7 @@ public:
 	SDL_Texture *GetTexture() { return m_texture; }
 
 	SDL_FRect m_dst;
+
 private:
 	SDL_FRect m_src;
 	SDL_Texture *m_texture;
@@ -34,7 +35,7 @@ public:
 
 	void Update();
 
-	void Render(); //TODO: migrate rendering system from using passed in renderer (global, reference, etc) to using shared pointer stored in class
+	void Render(); // TODO: migrate rendering system from using passed in renderer (global, reference, etc) to using shared pointer stored in class
 
 private:
 	SDL_FRect m_src;

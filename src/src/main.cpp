@@ -1,4 +1,3 @@
-// my awesome 2d game engine framework thing
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
@@ -6,13 +5,13 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "BackgroundManager.h"
-#include "Bullet.h"
+#include "Managers/BackgroundManager.h"
+#include "Managers/HudManager.h"
+#include "Managers/QueueManager.h"
+#include "Managers/SDLApplication.h"
+
 #include "GameDefs.h"
-#include "HudManager.h"
-#include "ActorPlayer.h"
-#include "SDLApplication.h"
-#include "QueueManager.h"
+#include "Players/ActorPlayer.h"
 
 void _draw();
 void _update(double dt);
@@ -32,7 +31,7 @@ int main(int argc, char *argv[]) {
 	// setup
 	GameDefs::GAME_STATUS = GameDefs::GameMode::GAME;
 	SDLApplication app("POLAR STAR", 640, 480);
-	const double targetFrameMs = 1000.0 / 60.0;
+	const double targetFrameMs = 1000.0 / 60.0; // TODO: change how framerate and settings are handled
 
 	SDL_Event event;
 	bool running = true;
@@ -45,13 +44,13 @@ int main(int argc, char *argv[]) {
 	hudMgr->gameplayHudInit();
 	double dt = 0.0;
 
-	Game& game = Game::getInstance();
-	
-	ActorPlayer* player = new ActorPlayer();
-	game.insert_player(player); //might make insertions instanced inside of constructor
+	Game &game = Game::getInstance();
+
+	ActorPlayer *player = new ActorPlayer();
+	game.insert_player(player); // TODO: make constructor automatically insert self into associated queue
 
 	while (running) {
-		const Uint64 frameStart = SDL_GetPerformanceCounter(); //TODO: create timer singleton class that gets updated here | 7/3/2026
+		const Uint64 frameStart = SDL_GetPerformanceCounter(); // TODO: create timer singleton class that gets updated here | 7/3/2026
 		const Uint64 now = frameStart;
 		dt = (double)((now - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
 		LAST = now;
@@ -66,9 +65,9 @@ int main(int argc, char *argv[]) {
 					running = false;
 				}
 				if (event.key.scancode == SDL_SCANCODE_P) {
-					if(GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) {
+					if (GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) {
 						GameDefs::GAME_STATUS = GameDefs::GameMode::GAME;
-					} else if(GameDefs::GAME_STATUS == GameDefs::GameMode::GAME) {
+					} else if (GameDefs::GAME_STATUS == GameDefs::GameMode::GAME) {
 						GameDefs::GAME_STATUS = GameDefs::GameMode::PAUSED;
 					}
 				}
@@ -101,24 +100,21 @@ void _framesetup() {
 void _draw() {
 	backgroundManager->moonSceneRender();
 	hudMgr->HudRender();
-	
-	Game& game = Game::getInstance();
+
+	Game &game = Game::getInstance();
 	game.render_queue();
 
 	SDL_RenderPresent(GameDefs::g_renderer);
 }
 
 void _update(double dt) {
-	if(GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
-	// player.Update(dt, bul);
-	// bul.Update(dt);
-	backgroundManager->moonSceneUpdate(dt); //always update bg's first
+	if (GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
+	backgroundManager->moonSceneUpdate(dt);
 
-	Game& game = Game::getInstance();
+	Game &game = Game::getInstance();
 	game.update_queue(dt);
-
 }
 
 void startgame() {
-	// mode = GAME;
+	// TODO: incorporate proper game startup (new player instantation, change gamemode, etc)
 }

@@ -1,9 +1,9 @@
 #include <SDL3/SDL.h>
 #include <string>
 
-#include "ResourceManager.h"
-#include "Sprite.h"
 #include "GameDefs.h"
+#include "Managers/ResourceManager.h"
+#include "Sprite.h"
 
 Sprite::Sprite(const char *filepath) {
 
