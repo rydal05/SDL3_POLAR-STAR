@@ -1,7 +1,7 @@
 #ifndef BACKGROUND_MANANGER_H
 #define BACKGROUND_MANANGER_H
 
-#include "ResourceManager.h"
+#include "Managers/ResourceManager.h"
 #include "Sprite.h"
 
 #include <SDL3/SDL.h>

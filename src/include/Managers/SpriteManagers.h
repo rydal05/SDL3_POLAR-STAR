@@ -1,7 +1,7 @@
 #ifndef SPRITEMANAGERS_H
 #define SPRITEMANAGERS_H
 
-#include "ResourceManager.h"
+#include "Managers/ResourceManager.h"
 #include "Sprite.h"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_render.h>
