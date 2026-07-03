@@ -17,19 +17,19 @@ void ActorPlayer::update(double dt) {
 	const bool *state = SDL_GetKeyboardState(nullptr);
 	if (state[SDL_SCANCODE_UP]) {
 		m_dst.y -= static_cast<float>(SPEED * dt);
-        // SDL_Log("[ACTORPLAYER] Input received");
+		// SDL_Log("[ACTORPLAYER] Input received");
 	}
 	if (state[SDL_SCANCODE_LEFT]) {
 		m_dst.x -= static_cast<float>(SPEED * dt);
-        // SDL_Log("[ACTORPLAYER] Input received");
+		// SDL_Log("[ACTORPLAYER] Input received");
 	}
 	if (state[SDL_SCANCODE_DOWN]) {
 		m_dst.y += static_cast<float>(SPEED * dt);
-        // SDL_Log("[ACTORPLAYER] Input received");
+		// SDL_Log("[ACTORPLAYER] Input received");
 	}
 	if (state[SDL_SCANCODE_RIGHT]) {
 		m_dst.x += static_cast<float>(SPEED * dt);
-        // SDL_Log("[ACTORPLAYER] Input received");
+		// SDL_Log("[ACTORPLAYER] Input received");
 	}
 
 	if (m_dst.y > 448.0f) m_dst.y = 448.0f;
@@ -37,10 +37,10 @@ void ActorPlayer::update(double dt) {
 	if (m_dst.y < 0.0f) m_dst.y = 0.0f;
 	if (m_dst.x < 0.0f) m_dst.x = 0.0f;
 
-    //ensure parity with sprite
-    m_sprite.m_dst = m_dst;    
+	// ensure parity with sprite
+	m_sprite.m_dst = m_dst;
 
-    SDL_Log("[ACTORPLAYER] update finished");
+	// SDL_Log("[ACTORPLAYER] update finished");
 }
 
 void ActorPlayer::render() {
