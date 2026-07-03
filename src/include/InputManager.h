@@ -11,8 +11,6 @@ public:
 class InputHandler {
 public:
 	void handleInput();
-
-	// methods for binding commands
 private:
 	Command *buttonX_;
 	Command *buttonY_;
