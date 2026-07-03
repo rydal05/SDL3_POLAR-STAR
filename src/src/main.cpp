@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 	game.insert_player(player); //might make insertions instanced inside of constructor
 
 	while (running) {
-		const Uint64 frameStart = SDL_GetPerformanceCounter();
+		const Uint64 frameStart = SDL_GetPerformanceCounter(); //TODO: create timer singleton class that gets updated here | 7/3/2026
 		const Uint64 now = frameStart;
 		dt = (double)((now - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
 		LAST = now;
