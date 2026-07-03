@@ -10,8 +10,9 @@
 #include "Bullet.h"
 #include "GameDefs.h"
 #include "HudManager.h"
-#include "Player.h"
+#include "ActorPlayer.h"
 #include "SDLApplication.h"
+#include "LoopQueues.h"
 
 void _draw();
 void _update();
@@ -20,7 +21,6 @@ void _framesetup();
 
 bgManager *backgroundManager = nullptr;
 HudManager *hudMgr = nullptr;
-
 
 bgManager *bgManager::instancePtr = nullptr;
 std::mutex bgManager::mtx;
@@ -44,6 +44,12 @@ int main(int argc, char *argv[]) {
 	hudMgr = HudManager::getInstance();
 	hudMgr->gameplayHudInit();
 	double dt = 0.0;
+
+	Game& game = Game::getInstance();
+	
+	ActorPlayer* player = new ActorPlayer();
+	game.insert_player(player); //might make insertions instanced inside of constructor
+
 	while (running) {
 		const Uint64 frameStart = SDL_GetPerformanceCounter();
 		const Uint64 now = frameStart;
@@ -93,6 +99,7 @@ void _framesetup() {
 }
 
 void _draw() {
+	Game& game = Game::getInstance();
 	// if (player.m_dst.y < 64) {
 	// 	hudMgr->makeTranslucent();
 	// }
@@ -104,8 +111,7 @@ void _draw() {
 	backgroundManager->moonSceneRender();
 	hudMgr->HudRender();
 
-	// update_queue();
-	// render_queue();
+	game.render_queue();
 
 	SDL_RenderPresent(GameDefs::g_renderer);
 }
@@ -114,8 +120,11 @@ void _update(double dt) {
 	if(GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
 	// player.Update(dt, bul);
 	// bul.Update(dt);
+	backgroundManager->moonSceneUpdate(dt); //always update bg's first
 
-	backgroundManager->moonSceneUpdate(dt);
+	Game& game = Game::getInstance();
+	game.update_queue(dt);
+
 }
 
 void startgame() {
