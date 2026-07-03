@@ -5,8 +5,8 @@
 
 class Player : public Entity {
 public:
-    virtual void update(double dt) = 0;
-    virtual void render() = 0;
+    virtual void update(double dt) override;
+    virtual void render() override;
     virtual ~Player() {}
 };
 

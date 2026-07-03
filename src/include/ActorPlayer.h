@@ -6,7 +6,7 @@
 
 class ActorPlayer : public Player {
 public:
-	ActorPlayer() : m_sprite("assets/img/stg_story.bmp") {
+	ActorPlayer() : Player(), m_sprite("assets/img/stg_story.bmp") {
 		m_dst->x = 0.0f;
 		m_dst->y = 0.0f;
 		m_dst->w = 16 * GameDefs::ScaleFactor;
@@ -17,7 +17,7 @@ public:
 		m_sprite.Draw_Siz(m_dst->w, m_dst->h);
 	}
 
-	void update(double dt) override {
+	void ActorPlayer::update(double dt) override {
 		const bool *state = SDL_GetKeyboardState(nullptr);
 		if (state[SDL_SCANCODE_UP]) {
 			m_dst->y -= static_cast<float>(SPEED * dt);
@@ -31,13 +31,14 @@ public:
 		if (state[SDL_SCANCODE_RIGHT]) {
 			m_dst->x += static_cast<float>(SPEED * dt);
 		}
+
 		if (m_dst->y > 448.0f) m_dst->y = 448.0f;
 		if (m_dst->x > 608.0f) m_dst->x = 608.0f;
 		if (m_dst->y < 0.0f) m_dst->y = 0.0f;
 		if (m_dst->x < 0.0f) m_dst->x = 0.0f;
 	}
 
-	void render() override {
+	void ActorPlayer::render() override {
 		m_sprite.Render();
 	}
 
@@ -52,18 +53,3 @@ private:
 
 	float SPEED = 1.0f;
 };
-
-// Player::Player()
-// 	, m_dst(m_sprite.m_dst), m_fireCooldown(0.0) {
-
-// }
-
-// void Player::Update(double dt, Bullet &bullet) {
-
-// 	m_fireCooldown -= dt / 1000.0;
-// 	if (m_fireCooldown <= 0.0 && state[SDL_SCANCODE_X]) {
-// 		bullet.Reset(m_dst.x + 10.0f, m_dst.y);
-// 		m_fireCooldown = FIRE_RATE;
-// 	}
-
-// }
