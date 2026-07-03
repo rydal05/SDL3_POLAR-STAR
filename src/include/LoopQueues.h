@@ -6,10 +6,18 @@
 #include "Player.h"
 #include "GameDefs.h"
 
+#include <mutex>
 #include <vector>
 
 class Game {
 public:
+    static Game& getInstance() {
+        std::call_once(initInstanceFlag, [](){
+            instance = new Game();
+        });
+        return *instance;
+    }
+
     void render_queue() {
         for (auto &player : players) {
             player->render();
@@ -24,14 +32,14 @@ public:
 		}
     }
 
-	void update_queue() {
+	void update_queue(double dt) {
         if(GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
 		for (auto &player : players) {
-            player->update();
+            player->update(dt);
 		}
 
         for (auto &entity : entities) {
-            entity->update();
+            entity->update(dt);
 		}
 
         for (auto &bullet : bullets) {
@@ -52,9 +60,23 @@ public:
     }
 
 private:
+    Game() = default;
+    ~Game() = default;;
+
+    Game(const Game&) = delete;
+    Game& operator=(const Game&) = delete;
+
+    static std::mutex mtx;
+    static std::once_flag initInstanceFlag;
+    static Game* instance;
+
 	std::vector<Player *> players;
 	std::vector<Entity *> entities;
 	std::vector<Bullet *> bullets;
 };
+
+std::mutex Game::mtx;
+std::once_flag Game::initInstanceFlag;
+Game* Game::instance = nullptr;
 
 #endif
