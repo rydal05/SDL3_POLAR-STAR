@@ -11,28 +11,10 @@
 
 #include <mutex>
 
-class bgManager {
-private:
-	static bgManager *instancePtr;
-	static std::mutex mtx;
-
-	bgManager() {}
-
-	std::vector<std::unique_ptr<Sprite>> moon;
-	std::vector<float> moon_speeds = {0.1f, 0.1f, 0.2f, 0.2f, 0.3f, 0.3f, 0.5f, 0.5f};
+class BG {
 
 public:
-	bgManager(const bgManager &obj) = delete;
-
-	static bgManager *getInstance() {
-		if (instancePtr == nullptr) {
-			std::lock_guard<std::mutex> lock(mtx);
-			if (instancePtr == nullptr) {
-				instancePtr = new bgManager();
-			}
-		}
-		return instancePtr;
-	}
+	static BG &getInstance();
 
 	void moonSceneInit();
 	void moonSceneUpdate(double dt);
@@ -40,6 +22,15 @@ public:
 
 	void renderScene();
 	void switchScene();
+
+private:
+	BG();
+	BG(BG const &);
+	BG operator=(BG const &);
+
+	std::vector<std::unique_ptr<Sprite>> moon;
+	std::vector<float> moon_speeds = {0.1f,0.2f, 0.3f, 0.5f};
+	// std::vector<float> moon_speeds = {0.1f, 0.1f, 0.2f, 0.2f, 0.3f, 0.3f, 0.5f, 0.5f};
 };
 
 #endif

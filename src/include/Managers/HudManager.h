@@ -9,37 +9,20 @@
 #include <mutex>
 #include <vector>
 
-class HudManager {
-private:
-	static HudManager *instancePtr;
-	static std::mutex mtx;
-
-	HudManager() {}
-
-	bool visible = true;
-
-	std::vector<std::unique_ptr<Sprite>> gameplayElements;
-
+class Hud {
 public:
-	HudManager(const HudManager &obj) = delete;
-
-	static HudManager *getInstance() {
-		if (instancePtr == nullptr) {
-			std::lock_guard<std::mutex> lock(mtx);
-			if (instancePtr == nullptr) {
-				instancePtr = new HudManager();
-			}
-		}
-		return instancePtr;
-	}
+	static Hud &getInstance();
 
 	void HudUpdate();
+
 	void HudRender() {
 		for (size_t i = 0; i < gameplayElements.size(); i++) {
 			gameplayElements[i]->Render();
 		}
 	}
+
 	void hudStateManager();
+
 	void makeTranslucent() {
 		if (!visible) return;
 		for (size_t i = 0; i < gameplayElements.size(); i++) {
@@ -47,6 +30,7 @@ public:
 		}
 		visible = false;
 	}
+
 	void makeOpaque() {
 		if (visible) return;
 		for (size_t i = 0; i < gameplayElements.size(); i++) {
@@ -82,6 +66,18 @@ public:
 			SDL_SetTextureAlphaMod(gameplayElements[i]->GetTexture(), trans_num);
 		}
 	}
+
+private:
+	Hud();
+	Hud(Hud const &);
+	Hud operator=(Hud const &);
+
+	static std::once_flag initInstanceFlag;
+	static Hud *Hud_Instance;
+
+	bool visible = true;
+
+	std::vector<std::unique_ptr<Sprite>> gameplayElements;
 };
 
 #endif

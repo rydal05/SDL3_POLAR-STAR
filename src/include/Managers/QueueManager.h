@@ -9,14 +9,9 @@
 #include <mutex>
 #include <vector>
 
-class Game {
+class Queue {
 public:
-	static Game &getInstance() {
-		std::call_once(initInstanceFlag, []() {
-			instance = new Game();
-		});
-		return *instance;
-	}
+	static Queue &getInstance();
 
 	void render_queue() {
 		for (auto &player : players) {
@@ -60,23 +55,13 @@ public:
 	}
 
 private:
-	Game() = default;
-	~Game() = default;
-
-	Game(const Game &) = delete;
-	Game &operator=(const Game &) = delete;
-
-	static std::mutex mtx;
-	static std::once_flag initInstanceFlag;
-	static Game *instance;
+	Queue();
+	Queue(Queue const &);
+	Queue operator=(Queue const &);
 
 	std::vector<Player *> players;
 	std::vector<Entity *> entities;
 	std::vector<Bullet *> bullets;
 };
-
-std::mutex Game::mtx;
-std::once_flag Game::initInstanceFlag;
-Game *Game::instance = nullptr;
 
 #endif
