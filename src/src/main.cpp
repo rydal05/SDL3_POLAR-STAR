@@ -14,18 +14,9 @@
 #include "Players/ActorPlayer.h"
 
 void _draw();
-void _update(double dt);
+void _update(double deltaTime);
 void _init();
 void _framesetup();
-
-bgManager *backgroundManager = nullptr;
-HudManager *hudMgr = nullptr;
-
-bgManager *bgManager::instancePtr = nullptr;
-std::mutex bgManager::mtx;
-
-HudManager *HudManager::instancePtr = nullptr;
-std::mutex HudManager::mtx;
 
 int main(int argc, char *argv[]) {
 	// setup
@@ -37,22 +28,17 @@ int main(int argc, char *argv[]) {
 	bool running = true;
 	Uint64 LAST = SDL_GetPerformanceCounter();
 
-	backgroundManager = bgManager::getInstance();
-	backgroundManager->moonSceneInit();
+	BG::getInstance().moonSceneInit();
+	Hud::getInstance().gameplayHudInit();
 
-	hudMgr = HudManager::getInstance();
-	hudMgr->gameplayHudInit();
-	double dt = 0.0;
-
-	Game &game = Game::getInstance();
-
+	double deltaTime = 0.0;
 	ActorPlayer *player = new ActorPlayer();
-	game.insert_player(player); // TODO: make constructor automatically insert self into associated queue
+	Queue::getInstance().insert_player(player); // TODO: make constructor automatically insert self into associated queue
 
 	while (running) {
 		const Uint64 frameStart = SDL_GetPerformanceCounter(); // TODO: create timer singleton class that gets updated here | 7/3/2026
 		const Uint64 now = frameStart;
-		dt = (double)((now - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
+		deltaTime = (double)((now - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
 		LAST = now;
 		SDL_GetKeyboardState(NULL);
 
@@ -74,7 +60,7 @@ int main(int argc, char *argv[]) {
 			}
 		}
 
-		_update(dt);
+		_update(deltaTime);
 		_framesetup();
 		_draw();
 
@@ -98,21 +84,19 @@ void _framesetup() {
 }
 
 void _draw() {
-	backgroundManager->moonSceneRender();
-	hudMgr->HudRender();
+	BG::getInstance().moonSceneRender();
+	Hud::getInstance().HudRender();
 
-	Game &game = Game::getInstance();
-	game.render_queue();
+	Queue::getInstance().render_queue();
 
 	SDL_RenderPresent(GameDefs::g_renderer);
 }
 
-void _update(double dt) {
+void _update(double deltaTime) {
 	if (GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
-	backgroundManager->moonSceneUpdate(dt);
+	BG::getInstance().moonSceneUpdate(deltaTime);
 
-	Game &game = Game::getInstance();
-	game.update_queue(dt);
+	Queue::getInstance().update_queue(deltaTime);
 }
 
 void startgame() {
