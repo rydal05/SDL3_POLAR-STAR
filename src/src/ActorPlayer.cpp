@@ -1,4 +1,5 @@
 #include "ActorPlayer.h"
+#include "Managers/HudManager.h"
 
 ActorPlayer::ActorPlayer() : m_sprite("assets/img/stg_story.bmp") {
 	m_dst.x = GameDefs::WindowWidth / 2.0f;
@@ -36,6 +37,14 @@ void ActorPlayer::update(double dt) {
 	if (m_dst.x > 608.0f) m_dst.x = 608.0f;
 	if (m_dst.y < 0.0f) m_dst.y = 0.0f;
 	if (m_dst.x < 0.0f) m_dst.x = 0.0f;
+
+	if (m_dst.y < 64) {
+			Hud::getInstance().makeTranslucent();
+		} // bounds for when player is hidden behind UI elements
+
+		if (m_dst.y > 64) {
+			Hud::getInstance().makeOpaque();
+		}
 
 	// ensure parity with sprite
 	m_sprite.m_dst = m_dst;
