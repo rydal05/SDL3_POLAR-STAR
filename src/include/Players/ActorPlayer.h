@@ -1,3 +1,6 @@
+#ifndef ACTORPLAYER_H
+#define ACTORPLAYER_H
+
 #include "GameDefs.h"
 #include "Player.h"
 #include "Sprite.h"
@@ -17,3 +20,5 @@ private:
 
 	float SPEED = 0.250f;
 };
+
+#endif
