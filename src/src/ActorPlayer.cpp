@@ -11,6 +11,8 @@ ActorPlayer::ActorPlayer() : m_sprite("assets/img/stg_story.bmp") {
 	m_sprite.Draw_Dst(m_dst.x, m_dst.y);
 	m_sprite.Draw_Siz(m_dst.w, m_dst.h);
 
+	m_gamepad = nullptr;
+
 	SDL_Log("[ACTORPLAYER] successful instantiation");
 }
 
@@ -39,12 +41,12 @@ void ActorPlayer::update(double dt) {
 	if (m_dst.x < 0.0f) m_dst.x = 0.0f;
 
 	if (m_dst.y < 64) {
-			Hud::getInstance().makeTranslucent();
-		} // bounds for when player is hidden behind UI elements
+		Hud::getInstance().makeTranslucent();
+	} // bounds for when player is hidden behind UI elements
 
-		if (m_dst.y > 64) {
-			Hud::getInstance().makeOpaque();
-		}
+	if (m_dst.y > 64) {
+		Hud::getInstance().makeOpaque();
+	}
 
 	// ensure parity with sprite
 	m_sprite.m_dst = m_dst;

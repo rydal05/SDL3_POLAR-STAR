@@ -17,7 +17,9 @@ public:
 private:
 	Sprite m_sprite;
 	SDL_FRect m_dst;
+	SDL_Event *event;
 
+	SDL_Gamepad *m_gamepad;
 	float SPEED = 0.250f;
 };
 

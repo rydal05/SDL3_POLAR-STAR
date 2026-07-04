@@ -19,12 +19,11 @@ void _init();
 void _framesetup();
 
 int main(int argc, char *argv[]) {
-	// setup
 	GameDefs::GAME_STATUS = GameDefs::GameMode::GAME;
 	SDLApplication app("POLAR STAR", 640, 480);
 	const double targetFrameMs = 1000.0 / 60.0; // TODO: change how framerate and settings are handled
 
-	SDL_Event event;
+	SDL_Event *event;
 	bool running = true;
 	Uint64 LAST = SDL_GetPerformanceCounter();
 
@@ -35,6 +34,18 @@ int main(int argc, char *argv[]) {
 	ActorPlayer *player = new ActorPlayer();
 	Queue::getInstance().insert_player(player); // TODO: make constructor automatically insert self into associated queue
 
+	// joy stick assignemnt
+	// int *count = nullptr;
+	// if (*SDL_GetJoysticks(count) < 1) {
+	// 	SDL_Log("NO JOYSTICKS LOCATED");
+	// } else {
+	// 	GameDefs::joystickPlayer1 = SDL_OpenJoystick(0);
+	// 	SDL_Log("JOYSTICK DETECTED");
+	// }
+
+	int xDir = 0;
+	int yDir = 0;
+
 	while (running) {
 		const Uint64 frameStart = SDL_GetPerformanceCounter(); // TODO: create timer singleton class that gets updated here | 7/3/2026
 		const Uint64 now = frameStart;
@@ -42,15 +53,14 @@ int main(int argc, char *argv[]) {
 		LAST = now;
 		SDL_GetKeyboardState(NULL);
 
-		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_EVENT_QUIT) {
+		while (SDL_PollEvent(event)) {
+			if (event->type == SDL_EVENT_QUIT) {
 				running = false;
-			}
-			if (event.type == SDL_EVENT_KEY_DOWN) {
-				if (event.key.scancode == SDL_SCANCODE_ESCAPE) {
+			} else if (event->type == SDL_EVENT_KEY_DOWN) {
+				if (event->key.scancode == SDL_SCANCODE_ESCAPE) {
 					running = false;
 				}
-				if (event.key.scancode == SDL_SCANCODE_P) {
+				if (event->key.scancode == SDL_SCANCODE_P) {
 					if (GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) {
 						GameDefs::GAME_STATUS = GameDefs::GameMode::GAME;
 					} else if (GameDefs::GAME_STATUS == GameDefs::GameMode::GAME) {
