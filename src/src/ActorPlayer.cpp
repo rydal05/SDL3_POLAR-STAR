@@ -18,21 +18,44 @@ ActorPlayer::ActorPlayer() : m_sprite("assets/img/stg_story.bmp") {
 
 void ActorPlayer::update(double dt) {
 	const bool *state = SDL_GetKeyboardState(nullptr);
-	if (state[SDL_SCANCODE_UP]) {
-		m_dst.y -= static_cast<float>(SPEED * dt);
-		// SDL_Log("[ACTORPLAYER] Input received");
+	if (GameDefs::joystick != NULL) {
+		int total, i;
+		total = SDL_GetNumJoystickHats(GameDefs::joystick);
+		for (i = 0; i < total; i++) {
+			const Uint8 hat = SDL_GetJoystickHat(GameDefs::joystick, i);
+
+			if (hat & SDL_HAT_RIGHT || state[SDL_SCANCODE_RIGHT]) {
+				m_dst.x += static_cast<float>(SPEED * dt);
+			}
+			if (hat & SDL_HAT_LEFT || state[SDL_SCANCODE_LEFT]) {
+				m_dst.x -= static_cast<float>(SPEED * dt);
+			}
+			if (hat & SDL_HAT_DOWN || state[SDL_SCANCODE_DOWN]) {
+				m_dst.y += static_cast<float>(SPEED * dt);
+			}
+			if (hat & SDL_HAT_UP || state[SDL_SCANCODE_UP]) {
+				m_dst.y -= static_cast<float>(SPEED * dt);
+			}
+		}
 	}
-	if (state[SDL_SCANCODE_LEFT]) {
-		m_dst.x -= static_cast<float>(SPEED * dt);
-		// SDL_Log("[ACTORPLAYER] Input received");
-	}
-	if (state[SDL_SCANCODE_DOWN]) {
-		m_dst.y += static_cast<float>(SPEED * dt);
-		// SDL_Log("[ACTORPLAYER] Input received");
-	}
-	if (state[SDL_SCANCODE_RIGHT]) {
-		m_dst.x += static_cast<float>(SPEED * dt);
-		// SDL_Log("[ACTORPLAYER] Input received");
+
+	if (GameDefs::joystick == NULL) {
+		if (state[SDL_SCANCODE_RIGHT]) {
+			m_dst.x += static_cast<float>(SPEED * dt);
+			// SDL_Log("[ACTORPLAYER] Input received");
+		}
+		if (state[SDL_SCANCODE_LEFT]) {
+			m_dst.x -= static_cast<float>(SPEED * dt);
+			// SDL_Log("[ACTORPLAYER] Input received");
+		}
+		if (state[SDL_SCANCODE_DOWN]) {
+			m_dst.y += static_cast<float>(SPEED * dt);
+			// SDL_Log("[ACTORPLAYER] Input received");
+		}
+		if (state[SDL_SCANCODE_UP]) {
+			m_dst.y -= static_cast<float>(SPEED * dt);
+			// SDL_Log("[ACTORPLAYER] Input received");
+		}
 	}
 
 	if (m_dst.y > 448.0f) m_dst.y = 448.0f;

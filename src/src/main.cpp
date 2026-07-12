@@ -34,18 +34,6 @@ int main(int argc, char *argv[]) {
 	ActorPlayer *player = new ActorPlayer();
 	Queue::getInstance().insert_player(player); // TODO: make constructor automatically insert self into associated queue
 
-	// joy stick assignemnt
-	// int *count = nullptr;
-	// if (*SDL_GetJoysticks(count) < 1) {
-	// 	SDL_Log("NO JOYSTICKS LOCATED");
-	// } else {
-	// 	GameDefs::joystickPlayer1 = SDL_OpenJoystick(0);
-	// 	SDL_Log("JOYSTICK DETECTED");
-	// }
-
-	int xDir = 0;
-	int yDir = 0;
-
 	while (running) {
 		const Uint64 frameStart = SDL_GetPerformanceCounter(); // TODO: create timer singleton class that gets updated here | 7/3/2026
 		const Uint64 now = frameStart;
@@ -66,6 +54,18 @@ int main(int argc, char *argv[]) {
 					} else if (GameDefs::GAME_STATUS == GameDefs::GameMode::GAME) {
 						GameDefs::GAME_STATUS = GameDefs::GameMode::PAUSED;
 					}
+				}
+			} else if(event->type == SDL_EVENT_JOYSTICK_ADDED){
+				if(GameDefs::joystick == NULL){
+					GameDefs::joystick = SDL_OpenJoystick(event->jdevice.which);
+					if(!GameDefs::joystick){
+						SDL_Log("Failed to open joystick ID %u: %s", (unsigned int) event->jdevice.which, SDL_GetError());
+					}
+				}
+			} else if(event->type == SDL_EVENT_JOYSTICK_REMOVED){
+				if(GameDefs::joystick && (SDL_GetJoystickID(GameDefs::joystick) == event->jdevice.which)){
+					SDL_CloseJoystick(GameDefs::joystick);
+					GameDefs::joystick = nullptr;
 				}
 			}
 		}
