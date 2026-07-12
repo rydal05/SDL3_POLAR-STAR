@@ -37,9 +37,7 @@ void ActorPlayer::update(double dt) {
 				m_dst.y -= static_cast<float>(SPEED * dt);
 			}
 		}
-	}
-
-	if (GameDefs::joystick == NULL) {
+	} else if(GameDefs::joystick == NULL) {
 		if (state[SDL_SCANCODE_RIGHT]) {
 			m_dst.x += static_cast<float>(SPEED * dt);
 			// SDL_Log("[ACTORPLAYER] Input received");
