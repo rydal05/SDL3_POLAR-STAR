@@ -38,7 +38,7 @@ public:
 		}
 
 		for (auto &bullet : bullets) {
-			bullet->update();
+			bullet->update(dt);
 		}
 	}
 
