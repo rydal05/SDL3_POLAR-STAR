@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 		const Uint64 now = frameStart;
 		deltaTime = (double)((now - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
 		LAST = now;
-		SDL_GetKeyboardState(NULL);
+		const bool *keebState = SDL_GetKeyboardState(NULL);
 
 		while (SDL_PollEvent(event)) {
 			if (event->type == SDL_EVENT_QUIT) {
