@@ -1,9 +1,11 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-class Bullet {
+#include "Entity.h"
+
+class Bullet : public Entity {
 public:
-	virtual void update() = 0;
+	virtual void update(double dt) = 0;
 	virtual void render() = 0;
 	virtual ~Bullet() {}
 };
