@@ -37,7 +37,7 @@ void ActorPlayer::update(double dt) {
 				m_dst.y -= static_cast<float>(SPEED * dt);
 			}
 		}
-	} else if(GameDefs::joystick == NULL) {
+	} else if (GameDefs::joystick == NULL) {
 		if (state[SDL_SCANCODE_RIGHT]) {
 			m_dst.x += static_cast<float>(SPEED * dt);
 			// SDL_Log("[ACTORPLAYER] Input received");
@@ -71,6 +71,8 @@ void ActorPlayer::update(double dt) {
 
 	// ensure parity with sprite
 	m_sprite.m_dst = m_dst;
+
+	// SDL_Log("OBJ SPRITE DIFF: %.2f %.2f %.2f %.2f", m_dst.x - m_sprite.m_dst.x, m_dst.y - m_sprite.m_dst.y, m_dst.w - m_sprite.m_dst.w, m_dst.h - m_sprite.m_dst.h);
 
 	// SDL_Log("[ACTORPLAYER] update finished");
 }
