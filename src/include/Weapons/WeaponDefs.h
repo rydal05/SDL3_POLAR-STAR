@@ -1,0 +1,21 @@
+#ifndef WEAPON_DEFS_H
+#define WEAPON_DEFS_H
+
+
+enum WeaponsList {
+	POLAR,
+	MISSILE,
+	BUBBLE,
+	SNAKE,
+	SPUR,
+	MACHINE,
+	FIREBALL,
+	NEMESIS,
+	SWORD,
+	BALROG,
+	STAFF,
+
+    LIST_SIZE
+};
+
+#endif
