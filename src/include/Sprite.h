@@ -16,7 +16,7 @@ public:
 	void Render();
 	SDL_Texture *GetTexture() { return m_texture; }
 
-	SDL_FRect m_dst;
+	SDL_FRect m_dst; // this should be automatically paired with the entitiy class but im not sure how i want to go about doing that outside of explicit spritepos = entitypos calls
 
 private:
 	SDL_FRect m_src;

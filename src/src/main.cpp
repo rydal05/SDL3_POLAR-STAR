@@ -33,13 +33,14 @@ int main(int argc, char *argv[]) {
 	double deltaTime = 0.0;
 	ActorPlayer *player = new ActorPlayer();
 	Queue::getInstance().insert_player(player); // TODO: make constructor automatically insert self into associated queue
+	const bool *keebState = SDL_GetKeyboardState(NULL);
 
 	while (running) {
+		SDL_PumpEvents();
 		const Uint64 frameStart = SDL_GetPerformanceCounter(); // TODO: create timer singleton class that gets updated here | 7/3/2026
 		const Uint64 now = frameStart;
 		deltaTime = (double)((now - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
 		LAST = now;
-		const bool *keebState = SDL_GetKeyboardState(NULL);
 
 		while (SDL_PollEvent(event)) {
 			if (event->type == SDL_EVENT_QUIT) {
