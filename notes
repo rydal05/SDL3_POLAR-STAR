@@ -1,0 +1,7 @@
+ok there needs to be a dictionary of sorts that holds the weapons and their stats no need for implementation within the same file 
+
+should probably standardize or make a default movement set for all of the characters just so it can be overwritten anywhere
+
+i dont really get how the button binding stuff works so it'd be nice to have that figured out too nevermind i figured it out
+for now probably going to store button config inside of the gamedefs header as fixed size array but would eventually like to split it off into a writable file of sorts
+
