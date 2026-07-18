@@ -18,10 +18,10 @@ Sprite::~Sprite() {
 }
 
 void Sprite::Draw_Src(float x, float y, float w, float h) {
-	m_src.x = x;
-	m_src.y = y;
-	m_src.w = w;
-	m_src.h = h;
+	this->m_src.x = x;
+	this->m_src.y = y;
+	this->m_src.w = w;
+	this->m_src.h = h;
 }
 
 void Sprite::Draw_Dst(float x, float y) {
