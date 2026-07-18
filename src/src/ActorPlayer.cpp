@@ -4,8 +4,8 @@
 ActorPlayer::ActorPlayer() : m_sprite("assets/img/stg_story.bmp") {
 	m_dst.x = GameDefs::WindowWidth / 2.0f;
 	m_dst.y = GameDefs::WindowHeight / 2.0f;
-	m_dst.w = 16 * GameDefs::ScaleFactor;
-	m_dst.h = 16 * GameDefs::ScaleFactor;
+	m_dst.w = 16;
+	m_dst.h = 16;
 
 
 	// ensure parity with sprite
@@ -96,8 +96,8 @@ void ActorPlayer::movement(const bool *state, double dt) {
 }
 
 void ActorPlayer::collision(const bool *state) {
-	if (m_dst.y > 448.0f) m_dst.y = 448.0f;
-	if (m_dst.x > 608.0f) m_dst.x = 608.0f;
+	if (m_dst.y > GameDefs::WindowHeight-m_dst.h) m_dst.y = GameDefs::WindowHeight-m_dst.h;
+	if (m_dst.x > GameDefs::WindowWidth-m_dst.w) m_dst.x = GameDefs::WindowWidth-m_dst.w;
 	if (m_dst.y < 0.0f) m_dst.y = 0.0f;
 	if (m_dst.x < 0.0f) m_dst.x = 0.0f;
 }

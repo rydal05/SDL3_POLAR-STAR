@@ -20,7 +20,7 @@ void _framesetup();
 
 int main(int argc, char *argv[]) {
 	GameDefs::GAME_STATUS = GameDefs::GameMode::GAME;
-	SDLApplication app("POLAR STAR", 640, 480);
+	SDLApplication app("POLAR STAR", GameDefs::WindowWidth, GameDefs::WindowHeight);
 	const double targetFrameMs = 1000.0 / 60.0; // TODO: change how framerate and settings are handled
 
 	SDL_Event *event;

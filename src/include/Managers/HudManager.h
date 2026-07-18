@@ -44,17 +44,17 @@ public:
 		auto hp_lv_bg = std::make_unique<Sprite>("assets/img/stg_story_ui.bmp");
 		hp_lv_bg->Draw_Src(0, 0, 64, 32);
 		hp_lv_bg->Draw_Dst(0, 0);
-		hp_lv_bg->Draw_Siz(64 * GameDefs::ScaleFactor, 32 * GameDefs::ScaleFactor);
+		hp_lv_bg->Draw_Siz(64, 32);
 
 		auto gunIcon = std::make_unique<Sprite>("assets/img/stg_story_ui.bmp");
 		gunIcon->Draw_Src(0, 32, 16, 16);
 		gunIcon->Draw_Dst(0, 0);
-		gunIcon->Draw_Siz(16 * GameDefs::ScaleFactor, 16 * GameDefs::ScaleFactor);
+		gunIcon->Draw_Siz(16, 16);
 
 		auto levelIcon = std::make_unique<Sprite>("assets/img/stg_story_ui.bmp");
 		levelIcon->Draw_Src(8, 64, 8, 8);
-		levelIcon->Draw_Dst(16 * GameDefs::ScaleFactor, 16 * GameDefs::ScaleFactor);
-		levelIcon->Draw_Siz(8 * GameDefs::ScaleFactor, 8 * GameDefs::ScaleFactor);
+		levelIcon->Draw_Dst(16, 16);
+		levelIcon->Draw_Siz(8, 8);
 
 		gameplayElements.push_back(std::move(hp_lv_bg));
 		gameplayElements.push_back(std::move(gunIcon));

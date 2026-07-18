@@ -6,10 +6,10 @@
 namespace GameDefs {
 constexpr float PlayerSpeed = 0.25f;
 constexpr float PlayerSpriteSize = 64.0f;
-constexpr float ScaleFactor = 2.0f;
+constexpr float ScaleFactor = 1.0f;
 
-constexpr int WindowWidth = 640;
-constexpr int WindowHeight = 480;
+constexpr int WindowWidth = 320 * ScaleFactor;
+constexpr int WindowHeight = 240 * ScaleFactor;
 
 enum class GameMode {
 	GAME,
