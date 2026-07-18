@@ -9,7 +9,7 @@ public:
 	SDLApplication(const char *title, int w, int h) {
 		SDL_SetAppMetadata("TEXT TEXT LALALALLALA", "Version Very Very Friend 0.0.1", "com.cantisresort.polarstar");
 
-		if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) {
+		if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_AUDIO)) {
 			SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
 			success = false;
 		}
