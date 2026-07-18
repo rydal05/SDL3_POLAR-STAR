@@ -30,11 +30,11 @@ void Sprite::Draw_Dst(float x, float y) {
 }
 
 void Sprite::Draw_X(float x){
-	m_dst.x = x;
+	m_dst.x = x*GameDefs::ScaleFactor;
 }
 
 void Sprite::Draw_Y(float y){
-	m_dst.y = y;
+	m_dst.y = y*GameDefs::ScaleFactor;
 }
 
 void Sprite::Draw_Siz(float w, float h) {
