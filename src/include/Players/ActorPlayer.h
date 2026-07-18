@@ -22,9 +22,7 @@ public:
 	void shoot(const bool *state);
 
 protected:
-	Sprite *m_sprite = new Sprite("assets/img/stg_story.bmp");
-	SDL_FRect *m_dst = &m_sprite->m_dst;
-	SDL_Event *event;
+	Sprite *m_sprite = new Sprite("assets/img/stg_story.bmp");	SDL_Event *event;
 
 	SDL_Gamepad *m_gamepad;
 
