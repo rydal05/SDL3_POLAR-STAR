@@ -10,8 +10,13 @@ public:
 	~Sprite();
 
 	void Draw_Src(float x, float y, float w, float h);
+	
 	void Draw_Dst(float x, float y);
+	void Draw_X(float x);
+	void Draw_Y(float y);
+
 	void Draw_Siz(float w, float h);
+
 	void Update(double dt);
 	void Render();
 	SDL_Texture *GetTexture() { return m_texture; }
