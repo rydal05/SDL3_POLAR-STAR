@@ -156,6 +156,6 @@ void BG::updateMoon(double dt) {
 
 void BG::updateStars(double dt) {
 	for(size_t i = 0; i < starsBG.size(); i++){
-		
+		starsBG[i]->m_dst.x -= 0.1f;
 	}
 }

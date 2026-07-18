@@ -6,7 +6,6 @@
 #include "Sprite.h"
 
 Sprite::Sprite(const char *filepath) {
-
 	char *new_filepath = NULL;
 	SDL_asprintf(&new_filepath, "%s%s", SDL_GetBasePath(), filepath);
 	SDL_Surface *retrieveSurface = ResourceManager::GetInstance().GetSurface(new_filepath);
