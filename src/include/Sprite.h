@@ -30,7 +30,7 @@ private:
 
 class AnimatedSprite {
 public:
-	AnimatedSprite(std::string filepath);
+	AnimatedSprite(std::string filepath, int frames);
 
 	~AnimatedSprite();
 
@@ -40,11 +40,12 @@ public:
 
 	void Update();
 
-	void Render(); // TODO: migrate rendering system from using passed in renderer (global, reference, etc) to using shared pointer stored in class
-
+	void Render();
+	
 private:
 	SDL_FRect m_src;
 	SDL_Texture *m_texture;
+	int frames;
 };
 
 #endif
