@@ -37,7 +37,7 @@ private:
 	std::vector<std::unique_ptr<Sprite>> starsBG;
 	std::vector<float> star_speeds = {0.1f, 0.2f, 0.3f, 0.4f};
 
-	int starsQuantity = 128;
+	int starsQuantity = 32;
 
 	Sprite *moon;
 	bool direction = true;
