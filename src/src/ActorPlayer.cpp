@@ -1,18 +1,14 @@
 #include "ActorPlayer.h"
 #include "Managers/HudManager.h"
 
-ActorPlayer::ActorPlayer(){
-	m_sprite->m_dst.x = GameDefs::WindowWidth / 2.0f;
-	m_sprite->m_dst.y = GameDefs::WindowHeight / 2.0f;
-
+ActorPlayer::ActorPlayer() {
 
 	// ensure parity with sprite
 
 	// SDL_Log("[ACTORPLAYER] update finished");
 
-	
 	m_sprite->Draw_Src(0, 0, 16, 16);
-	m_sprite->Draw_Dst(m_sprite->m_dst.x, m_sprite->m_dst.y);
+	m_sprite->Draw_Dst(320.0f / 2.0f, 240.0f / 2.0f);
 	m_sprite->Draw_Siz(16.0f, 16.0f);
 	m_gamepad = nullptr;
 
@@ -24,7 +20,7 @@ void ActorPlayer::update(double dt) {
 	SDL_PumpEvents();
 	movement(state, dt);
 	collision(state);
-	
+
 	/*
 	1. Handle inputs
 	2. Handle external interactions (pickups, contact with bullets, border collisions, etc)
@@ -38,11 +34,11 @@ void ActorPlayer::render() {
 	if (m_sprite->m_dst.y < GameDefs::WindowHeight * .1f) {
 		Hud::getInstance().makeTranslucent();
 	} // bounds for when player is hidden behind UI elements
-	
+
 	if (m_sprite->m_dst.y > GameDefs::WindowHeight * .1f) {
 		Hud::getInstance().makeOpaque();
 	}
-	
+
 	m_sprite->m_dst = m_sprite->m_dst; // moved
 	m_sprite->Render();
 }
@@ -93,16 +89,14 @@ void ActorPlayer::movement(const bool *state, double dt) {
 }
 
 void ActorPlayer::collision(const bool *state) {
-	if (m_sprite->m_dst.y > GameDefs::WindowHeight-m_sprite->m_dst.h) m_sprite->m_dst.y = GameDefs::WindowHeight-m_sprite->m_dst.h;
-	if (m_sprite->m_dst.x > GameDefs::WindowWidth-m_sprite->m_dst.w) m_sprite->m_dst.x = GameDefs::WindowWidth-m_sprite->m_dst.w;
+	if (m_sprite->m_dst.y > GameDefs::WindowHeight - m_sprite->m_dst.h) m_sprite->m_dst.y = GameDefs::WindowHeight - m_sprite->m_dst.h;
+	if (m_sprite->m_dst.x > GameDefs::WindowWidth - m_sprite->m_dst.w) m_sprite->m_dst.x = GameDefs::WindowWidth - m_sprite->m_dst.w;
 	if (m_sprite->m_dst.y < 0.0f) m_sprite->m_dst.y = 0.0f;
 	if (m_sprite->m_dst.x < 0.0f) m_sprite->m_dst.x = 0.0f;
 }
 
 void ActorPlayer::swapWeapon(const bool *state) {
-
 }
 
 void ActorPlayer::shoot(const bool *state) {
-
 }
