@@ -17,7 +17,6 @@ ActorPlayer::ActorPlayer() {
 
 void ActorPlayer::update(double dt) {
 	const bool *state = SDL_GetKeyboardState(nullptr);
-	SDL_PumpEvents();
 	movement(state, dt);
 	collision(state);
 

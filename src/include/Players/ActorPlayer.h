@@ -22,11 +22,10 @@ public:
 	void shoot(const bool *state);
 
 protected:
-	Sprite *m_sprite = new Sprite("assets/img/stg_story.bmp");	SDL_Event *event;
-
+	Sprite *m_sprite = new Sprite("assets/img/stg_story.bmp");
 	SDL_Gamepad *m_gamepad;
 
-	WeaponsList weapons[POLAR];
+	//WeaponsList weapons[POLAR];
 };
 
 #endif
