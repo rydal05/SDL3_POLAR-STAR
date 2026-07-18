@@ -20,20 +20,20 @@ BG &BG::getInstance() {
 }
 
 void BG::moonSceneInit() {
-	
+
 	for (size_t i = 0; i < starsQuantity; i++) {
 		auto star = std::make_unique<Sprite>("assets/img/moon_stars_polarstar.bmp");
 		float randY = float(rand() % (GameDefs::WindowHeight / 3));
 		float randX = float(rand() % GameDefs::WindowWidth);
-		
+
 		star->Draw_Src(0, 0, 5, 5);
 		star->Draw_Dst(randX, randY);
 		star->Draw_Siz(5, 5);
-		
+
 		starsBG.push_back(std::move(star));
-		SDL_Log("Created star %d at pos %.2f %.2f",i, randX, randY);
+		SDL_Log("Created star %d at pos %.2f %.2f", i, randX, randY);
 	}
-	
+
 	moon = new Sprite("assets/img/moon_stars_polarstar.bmp");
 	moon->Draw_Src(10.0f, 0.0f, 34.f, 34.f);
 	// pos 10 0
@@ -45,7 +45,7 @@ void BG::moonSceneInit() {
 	float l2h = 94;
 	float l3h = 117;
 	float l4h = 151;
-	
+
 	auto layer1 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer1->Draw_Src(0.0f, 0.0f, 320.0f, l1h);
 	layer1->Draw_Dst(0.0f, 240.0f - l1h);
@@ -73,12 +73,12 @@ void BG::moonSceneInit() {
 
 	auto layer2_c = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer2_c->Draw_Src(0.0f, 63.0f, 320.0f, l2h);
-	layer2_c->Draw_Dst(GameDefs::WindowWidth, 240.0f - l2h);
+	layer2_c->Draw_Dst(320.0f, 240.0f - l2h);
 	layer2_c->Draw_Siz(320.0f, l2h);
 
 	auto layer3_c = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer3_c->Draw_Src(0.0f, 157.0f, 320.0f, l3h);
-	layer3_c->Draw_Dst(GameDefs::WindowWidth, 240.0f - l3h);
+	layer3_c->Draw_Dst(320.0f, 240.0f - l3h);
 	layer3_c->Draw_Siz(320.0f, l3h);
 
 	auto layer4_c = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
@@ -98,11 +98,12 @@ void BG::moonSceneInit() {
 
 void BG::moonSceneUpdate(double dt) {
 	if (GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
+
 	for (size_t i = 0; i < cloudsBG.size(); i++) {
 		int x = i / 2;
 		cloudsBG[i]->m_dst.x -= (moon_speeds[x] * dt);
 
-		if (cloudsBG[i]->m_dst.x <= -GameDefs::WindowWidth) cloudsBG[i]->m_dst.x += (GameDefs::WindowWidth * 2.0f);
+		if (cloudsBG[i]->m_dst.x <= -GameDefs::WindowWidth) cloudsBG[i]->m_dst.x += GameDefs::WindowWidth*2;
 	}
 	updateMoon(dt);
 	updateStars(dt);
@@ -112,11 +113,10 @@ void BG::moonSceneRender() {
 	for (size_t i = 0; i < starsBG.size(); i++) {
 		starsBG[i]->Render();
 	}
-	
+
 	for (size_t i = 0; i < cloudsBG.size(); i++) {
 		cloudsBG[i]->Render();
 	}
-
 
 	moon->Render();
 }
@@ -137,7 +137,7 @@ void BG::updateMoon(double dt) {
 
 	switch (direction) {
 		case (true): {
-			y = (stretchH * ((sin(x + offsetX)) / (strecthW))) + offsetY;
+			y = (stretchH * ((sin(x + offsetX)) / (strecthW))) + offsetY; //SINE WAVE FUNCTION
 			x += speed;
 			break;
 		}
@@ -158,11 +158,11 @@ void BG::updateMoon(double dt) {
 }
 
 void BG::updateStars(double dt) {
-	for(size_t i = 0; i < starsBG.size(); i++){
+	for (size_t i = 0; i < starsBG.size(); i++) {
 		starsBG[i]->m_dst.x -= 0.1f * dt;
-		if(starsBG[i]->m_dst.x < 0.0f){
+		if (starsBG[i]->m_dst.x < 0.0f) {
 			starsBG[i]->m_dst.x = GameDefs::WindowWidth;
-			starsBG[i]->m_dst.y = float(rand()% 200);
+			starsBG[i]->m_dst.y = float(rand() % 200);
 		}
 
 		// SDL_Log("Updating star %d", i);
