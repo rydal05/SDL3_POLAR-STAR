@@ -18,12 +18,19 @@ BG &BG::getInstance() {
 	return *BG_instance;
 }
 
-void BG::moonSceneInit() { // TODO: include moon movement and stars rendering
+void BG::moonSceneInit() {
 	float width = 640.0f;
 	float l1h = 63 * GameDefs::ScaleFactor;
 	float l2h = 94 * GameDefs::ScaleFactor;
 	float l3h = 117 * GameDefs::ScaleFactor;
 	float l4h = 151 * GameDefs::ScaleFactor;
+
+	moon = new Sprite("assets/img/moon_stars_polarstar.bmp");
+	moon->Draw_Src(10.0f, 0.0f, 34.f, 34.f);
+	// pos 10 0
+	// size 34 x 34
+	// moon->Draw_Dst(0.0f, 0.0f);
+	moon->Draw_Siz(34.0f * GameDefs::ScaleFactor, 34.0f * GameDefs::ScaleFactor);
 
 	auto layer1 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer1->Draw_Src(0.0f, 0.0f, 320.0f, l1h / GameDefs::ScaleFactor);
@@ -65,38 +72,69 @@ void BG::moonSceneInit() { // TODO: include moon movement and stars rendering
 	layer4_c->Draw_Dst(640.0f, GameDefs::WindowHeight - l4h);
 	layer4_c->Draw_Siz(width, l4h);
 
-	moon.push_back(std::move(layer4_c));
-	moon.push_back(std::move(layer4));
-	moon.push_back(std::move(layer3_c));
-	moon.push_back(std::move(layer3));
-	moon.push_back(std::move(layer2_c));
-	moon.push_back(std::move(layer2));
-	moon.push_back(std::move(layer1_c));
-	moon.push_back(std::move(layer1));
+	cloudsBG.push_back(std::move(layer4_c));
+	cloudsBG.push_back(std::move(layer4));
+	cloudsBG.push_back(std::move(layer3_c));
+	cloudsBG.push_back(std::move(layer3));
+	cloudsBG.push_back(std::move(layer2_c));
+	cloudsBG.push_back(std::move(layer2));
+	cloudsBG.push_back(std::move(layer1_c));
+	cloudsBG.push_back(std::move(layer1));
 }
 
 void BG::moonSceneUpdate(double dt) {
 	if (GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
-	for (size_t i = 0; i < moon.size(); i++) {
-		int x = i/2;
-		moon[i]->m_dst.x -= moon_speeds[x] * dt;
+	for (size_t i = 0; i < cloudsBG.size(); i++) {
+		int x = i / 2;
+		cloudsBG[i]->m_dst.x -= moon_speeds[x] * dt;
 
-		if (moon[i]->m_dst.x <= -640.0f) moon[i]->m_dst.x += (640.0f * 2.0f);
+		if (cloudsBG[i]->m_dst.x <= -640.0f) cloudsBG[i]->m_dst.x += (640.0f * 2.0f);
 	}
+	updateMoon(dt);
 }
 
 void BG::moonSceneRender() {
-
-	for (size_t i = 0; i < moon.size(); i++) {
-		moon[i]->Render();
+	for (size_t i = 0; i < cloudsBG.size(); i++) {
+		cloudsBG[i]->Render();
 	}
+
+	moon->Render();
 }
 
-// void BG::updateMoonPos(double dt) {
-// 	float SPEED = 2.0f;
-// 	float t = dt * SPEED;
+void BG::updateMoon(double dt) {
+	// y = x whatever whatever function or reverse to accomplish what it is i want here
 
-// 	float x = 250.0f * std::sin(t);
-// 	float y = 150.0f * std::sin(t) * std::cos(t);
+	float offsetX = 500.0f;
+	float offsetY = 50.0f;
 
-// }
+	float speed = .001f * dt;
+
+	float UB = offsetX+50.0f;
+	float LB = offsetX-50.0f;
+
+	float stretchH = 10.0f;
+	float strecthW = 1.0f;
+
+	switch (direction) {
+		default:
+			direction = true;
+		case (true): {
+			y = (stretchH * ((sin(x + offsetX)) / (strecthW))) + offsetY;
+			x += speed;
+			break;
+		}
+		case (false): {
+			y = -(stretchH * (sin(x + offsetX) / (strecthW))) + offsetY; // LEGAL CODE
+			x -= speed;
+			break;
+		}
+	}
+
+	if (x > UB) direction = false;
+
+	if (x < LB) direction = true;
+
+	SDL_Log("XY POS %.2f %.2f", x, y);
+
+	moon->Draw_Dst(x, y);
+}
