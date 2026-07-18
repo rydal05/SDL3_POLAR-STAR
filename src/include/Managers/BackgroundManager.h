@@ -20,7 +20,8 @@ public:
 	void moonSceneUpdate(double dt);
 	void moonSceneRender();
 	void updateMoon(double dt);
-
+	void updateStars(double dt);
+	
 	void renderScene();
 	void switchScene();
 
@@ -33,8 +34,13 @@ private:
 	std::vector<float> moon_speeds = {0.1f,0.2f, 0.3f, 0.5f};
 	// std::vector<float> moon_speeds = {0.1f, 0.1f, 0.2f, 0.2f, 0.3f, 0.3f, 0.5f, 0.5f};
 
+	std::vector<std::unique_ptr<Sprite>> starsBG;
+	std::vector<float> star_speeds = {0.1f, 0.2f, 0.3f, 0.4f};
+
+	int starsQuantity = 128;
+
 	Sprite *moon;
-	bool direction;
+	bool direction = true;
 	float x = 500.0f;
 	float y = 0.0f;
 };

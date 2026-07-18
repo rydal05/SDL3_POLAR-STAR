@@ -3,6 +3,7 @@
 #include <SDL3/SDL_events.h>
 #include <SDL3/SDL_oldnames.h>
 #include <cmath>
+#include <cstdlib>
 #include <iostream>
 
 BG::BG() {}
@@ -24,6 +25,18 @@ void BG::moonSceneInit() {
 	float l2h = 94 * GameDefs::ScaleFactor;
 	float l3h = 117 * GameDefs::ScaleFactor;
 	float l4h = 151 * GameDefs::ScaleFactor;
+
+	for (size_t i = 0; i < starsQuantity; i++) {
+		auto star = std::make_unique<Sprite>("assets/img/moon_stars_polarstar.bmp");
+		float randY = (int)(rand() % 151);
+		float randX = (int)(rand() % 640);
+
+		star->Draw_Src(0, 0, 5, 5);
+		star->Draw_Dst(x, y);
+		star->Draw_Siz(5 * GameDefs::ScaleFactor, 5 * GameDefs::ScaleFactor);
+
+		starsBG.push_back(std::move(star));
+	}
 
 	moon = new Sprite("assets/img/moon_stars_polarstar.bmp");
 	moon->Draw_Src(10.0f, 0.0f, 34.f, 34.f);
@@ -98,6 +111,10 @@ void BG::moonSceneRender() {
 		cloudsBG[i]->Render();
 	}
 
+	for (size_t i = 0; i < starsBG.size(); i++) {
+		starsBG[i]->Render();
+	}
+
 	moon->Render();
 }
 
@@ -109,15 +126,13 @@ void BG::updateMoon(double dt) {
 
 	float speed = .001f * dt;
 
-	float UB = offsetX+50.0f;
-	float LB = offsetX-50.0f;
+	float UB = offsetX + 50.0f;
+	float LB = offsetX - 50.0f;
 
 	float stretchH = 10.0f;
-	float strecthW = 1.0f;
+	float strecthW = 5.0f;
 
 	switch (direction) {
-		default:
-			direction = true;
 		case (true): {
 			y = (stretchH * ((sin(x + offsetX)) / (strecthW))) + offsetY;
 			x += speed;
@@ -137,4 +152,10 @@ void BG::updateMoon(double dt) {
 	SDL_Log("XY POS %.2f %.2f", x, y);
 
 	moon->Draw_Dst(x, y);
+}
+
+void BG::updateStars(double dt) {
+	for(size_t i = 0; i < starsBG.size(); i++){
+		
+	}
 }
