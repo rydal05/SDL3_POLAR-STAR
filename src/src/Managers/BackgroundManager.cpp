@@ -20,25 +20,20 @@ BG &BG::getInstance() {
 }
 
 void BG::moonSceneInit() {
-	float width = GameDefs::WindowWidth;
-	float l1h = 63;
-	float l2h = 94;
-	float l3h = 117;
-	float l4h = 151;
-
+	
 	for (size_t i = 0; i < starsQuantity; i++) {
 		auto star = std::make_unique<Sprite>("assets/img/moon_stars_polarstar.bmp");
 		float randY = float(rand() % (GameDefs::WindowHeight / 3));
 		float randX = float(rand() % GameDefs::WindowWidth);
-
+		
 		star->Draw_Src(0, 0, 5, 5);
 		star->Draw_Dst(randX, randY);
 		star->Draw_Siz(5, 5);
-
+		
 		starsBG.push_back(std::move(star));
 		SDL_Log("Created star %d at pos %.2f %.2f",i, randX, randY);
 	}
-
+	
 	moon = new Sprite("assets/img/moon_stars_polarstar.bmp");
 	moon->Draw_Src(10.0f, 0.0f, 34.f, 34.f);
 	// pos 10 0
@@ -46,45 +41,50 @@ void BG::moonSceneInit() {
 	// moon->Draw_Dst(0.0f, 0.0f);
 	moon->Draw_Siz(34.0f, 34.0f);
 
+	float l1h = 63;
+	float l2h = 94;
+	float l3h = 117;
+	float l4h = 151;
+	
 	auto layer1 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer1->Draw_Src(0.0f, 0.0f, 320.0f, l1h);
-	layer1->Draw_Dst(0.0f, GameDefs::WindowHeight - (l1h * GameDefs::ScaleFactor) );
-	layer1->Draw_Siz(GameDefs::WindowWidth, l1h);
+	layer1->Draw_Dst(0.0f, 240.0f - l1h);
+	layer1->Draw_Siz(320.0f, l1h);
 
 	auto layer2 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer2->Draw_Src(0.0f, 63.0f, 320.0f, l2h);
-	layer2->Draw_Dst(0.0f, GameDefs::WindowHeight - (l2h * GameDefs::ScaleFactor));
-	layer2->Draw_Siz(GameDefs::WindowWidth, l2h);
+	layer2->Draw_Dst(0.0f, 240.0f - l2h);
+	layer2->Draw_Siz(320.0f, l2h);
 
 	auto layer3 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer3->Draw_Src(0.0f, 157.0f, 320.0f, l3h);
-	layer3->Draw_Dst(0.0f, GameDefs::WindowHeight - (l3h * GameDefs::ScaleFactor));
-	layer3->Draw_Siz(GameDefs::WindowWidth, l3h);
+	layer3->Draw_Dst(0.0f, 240.0f - l3h);
+	layer3->Draw_Siz(320.0f, l3h);
 
 	auto layer4 = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer4->Draw_Src(0.0f, 274.0f, 320.0f, l4h);
-	layer4->Draw_Dst(0.0f, GameDefs::WindowHeight - (l4h * GameDefs::ScaleFactor));
-	layer4->Draw_Siz(GameDefs::WindowWidth, l4h);
+	layer4->Draw_Dst(0.0f, 240.0f - l4h);
+	layer4->Draw_Siz(320.0f, l4h);
 
 	auto layer1_c = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer1_c->Draw_Src(0.0f, 0.0f, 320.0f, l1h);
-	layer1_c->Draw_Dst(GameDefs::WindowWidth, GameDefs::WindowHeight - (l1h * GameDefs::ScaleFactor));
-	layer1_c->Draw_Siz(GameDefs::WindowWidth, l1h);
+	layer1_c->Draw_Dst(320.0f, 240.0f - l1h);
+	layer1_c->Draw_Siz(320.0f, l1h);
 
 	auto layer2_c = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer2_c->Draw_Src(0.0f, 63.0f, 320.0f, l2h);
-	layer2_c->Draw_Dst(GameDefs::WindowWidth, GameDefs::WindowHeight - (l2h * GameDefs::ScaleFactor));
-	layer2_c->Draw_Siz(GameDefs::WindowWidth, l2h);
+	layer2_c->Draw_Dst(GameDefs::WindowWidth, 240.0f - l2h);
+	layer2_c->Draw_Siz(320.0f, l2h);
 
 	auto layer3_c = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer3_c->Draw_Src(0.0f, 157.0f, 320.0f, l3h);
-	layer3_c->Draw_Dst(GameDefs::WindowWidth, GameDefs::WindowHeight - (l3h * GameDefs::ScaleFactor));
-	layer3_c->Draw_Siz(GameDefs::WindowWidth, l3h);
+	layer3_c->Draw_Dst(GameDefs::WindowWidth, 240.0f - l3h);
+	layer3_c->Draw_Siz(320.0f, l3h);
 
 	auto layer4_c = std::make_unique<Sprite>("assets/img/stg_story_bgs.bmp");
 	layer4_c->Draw_Src(0.0f, 274.0f, 320.0f, l4h);
-	layer4_c->Draw_Dst(GameDefs::WindowWidth, GameDefs::WindowHeight - (l4h * GameDefs::ScaleFactor));
-	layer4_c->Draw_Siz(GameDefs::WindowWidth, l4h);
+	layer4_c->Draw_Dst(320.0f, 240.0f - l4h);
+	layer4_c->Draw_Siz(320.0f, l4h);
 
 	cloudsBG.push_back(std::move(layer4_c));
 	cloudsBG.push_back(std::move(layer4));
@@ -124,13 +124,13 @@ void BG::moonSceneRender() {
 void BG::updateMoon(double dt) {
 	// y = x whatever whatever function or reverse to accomplish what it is i want here
 
-	float offsetX = 500.0f;
-	float offsetY = 50.0f;
+	float offsetX = 250.0f * GameDefs::ScaleFactor;
+	float offsetY = 25.0f * GameDefs::ScaleFactor;
 
 	float speed = .001f * dt;
 
-	float UB = offsetX + 50.0f;
-	float LB = offsetX - 50.0f;
+	float UB = offsetX + 50.0f * GameDefs::ScaleFactor;
+	float LB = offsetX - 50.0f * GameDefs::ScaleFactor;
 
 	float stretchH = 10.0f;
 	float strecthW = 5.0f;
@@ -162,7 +162,7 @@ void BG::updateStars(double dt) {
 		starsBG[i]->m_dst.x -= 0.1f * dt;
 		if(starsBG[i]->m_dst.x < 0.0f){
 			starsBG[i]->m_dst.x = GameDefs::WindowWidth;
-			starsBG[i]->m_dst.y = float(rand()%200);
+			starsBG[i]->m_dst.y = float(rand()% 200);
 		}
 
 		// SDL_Log("Updating star %d", i);
