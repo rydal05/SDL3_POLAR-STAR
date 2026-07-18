@@ -4,6 +4,7 @@
 #include "Managers/ResourceManager.h"
 #include "Sprite.h"
 
+#include "GameDefs.h"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_render.h>
 #include <memory>
@@ -21,7 +22,7 @@ public:
 	void moonSceneRender();
 	void updateMoon(double dt);
 	void updateStars(double dt);
-	
+
 	void renderScene();
 	void switchScene();
 
@@ -30,18 +31,20 @@ private:
 	BG(BG const &);
 	BG operator=(BG const &);
 
+	float speed = 1.0f + GameDefs::ScaleFactor;
+
 	std::vector<std::unique_ptr<Sprite>> cloudsBG;
-	std::vector<float> moon_speeds = {0.1f,0.2f, 0.3f, 0.5f};
+	std::vector<float> moon_speeds = {0.1f / speed, 0.2f / speed, 0.3f / speed, 0.5f / speed};
 	// std::vector<float> moon_speeds = {0.1f, 0.1f, 0.2f, 0.2f, 0.3f, 0.3f, 0.5f, 0.5f};
 
 	std::vector<std::unique_ptr<Sprite>> starsBG;
-	std::vector<float> star_speeds = {0.1f, 0.2f, 0.3f, 0.4f};
+	std::vector<float> star_speeds = {0.1f / speed, 0.2f / speed, 0.3f / speed, 0.4f / speed};
 
 	int starsQuantity = 32;
 
 	Sprite *moon;
 	bool direction = true;
-	float x = 500.0f;
+	float x = 250.0f*GameDefs::ScaleFactor;
 	float y = 0.0f;
 };
 
