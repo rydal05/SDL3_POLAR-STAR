@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 	SDLApplication app("POLAR STAR", GameDefs::WindowWidth, GameDefs::WindowHeight);
 	const double targetFrameMs = 1000.0 / 60.0; // TODO: change how framerate and settings are handled
 
-	SDL_Event *event;
+	SDL_Event event;
 	bool running = true;
 	Uint64 LAST = SDL_GetPerformanceCounter();
 
@@ -42,35 +42,36 @@ int main(int argc, char *argv[]) {
 		deltaTime = (double)((now - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
 		LAST = now;
 
-		while (SDL_PollEvent(event)) {
-			if (event->type == SDL_EVENT_QUIT) {
+		while (SDL_PollEvent(&event)) {
+			if (event.type == SDL_EVENT_QUIT) {
 				running = false;
-			} else if (event->type == SDL_EVENT_KEY_DOWN) {
-				if (event->key.scancode == SDL_SCANCODE_ESCAPE) {
+			} else if (event.type == SDL_EVENT_KEY_DOWN) {
+				if (event.key.scancode == SDL_SCANCODE_ESCAPE) {
 					running = false;
 				}
-				if (event->key.scancode == SDL_SCANCODE_P) {
+				if (event.key.scancode == SDL_SCANCODE_P) {
 					if (GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) {
 						GameDefs::GAME_STATUS = GameDefs::GameMode::GAME;
 					} else if (GameDefs::GAME_STATUS == GameDefs::GameMode::GAME) {
 						GameDefs::GAME_STATUS = GameDefs::GameMode::PAUSED;
 					}
 				}
-			} else if(event->type == SDL_EVENT_JOYSTICK_ADDED){
+			} else if(event.type == SDL_EVENT_JOYSTICK_ADDED){
 				if(GameDefs::joystick == NULL){
-					GameDefs::joystick = SDL_OpenJoystick(event->jdevice.which);
+					GameDefs::joystick = SDL_OpenJoystick(event.jdevice.which);
 					if(!GameDefs::joystick){
-						SDL_Log("Failed to open joystick ID %u: %s", (unsigned int) event->jdevice.which, SDL_GetError());
+						SDL_Log("Failed to open joystick ID %u: %s", (unsigned int) event.jdevice.which, SDL_GetError());
 					}
 				}
-			} else if(event->type == SDL_EVENT_JOYSTICK_REMOVED){
-				if(GameDefs::joystick && (SDL_GetJoystickID(GameDefs::joystick) == event->jdevice.which)){
+			} else if(event.type == SDL_EVENT_JOYSTICK_REMOVED){
+				if(GameDefs::joystick && (SDL_GetJoystickID(GameDefs::joystick) == event.jdevice.which)){
 					SDL_CloseJoystick(GameDefs::joystick);
 					GameDefs::joystick = nullptr;
 				}
 			}
 		}
 
+		
 		_update(deltaTime);
 		_framesetup();
 		_draw();
@@ -80,6 +81,7 @@ int main(int argc, char *argv[]) {
 		if (frameMs < targetFrameMs) {
 			SDL_Delay((Uint32)(targetFrameMs - frameMs));
 		}
+		
 	}
 
 	SDL_DestroyRenderer(GameDefs::g_renderer);
