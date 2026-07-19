@@ -58,12 +58,13 @@ private:
 	float baseSpeed = .001f * GameDefs::ScaleFactor;
 	bool direction = true;
 	
-    float x = 0.0f;
-	float y = 0.0f;
-
+    
 	float offsetX = 250.0f * GameDefs::ScaleFactor;
 	float offsetY = 25.0f * GameDefs::ScaleFactor;
 	
+	float y = offsetY;
+    float x = offsetX;
+    
     float UB = offsetX + (25.0f * GameDefs::ScaleFactor);
 	float LB = offsetX - (25.0f * GameDefs::ScaleFactor);
 
