@@ -11,7 +11,7 @@
 class Clouds : public Entity {
 public:
 	Clouds() {
-		SDL_Log("Init cloud");
+		// SDL_Log("Init cloud");
 
 		float l1h = 63;
 		float l2h = 94;
@@ -67,7 +67,7 @@ public:
 		cloudsBG.push_back(std::move(layer1_c));
 		cloudsBG.push_back(std::move(layer1));
 
-		SDL_Log("Finish cloud init");
+		// SDL_Log("Finish cloud init");
 	};
 
 	~Clouds() {
@@ -92,10 +92,10 @@ public:
 	};
 
 private:
-	float speed = 1.0f + GameDefs::ScaleFactor;
+	float maxSpeed = GameDefs::ScaleFactor;
 
 	std::vector<std::unique_ptr<Sprite>> cloudsBG;
-	std::vector<float> cloud_speeds = {0.1f / speed, 0.2f / speed, 0.3f / speed, 0.5f / speed};
+	std::vector<float> cloud_speeds = {0.1f * maxSpeed, 0.2f * maxSpeed, 0.3f * maxSpeed, 0.5f * maxSpeed};
 };
 
 #endif
