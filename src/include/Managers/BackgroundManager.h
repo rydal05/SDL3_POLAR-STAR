@@ -1,16 +1,19 @@
 #ifndef BACKGROUND_MANANGER_H
 #define BACKGROUND_MANANGER_H
 
-#include "Managers/ResourceManager.h"
-#include "Sprite.h"
-
-#include "GameDefs.h"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_render.h>
 #include <memory>
+#include <mutex>
 #include <vector>
 
-#include <mutex>
+#include "GameDefs.h"
+#include "Managers/ResourceManager.h"
+#include "Sprite.h"
+
+#include "Backgrounds/Clouds.h"
+#include "Backgrounds/Moon.h"
+#include "Backgrounds/Star.h"
 
 class BG {
 
@@ -31,10 +34,11 @@ private:
 	BG(BG const &);
 	BG operator=(BG const &);
 
-	Sprite *moon;
 	bool direction = true;
-	float x = 250.0f * GameDefs::ScaleFactor;
-	float y = 0.0f;
+
+	Stars *starsManager = NULL;
+	Moon *moonManager = NULL;
+	Clouds *cloudManager = NULL;
 };
 
 #endif
