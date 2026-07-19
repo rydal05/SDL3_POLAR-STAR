@@ -8,7 +8,7 @@
 
 #include "Backgrounds/Clouds.h"
 #include "Backgrounds/Moon.h"
-#include "Backgrounds/Star.h"
+#include "Backgrounds/Stars.h"
 
 BG::BG() {
 }
