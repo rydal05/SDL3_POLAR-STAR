@@ -15,7 +15,7 @@ enum class GameMode {
 	START,
 	OVER,
 	PAUSED,
-	SETTINGS
+	SETTINGS,
 };
 
 inline SDL_Window *g_window = nullptr;
