@@ -63,7 +63,7 @@ Clouds::~Clouds(){
     
 }
 
-void Clouds::update(double dt){
+void Clouds::Update(double dt){
     for (size_t i = 0; i < cloudsBG.size(); i++) {
 		int x = i / 2;
 		cloudsBG[i]->m_dst.x -= (moon_speeds[x] * dt);
@@ -72,7 +72,7 @@ void Clouds::update(double dt){
 	}
 }
 
-void Clouds::render(){
+void Clouds::Render(){
     for (size_t i = 0; i < cloudsBG.size(); i++) {
 		cloudsBG[i]->Render();
 	}

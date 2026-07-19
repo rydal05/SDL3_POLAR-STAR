@@ -12,8 +12,8 @@
 class ActorPlayer : public Player {
 public:
 	ActorPlayer();
-	void update(double dt) override;
-	void render() override;
+	void Update(double dt) override;
+	void Render() override;
 	void move(float x, float y);
 
 	void movement(const bool *state, double dt);

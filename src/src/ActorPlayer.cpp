@@ -15,7 +15,7 @@ ActorPlayer::ActorPlayer() {
 	SDL_Log("[ACTORPLAYER] successful instantiation");
 }
 
-void ActorPlayer::update(double dt) {
+void ActorPlayer::Update(double dt) {
 	const bool *state = SDL_GetKeyboardState(nullptr);
 	movement(state, dt);
 	collision(state);
@@ -29,7 +29,7 @@ void ActorPlayer::update(double dt) {
 	*/
 }
 
-void ActorPlayer::render() {
+void ActorPlayer::Render() {
 	if (m_sprite->m_dst.y < GameDefs::WindowHeight * .1f) {
 		Hud::getInstance().makeTranslucent();
 	} // bounds for when player is hidden behind UI elements

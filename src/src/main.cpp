@@ -14,7 +14,7 @@
 #include "Players/ActorPlayer.h"
 
 void _draw();
-void _update(double deltaTime);
+void _Update(double deltaTime);
 void _init();
 void _framesetup();
 
@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
 		}
 
 		
-		_update(deltaTime);
+		_Update(deltaTime);
 		_framesetup();
 		_draw();
 
@@ -105,7 +105,7 @@ void _draw() {
 	SDL_RenderPresent(GameDefs::g_renderer);
 }
 
-void _update(double deltaTime) {
+void _Update(double deltaTime) {
 	if (GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
 	BG::getInstance().moonSceneUpdate(deltaTime);
 

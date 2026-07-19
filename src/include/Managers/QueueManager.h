@@ -15,30 +15,30 @@ public:
 
 	void render_queue() {
 		for (auto &player : players) {
-			player->render();
+			player->Render();
 		}
 
 		for (auto &entity : entities) {
-			entity->render();
+			entity->Render();
 		}
 
 		for (auto &bullet : bullets) {
-			bullet->render();
+			bullet->Render();
 		}
 	}
 
 	void update_queue(double dt) {
 		if (GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
 		for (auto &player : players) {
-			player->update(dt);
+			player->Update(dt);
 		}
 
 		for (auto &entity : entities) {
-			entity->update(dt);
+			entity->Update(dt);
 		}
 
 		for (auto &bullet : bullets) {
-			bullet->update(dt);
+			bullet->Update(dt);
 		}
 	}
 

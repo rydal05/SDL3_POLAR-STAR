@@ -13,8 +13,8 @@ public:
 	Clouds();
 	~Clouds();
 
-	void update(double dt) override;
-	void render() override;
+	void Update(double dt) override;
+	void Render() override;
 
 private:
 	float speed = 1.0f + GameDefs::ScaleFactor;
