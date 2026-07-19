@@ -12,26 +12,20 @@
 class Moon : public Entity {
 public:
 	Moon() {
-		moonSprite->Draw_Src(10.0f, 0.0f, 34.f, 34.f);
+		moonSprite->Draw_Src(10.0f, 0.0f, 34.0f, 34.0f);
 		// pos 10 0
 		// size 34 x 34
 		// moon->Draw_Dst(0.0f, 0.0f);
 		moonSprite->Draw_Siz(34.0f, 34.0f);
 	}
-	~Moon(){ 
-        SDL_free(moonSprite);
-    }
+	~Moon() {
+		SDL_free(moonSprite);
+	}
 
 	void Update(double dt) override {
 		// y = x whatever whatever function or reverse to accomplish what it is i want here
 
-		float offsetX = 250.0f * GameDefs::ScaleFactor;
-		float offsetY = 25.0f * GameDefs::ScaleFactor;
-
-		float speed = .001f * dt;
-
-		float UB = offsetX + 25.0f * GameDefs::ScaleFactor;
-		float LB = offsetX - 25.0f * GameDefs::ScaleFactor;
+		float speed = baseSpeed * (float)dt;
 
 		float stretchH = 10.0f;
 		float strecthW = 5.0f;
@@ -54,18 +48,25 @@ public:
 		if (x < LB) direction = true;
 
 		SDL_Log("XY POS %.2f %.2f", x, y);
-
-		moonSprite->Draw_Dst(x, y);
+		moonSprite->Draw_Dst(x / GameDefs::ScaleFactor, y / GameDefs::ScaleFactor);
 	}
 	void Render() override {
-        moonSprite->Render();
-    }
+		moonSprite->Render();
+	}
 
 private:
-	float speed = 1.0f + GameDefs::ScaleFactor;
+	float baseSpeed = .001f * GameDefs::ScaleFactor;
 	bool direction = true;
-	float x = 250.0f * GameDefs::ScaleFactor;
+	
+    float x = 0.0f;
 	float y = 0.0f;
+
+	float offsetX = 250.0f * GameDefs::ScaleFactor;
+	float offsetY = 25.0f * GameDefs::ScaleFactor;
+	
+    float UB = offsetX + (25.0f * GameDefs::ScaleFactor);
+	float LB = offsetX - (25.0f * GameDefs::ScaleFactor);
+
 	Sprite *moonSprite = new Sprite("assets/img/moon_stars_polarstar.bmp");
 };
 
