@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 				if (GameDefs::joystick == NULL) {
 					GameDefs::joystick = SDL_OpenJoystick(event.jdevice.which);
 					if (!GameDefs::joystick) {
-						SDL_Log("Failed to open joystick ID %u: %s", (unsigned int)event.jdevice.which, SDL_GetError());
+						// SDL_Log("Failed to open joystick ID %u: %s", (unsigned int)event.jdevice.which, SDL_GetError());
 					}
 				}
 			} else if (event.type == SDL_EVENT_JOYSTICK_REMOVED) {

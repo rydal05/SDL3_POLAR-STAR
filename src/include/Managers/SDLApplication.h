@@ -16,7 +16,7 @@ public:
 
 		// make the window
 		if (!SDL_CreateWindowAndRenderer("POLAR STAR", w * 2, h * 2, SDL_WINDOW_OPENGL, &GameDefs::g_window, &GameDefs::g_renderer)) {
-			SDL_Log("Failed to create window and/or renderer: %s", SDL_GetError());
+			// SDL_Log("Failed to create window and/or renderer: %s", SDL_GetError());
 			success = false;
 		}
 

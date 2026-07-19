@@ -12,7 +12,7 @@ ActorPlayer::ActorPlayer() {
 	m_sprite->Draw_Siz(16.0f, 16.0f);
 	m_gamepad = nullptr;
 
-	SDL_Log("[ACTORPLAYER] successful instantiation");
+	// SDL_Log("[ACTORPLAYER] successful instantiation");
 }
 
 void ActorPlayer::Update(double dt) {
