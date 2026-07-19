@@ -21,13 +21,11 @@ public:
 	static BG &getInstance();
 
 	void moonSceneInit();
+
 	void moonSceneUpdate(double dt);
 	void moonSceneRender();
-	void updateMoon(double dt);
-	void updateStars(double dt);
 
 	void renderScene();
-	void switchScene();
 
 private:
 	BG();
@@ -39,6 +37,20 @@ private:
 	Stars *starsManager = NULL;
 	Moon *moonManager = NULL;
 	Clouds *cloudManager = NULL;
+
+	enum backgroundTypes {
+		SURFACE,
+		MOON,
+		CAVE,
+		BLOOD_STAINED,
+		LABRYINTH,
+		BUSHLANDS,
+		WATERWAY,
+		OUTER_WALL,
+		PLANTATION,
+
+		STATS_SIZE,
+	};
 };
 
 #endif

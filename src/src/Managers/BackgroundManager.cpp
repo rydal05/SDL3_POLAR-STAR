@@ -11,11 +11,6 @@
 #include "Backgrounds/Star.h"
 
 BG::BG() {
-	starsManager = new Stars(32);
-
-	moonManager = new Moon();
-
-	cloudManager = new Clouds();
 }
 
 BG::BG(BG const &) {}
@@ -30,14 +25,18 @@ BG &BG::getInstance() {
 }
 
 void BG::moonSceneInit() {
-	
+	starsManager = new Stars(32);
+
+	moonManager = new Moon();
+
+	cloudManager = new Clouds();
 }
 
 void BG::moonSceneUpdate(double dt) {
 	if (GameDefs::GAME_STATUS == GameDefs::GameMode::PAUSED) return;
 
 	starsManager->Update(dt);
-	
+
 	moonManager->Update(dt);
 
 	cloudManager->Update(dt);
@@ -45,7 +44,7 @@ void BG::moonSceneUpdate(double dt) {
 
 void BG::moonSceneRender() {
 	starsManager->Render();
-	
+
 	moonManager->Render();
 
 	cloudManager->Render();
