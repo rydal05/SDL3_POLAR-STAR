@@ -9,16 +9,16 @@
 
 class Star : public Entity {
 public:
-Star();
-~Star();
+	Star();
+	~Star();
 
-void update(double dt) override;
-void render() override;
+	void update(double dt) override;
+	void render() override;
 
 private:
-    float speed;
+	float speed;
 
-    Sprite *m_sprite;
+	Sprite *m_sprite;
 };
 
 #endif

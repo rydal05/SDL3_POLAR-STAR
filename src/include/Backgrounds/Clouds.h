@@ -11,7 +11,7 @@
 class Clouds : public Entity {
 public:
 	Clouds();
-    ~Clouds();
+	~Clouds();
 
 	void update(double dt) override;
 	void render() override;

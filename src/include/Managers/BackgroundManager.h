@@ -31,11 +31,9 @@ private:
 	BG(BG const &);
 	BG operator=(BG const &);
 
-	
-
 	Sprite *moon;
 	bool direction = true;
-	float x = 250.0f*GameDefs::ScaleFactor;
+	float x = 250.0f * GameDefs::ScaleFactor;
 	float y = 0.0f;
 };
 
