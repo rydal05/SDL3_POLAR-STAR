@@ -1,5 +1,5 @@
-#ifndef STARS_H
-#define STARS_H
+#ifndef STAR_H
+#define STAR_H
 
 #include "Entity.h"
 #include "GameDefs.h"
@@ -7,47 +7,46 @@
 #include <memory>
 #include <vector>
 
-class Stars : public Entity {
+class Star : public Entity {
 public:
-	Stars(int quantity) {
-		for (size_t i = 0; i < quantity; i++) {
-			auto star = std::make_unique<Sprite>("assets/img/moon_stars_polarstar.bmp");
-			float randY = float(rand() % (GameDefs::WindowHeight / 3));
-			float randX = float(rand() % GameDefs::WindowWidth);
+	Star() {
+		m_sprite = new Sprite("assets/img/moon_stars_polarstar.bmp");
+		float randY = float(rand() % (GameDefs::WindowHeight / 3));
+		float randX = float(rand() % GameDefs::WindowWidth);
 
-			star->Draw_Src(0, 0, 5, 5);
-			star->Draw_Dst(randX, randY);
-			star->Draw_Siz(5, 5);
-
-			starsBG.push_back(std::move(star));
-			// SDL_Log("Created star %d at pos %.2f %.2f", i, randX, randY);
-		}
+		m_sprite->Draw_Dst(randX, randY);
+		m_sprite->Draw_Src(0, 0, 5, 5);
+		m_sprite->Draw_Siz(5, 5);
 	}
-	~Stars() {
-		for (size_t i = 0; i < starsBG.size(); i++) {
-			starsBG[i].reset();
-			// SDL_Log("Created star %d at pos %.2f %.2f", i, randX, randY);
-		}
-	};
+
+	~Star() {
+		SDL_free(this->m_sprite);
+	}
 
 	void Update(double dt) override {
-		for (size_t i = 0; i < starsBG.size(); i++) {
-			starsBG[i]->m_dst.x -= 0.1f * dt;
-			if (starsBG[i]->m_dst.x < 0.0f) {
-				starsBG[i]->m_dst.x = GameDefs::WindowWidth;
-				starsBG[i]->m_dst.y = float(rand() % 200);
-			}
+		this->getSprite()->m_dst.x -= speed * dt;
+		if (this->getSprite()->m_dst.x < 0.0f) {
+			this->getSprite()->m_dst.x = GameDefs::WindowWidth;
+			this->getSprite()->m_dst.y = float(rand() % 200);
 		}
 	}
+
 	void Render() override {
-		for (size_t i = 0; i < starsBG.size(); i++) {
-			starsBG[i]->Render();
-		}
+		m_sprite->Render();
+	}
+
+	Sprite *getSprite() {
+		return this->m_sprite;
+	}
+
+	void setSpeed(float num, float size) {
+		speed = num;
+		this->getSprite()->Draw_Siz(size,size);
 	}
 
 private:
-	float speed;
-	std::vector<std::unique_ptr<Sprite>> starsBG;
+	Sprite *m_sprite;
+	float speed = 0.0f;
 };
 
 #endif
