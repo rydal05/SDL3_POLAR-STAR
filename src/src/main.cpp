@@ -56,22 +56,21 @@ int main(int argc, char *argv[]) {
 						GameDefs::GAME_STATUS = GameDefs::GameMode::PAUSED;
 					}
 				}
-			} else if(event.type == SDL_EVENT_JOYSTICK_ADDED){
-				if(GameDefs::joystick == NULL){
+			} else if (event.type == SDL_EVENT_JOYSTICK_ADDED) {
+				if (GameDefs::joystick == NULL) {
 					GameDefs::joystick = SDL_OpenJoystick(event.jdevice.which);
-					if(!GameDefs::joystick){
-						SDL_Log("Failed to open joystick ID %u: %s", (unsigned int) event.jdevice.which, SDL_GetError());
+					if (!GameDefs::joystick) {
+						SDL_Log("Failed to open joystick ID %u: %s", (unsigned int)event.jdevice.which, SDL_GetError());
 					}
 				}
-			} else if(event.type == SDL_EVENT_JOYSTICK_REMOVED){
-				if(GameDefs::joystick && (SDL_GetJoystickID(GameDefs::joystick) == event.jdevice.which)){
+			} else if (event.type == SDL_EVENT_JOYSTICK_REMOVED) {
+				if (GameDefs::joystick && (SDL_GetJoystickID(GameDefs::joystick) == event.jdevice.which)) {
 					SDL_CloseJoystick(GameDefs::joystick);
 					GameDefs::joystick = nullptr;
 				}
 			}
 		}
 
-		
 		_Update(deltaTime);
 		_framesetup();
 		_draw();
@@ -81,7 +80,6 @@ int main(int argc, char *argv[]) {
 		if (frameMs < targetFrameMs) {
 			SDL_Delay((Uint32)(targetFrameMs - frameMs));
 		}
-		
 	}
 
 	SDL_DestroyRenderer(GameDefs::g_renderer);
