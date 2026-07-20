@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	SDL_DestroyRenderer(GameDefs::g_renderer);
-	SDL_DestroyWindow(GameDefs::g_window);
+	SDL_DestroyWindow(GameDefs::g_window); // TODO: research better alternatives for managing game window and status and stuff. likely need to start using more getters and setters and the like for a lot of my classes
 	SDL_Quit();
 
 	return 0;

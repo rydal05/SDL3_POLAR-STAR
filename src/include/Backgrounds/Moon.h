@@ -6,7 +6,7 @@
 #include <memory>
 
 #include "Entity.h"
-#include "GameDefs.h"
+#include "GameDefs.h" //TODO: needs to be made singleton and proabbly more acurately named as a bg asset manager
 #include "Sprite.h"
 
 class Moon : public Entity {

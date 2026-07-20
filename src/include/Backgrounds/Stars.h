@@ -5,7 +5,7 @@
 #include "GameDefs.h"
 #include "Sprite.h"
 #include "Star.h"
-#include <memory>
+#include <memory> // TODO: probably should also be made singleton
 #include <vector>
 
 class Stars : public Entity {

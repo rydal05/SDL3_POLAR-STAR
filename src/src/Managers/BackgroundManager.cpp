@@ -37,12 +37,12 @@ void BG::moonSceneUpdate(double dt) {
 
 	starsManager->Update(dt);
 
-	moonManager->Update(dt);
+	moonManager->Update(dt); //needs to dynamically react to whatever stage is defined in gamedefs or something like that but probably afteri  actually get enemies and bullets working and all that 
 
 	cloudManager->Update(dt);
 }
 
-void BG::moonSceneRender() {
+void BG::moonSceneRender() { //convert to function pointers that bundle together update + render for environments for easier implementation and switching
 	starsManager->Render();
 
 	moonManager->Render();
