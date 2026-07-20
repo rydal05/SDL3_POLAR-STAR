@@ -10,7 +10,7 @@ public:
 	~Sprite();
 
 	void Draw_Src(float x, float y, float w, float h);
-	
+
 	void Draw_Dst(float x, float y);
 	void Draw_X(float x);
 	void Draw_Y(float y);
@@ -22,6 +22,7 @@ public:
 	SDL_Texture *GetTexture() { return m_texture; }
 
 	SDL_FRect m_dst; // this should be automatically paired with the entitiy class but im not sure how i want to go about doing that outside of explicit spritepos = entitypos calls
+					 // TODO: convert m_dst to private pointer and make getter/setter
 
 private:
 	SDL_FRect m_src;
@@ -30,7 +31,7 @@ private:
 
 class AnimatedSprite {
 public:
-	AnimatedSprite(std::string filepath, int frames);
+	AnimatedSprite(const char *filepath, int frames);
 
 	~AnimatedSprite();
 
@@ -41,7 +42,7 @@ public:
 	void Update();
 
 	void Render();
-	
+
 private:
 	SDL_FRect m_src;
 	SDL_Texture *m_texture;
