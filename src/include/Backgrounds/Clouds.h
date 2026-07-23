@@ -79,9 +79,9 @@ public:
 	void Update(double dt) override {
 		for (size_t i = 0; i < cloudsBG.size(); i++) {
 			int x = i / 2;
-			cloudsBG[i]->m_dst.x -= (cloud_speeds[x] * dt);
+			cloudsBG[i]->Offset_X(-(cloud_speeds[x] * dt));
 
-			if (cloudsBG[i]->m_dst.x <= -GameDefs::WindowWidth) cloudsBG[i]->m_dst.x += GameDefs::WindowWidth * 2;
+			if (cloudsBG[i]->get_X() <= -GameDefs::WindowWidth) cloudsBG[i]->Offset_X(GameDefs::WindowWidth * 2);
 		}
 	};
 

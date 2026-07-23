@@ -24,8 +24,8 @@ public:
 	}
 
 	void Update(double dt) override {
-		this->getSprite()->m_dst.x -= speed * dt;
-		if (this->getSprite()->m_dst.x < 0.0f) {
+		this->getSprite()->Offset_X(-speed * dt);
+		if (this->getSprite()->get_X() < 0.0f) {
 			this->getSprite()->Draw_Dst(320.0f, float(rand() % 200));
 		}
 	}

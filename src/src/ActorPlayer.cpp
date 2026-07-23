@@ -22,11 +22,11 @@ void ActorPlayer::Update(double dt) {
 }
 
 void ActorPlayer::Render() {
-	if (m_sprite->m_dst.y < GameDefs::WindowHeight * .1f) {
+	if (m_sprite->get_Y() < GameDefs::WindowHeight * .1f) {
 		Hud::getInstance().makeTranslucent();
 	} // bounds for when player is hidden behind UI elements
 
-	if (m_sprite->m_dst.y > GameDefs::WindowHeight * 0.1f) {
+	if (m_sprite->get_Y() > GameDefs::WindowHeight * 0.1f) {
 		Hud::getInstance().makeOpaque();
 	}
 
@@ -34,11 +34,8 @@ void ActorPlayer::Render() {
 	m_sprite->Render();
 }
 
-void ActorPlayer::move(float x, float y) { // not movement just explicit placement at a location
-										   // m_sprite->m_dst.x += GameDefs::PlayerSpeed * x;
-										   // m_sprite->m_dst.y += GameDefs::PlayerSpeed * y;
-
-	// completely and utterly useless method also just not even implemented properly
+void ActorPlayer::move(float x, float y) {
+	m_sprite->Draw_Dst(x, y); //just a wrapper for player movement
 }
 
 void ActorPlayer::movement(const bool *state, double dt) {
@@ -82,10 +79,10 @@ void ActorPlayer::movement(const bool *state, double dt) {
 }
 
 void ActorPlayer::collision(const bool *state) {
-	if (m_sprite->m_dst.y > GameDefs::WindowHeight - m_sprite->m_dst.h) m_sprite->m_dst.y = GameDefs::WindowHeight - m_sprite->m_dst.h;
-	if (m_sprite->m_dst.x > GameDefs::WindowWidth - m_sprite->m_dst.w) m_sprite->m_dst.x = GameDefs::WindowWidth - m_sprite->m_dst.w;
-	if (m_sprite->m_dst.y < 0.0f) m_sprite->m_dst.y = 0.0f;
-	if (m_sprite->m_dst.x < 0.0f) m_sprite->m_dst.x = 0.0f;
+	if (m_sprite->get_Y() > GameDefs::WindowHeight - m_sprite->get_W()) m_sprite->Draw_Y(GameDefs::WindowHeight - m_sprite->get_H());
+	if (m_sprite->get_X() > GameDefs::WindowWidth - m_sprite->get_W()) m_sprite->Draw_X(GameDefs::WindowWidth - m_sprite->get_W());
+	if (m_sprite->get_Y() < 0.0f) m_sprite->Draw_Y(0.0f);
+	if (m_sprite->get_X() < 0.0f) m_sprite->Draw_X(0.0f);
 }
 
 void ActorPlayer::swapWeapon(const bool *state) {
