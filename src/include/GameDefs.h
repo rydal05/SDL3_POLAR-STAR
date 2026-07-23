@@ -23,6 +23,10 @@ inline SDL_Joystick *joystick = nullptr;
 
 constexpr int dead_zone = 8000;
 
+typedef struct PS_Hitbox {
+	SDL_FPoint topLeft;
+	SDL_FPoint bottomRight;
+} PS_Hitbox;
 
 } // namespace GameDefs
 
