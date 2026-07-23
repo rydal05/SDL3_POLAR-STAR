@@ -24,8 +24,10 @@ public:
 protected:
 	Sprite *m_sprite = new Sprite("assets/img/stg_story.bmp");
 	SDL_Gamepad *m_gamepad;
+	SDL_FPoint coreOffset{8.0f,
+						  10.0f};
 
-	//WeaponsList weapons[POLAR];
+	// WeaponsList weapons[POLAR];
 };
 
 #endif
