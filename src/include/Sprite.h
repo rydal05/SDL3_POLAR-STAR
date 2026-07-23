@@ -15,21 +15,28 @@ public:
 	void Draw_X(float x);
 	void Draw_Y(float y);
 
-	void Offset_Dst(float, float);
-	void Offset_X(float);
-	void Offset_Y(float);
+	void Offset_Dst(float x, float y);
+	void Offset_X(float x);
+	void Offset_Y(float y);
 
 	void Draw_Siz(float w, float h);
+
+	void Draw_W(float w);
+	void Draw_H(float h);
+
+	SDL_FRect get_dst() { return m_dst; }
+	float get_X() { return m_dst.x; }
+	float get_Y() { return m_dst.y; }
+	float get_W() { return m_dst.w; }
+	float get_H() { return m_dst.h; }
 
 	void Update(double dt);
 	void Render();
 	SDL_Texture *GetTexture() { return m_texture; }
 
-	SDL_FRect m_dst; // this should be automatically paired with the entitiy class but im not sure how i want to go about doing that outside of explicit spritepos = entitypos calls
-					 // TODO: convert m_dst to private pointer and make getter/setter
-
 private:
 	SDL_FRect m_src;
+	SDL_FRect m_dst;
 	SDL_Texture *m_texture;
 };
 
