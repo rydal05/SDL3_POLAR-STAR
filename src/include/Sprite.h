@@ -15,6 +15,10 @@ public:
 	void Draw_X(float x);
 	void Draw_Y(float y);
 
+	void Offset_Dst(float, float);
+	void Offset_X(float);
+	void Offset_Y(float);
+
 	void Draw_Siz(float w, float h);
 
 	void Update(double dt);

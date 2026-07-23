@@ -37,6 +37,19 @@ void Sprite::Draw_Y(float y) {
 	this->m_dst.y = y;
 }
 
+void Sprite::Offset_Dst(float x, float y){
+	this->m_dst.x += x;
+	this->m_dst.y += y;
+}
+
+void Sprite::Offset_X(float x){
+	this->m_dst.x += x;
+}
+
+void Sprite::Offset_Y(float y){
+	this->m_dst.y += y;
+}
+
 void Sprite::Draw_Siz(float w, float h) {
 	this->m_dst.w = w;
 	this->m_dst.h = h;
