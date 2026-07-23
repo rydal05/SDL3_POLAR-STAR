@@ -34,17 +34,19 @@ void ActorPlayer::Render() {
 		Hud::getInstance().makeTranslucent();
 	} // bounds for when player is hidden behind UI elements
 
-	if (m_sprite->m_dst.y > GameDefs::WindowHeight * .1f) {
+	if (m_sprite->m_dst.y > GameDefs::WindowHeight * 0.1f) {
 		Hud::getInstance().makeOpaque();
 	}
 
-	m_sprite->m_dst = m_sprite->m_dst; // moved
+	// m_sprite->m_dst = m_sprite->m_dst; // moved // REDUNDANT???
 	m_sprite->Render();
 }
 
 void ActorPlayer::move(float x, float y) { // not movement just explicit placement at a location
-	m_sprite->m_dst.x += GameDefs::PlayerSpeed * x;
-	m_sprite->m_dst.y += GameDefs::PlayerSpeed * y;
+										   // m_sprite->m_dst.x += GameDefs::PlayerSpeed * x;
+										   // m_sprite->m_dst.y += GameDefs::PlayerSpeed * y;
+
+	// completely and utterly useless method also just not even implemented properly
 }
 
 void ActorPlayer::movement(const bool *state, double dt) {
@@ -55,33 +57,33 @@ void ActorPlayer::movement(const bool *state, double dt) {
 			const Uint8 hat = SDL_GetJoystickHat(GameDefs::joystick, i);
 
 			if (hat & SDL_HAT_RIGHT || state[SDL_SCANCODE_RIGHT]) {
-				m_sprite->m_dst.x += static_cast<float>(GameDefs::PlayerSpeed * dt);
+				m_sprite->Offset_X(static_cast<float>(GameDefs::PlayerSpeed * dt));
 			}
 			if (hat & SDL_HAT_LEFT || state[SDL_SCANCODE_LEFT]) {
-				m_sprite->m_dst.x -= static_cast<float>(GameDefs::PlayerSpeed * dt);
+				m_sprite->Offset_X(-static_cast<float>(GameDefs::PlayerSpeed * dt));
 			}
 			if (hat & SDL_HAT_DOWN || state[SDL_SCANCODE_DOWN]) {
-				m_sprite->m_dst.y += static_cast<float>(GameDefs::PlayerSpeed * dt);
+				m_sprite->Offset_Y(static_cast<float>(GameDefs::PlayerSpeed * dt));
 			}
 			if (hat & SDL_HAT_UP || state[SDL_SCANCODE_UP]) {
-				m_sprite->m_dst.y -= static_cast<float>(GameDefs::PlayerSpeed * dt);
+				m_sprite->Offset_Y(-static_cast<float>(GameDefs::PlayerSpeed * dt));
 			}
 		}
 	} else if (GameDefs::joystick == NULL) {
 		if (state[SDL_SCANCODE_RIGHT] || state[SDL_SCANCODE_D]) {
-			m_sprite->m_dst.x += static_cast<float>(GameDefs::PlayerSpeed * dt);
+			m_sprite->Offset_X(static_cast<float>(GameDefs::PlayerSpeed * dt));
 			// SDL_Log("[ACTORPLAYER] Input received");
 		}
 		if (state[SDL_SCANCODE_LEFT] || state[SDL_SCANCODE_A]) {
-			m_sprite->m_dst.x -= static_cast<float>(GameDefs::PlayerSpeed * dt);
+			m_sprite->Offset_X(-static_cast<float>(GameDefs::PlayerSpeed * dt));
 			// SDL_Log("[ACTORPLAYER] Input received");
 		}
 		if (state[SDL_SCANCODE_DOWN] || state[SDL_SCANCODE_S]) {
-			m_sprite->m_dst.y += static_cast<float>(GameDefs::PlayerSpeed * dt);
+			m_sprite->Offset_Y(static_cast<float>(GameDefs::PlayerSpeed * dt));
 			// SDL_Log("[ACTORPLAYER] Input received");
 		}
 		if (state[SDL_SCANCODE_UP] || state[SDL_SCANCODE_W]) {
-			m_sprite->m_dst.y -= static_cast<float>(GameDefs::PlayerSpeed * dt);
+			m_sprite->Offset_Y(-static_cast<float>(GameDefs::PlayerSpeed * dt));
 			// SDL_Log("[ACTORPLAYER] Input received");
 		}
 	}
