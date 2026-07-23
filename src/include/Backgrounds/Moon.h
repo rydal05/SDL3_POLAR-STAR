@@ -47,26 +47,26 @@ public:
 
 		if (x < LB) direction = true;
 
-		SDL_Log("XY POS %.2f %.2f", x, y);
-		moonSprite->Draw_Dst(x / GameDefs::ScaleFactor, y / GameDefs::ScaleFactor);
+		// SDL_Log("XY POS %.2f %.2f", x, y);
+		moonSprite->Draw_Dst(x, y);
 	}
 	void Render() override {
 		moonSprite->Render();
 	}
 
 private:
-	float baseSpeed = .001f * GameDefs::ScaleFactor;
+	float baseSpeed = .001f;
 	bool direction = true;
 	
     
-	float offsetX = 250.0f * GameDefs::ScaleFactor;
-	float offsetY = 25.0f * GameDefs::ScaleFactor;
+	float offsetX = 250.0f;
+	float offsetY = 25.0f;
 	
 	float y = offsetY;
     float x = offsetX;
     
-    float UB = offsetX + (25.0f * GameDefs::ScaleFactor);
-	float LB = offsetX - (25.0f * GameDefs::ScaleFactor);
+    float UB = offsetX + (25.0f);
+	float LB = offsetX - (25.0f);
 
 	Sprite *moonSprite = new Sprite("assets/img/moon_stars_polarstar.bmp");
 };

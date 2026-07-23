@@ -41,7 +41,7 @@ public:
 	}
 
 private:
-	float maxSpeed = GameDefs::ScaleFactor;
+	float maxSpeed = 1.0f;
 	std::vector<float> star_speeds = {0.01f * maxSpeed, 0.02f * maxSpeed, 0.03f * maxSpeed, 0.05f * maxSpeed};
 	std::vector<float> star_sizes = {2.0f, 3.0f, 4.0f, 5.0f};
 	std::vector<std::unique_ptr<Star>> starsBG;

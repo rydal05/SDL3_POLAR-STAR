@@ -4,11 +4,9 @@
 #include <SDL3/SDL.h>
 
 namespace GameDefs {
-constexpr float ScaleFactor = 2.0f;
-	
-constexpr float PlayerSpeed = 0.125f * ScaleFactor;
-constexpr int WindowWidth = 320 * ScaleFactor;
-constexpr int WindowHeight = 240 * ScaleFactor;
+constexpr float PlayerSpeed = 0.125f;
+constexpr int WindowWidth = 320;
+constexpr int WindowHeight = 240;
 
 enum class GameMode {
 	GAME,

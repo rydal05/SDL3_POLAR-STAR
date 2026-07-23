@@ -21,6 +21,7 @@ public:
 		}
 
 		SDL_SetRenderLogicalPresentation(GameDefs::g_renderer, w, h, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+		SDL_SetWindowResizable(GameDefs::g_window, true);
 	}
 
 private:

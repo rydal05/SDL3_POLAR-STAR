@@ -92,7 +92,7 @@ public:
 	};
 
 private:
-	float maxSpeed = GameDefs::ScaleFactor;
+	float maxSpeed = 1.0f;
 
 	std::vector<std::unique_ptr<Sprite>> cloudsBG;
 	std::vector<float> cloud_speeds = {0.1f * maxSpeed, 0.2f * maxSpeed, 0.3f * maxSpeed, 0.5f * maxSpeed};

@@ -26,8 +26,8 @@ public:
 	void Update(double dt) override {
 		this->getSprite()->m_dst.x -= speed * dt;
 		if (this->getSprite()->m_dst.x < 0.0f) {
-			this->getSprite()->m_dst.x = GameDefs::WindowWidth;
-			this->getSprite()->m_dst.y = float(rand() % 200);
+
+			this->getSprite()->Draw_Dst(320.0f, float(rand() % 200));
 		}
 	}
 

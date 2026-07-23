@@ -5,7 +5,7 @@
 #include "Managers/ResourceManager.h"
 #include "GameDefs.h"
 
-AnimatedSprite::AnimatedSprite(std::string filepath, int frames){
+AnimatedSprite::AnimatedSprite(const char* filepath, int frames){
     char *new_filepath = NULL;
 	SDL_asprintf(&new_filepath, "%s%s", SDL_GetBasePath(), filepath);
 	SDL_Surface *retrieveSurface = ResourceManager::GetInstance().GetSurface(new_filepath);
