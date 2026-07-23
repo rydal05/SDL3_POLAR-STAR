@@ -19,14 +19,6 @@ void ActorPlayer::Update(double dt) {
 	const bool *state = SDL_GetKeyboardState(nullptr);
 	movement(state, dt);
 	collision(state);
-
-	/*
-	1. Handle inputs
-	2. Handle external interactions (pickups, contact with bullets, border collisions, etc)
-	3. Hud updates
-	...
-	n-1. Pair sprite to pos
-	*/
 }
 
 void ActorPlayer::Render() {
