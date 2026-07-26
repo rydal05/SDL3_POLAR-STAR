@@ -4,7 +4,7 @@
 #include "Bullet.h"
 #include "Entity.h"
 #include "GameDefs.h"
-#include "Player.h"
+#include "ActorPlayer.h"
 
 #include <mutex>
 #include <vector>
@@ -42,7 +42,7 @@ public:
 		}
 	}
 
-	void insert_player(Player *plr) {
+	void insert_player(ActorPlayer *plr) {
 		players.push_back(plr);
 	}
 
@@ -59,7 +59,7 @@ private:
 	Queue(Queue const &);
 	Queue operator=(Queue const &);
 
-	std::vector<Player *> players;
+	std::vector<ActorPlayer *> players;
 	std::vector<Entity *> entities;
 	std::vector<Bullet *> bullets;
 };

@@ -9,7 +9,7 @@
 #include <SDL3/SDL_scancode.h>
 #include <cstdint>
 
-class ActorPlayer : public Player {
+class ActorPlayer : public Entity {
 public:
 	ActorPlayer();
 	void Update(double dt) override;
