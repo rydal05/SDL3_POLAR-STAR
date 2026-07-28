@@ -20,15 +20,22 @@ public:
 
 	void movement(const bool *state, double dt);
 	void collision(const bool *state);
-	void swapWeapon(const bool *state);
+	void swapWeaponLeft(const bool *state);
+	void swapWeaponRight(const bool *state);
+	
 	void shoot(const bool *state);
+	void tapFire();
+	void chargeFire();
+	void rapidFire();
+
 
 protected:
 	SDL_FPoint coreOffset{8.0f,
 						  10.0f};
 	SDL_Gamepad *m_gamepad;
 	Sprite *m_sprite;
-	WeaponsList weapons[LIST_SIZE];
+	WeaponsList weapons[WEAPON_LIST_SIZE];
+
 };
 
 #endif
