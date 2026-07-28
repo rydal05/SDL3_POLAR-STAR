@@ -19,7 +19,7 @@ public:
 		moonSprite->Draw_Siz(34.0f, 34.0f);
 	}
 	~Moon() {
-		SDL_free(moonSprite);
+		SDL_free(this->moonSprite);
 	}
 
 	void Update(double dt) override {
