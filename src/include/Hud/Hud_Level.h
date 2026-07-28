@@ -7,7 +7,7 @@
 
 class Level : public Entity {
 public:
-	Level() : m_sprite(new Sprite("assets/img/stg_story_ui.bmp")) {
+	Level() : Entity("assets/img/stg_story_ui.bmp") {
 		m_sprite->Draw_Src(0, 8, 64, 16);
 		m_sprite->Draw_Dst(8, 2);
 		m_sprite->Draw_Siz(64, 16);
@@ -17,7 +17,6 @@ public:
 	void Render() override { m_sprite->Render(); }
 
 private:
-	Sprite *m_sprite;
 
     //need to define rendering for XP bar size
     //need to define slot for Level Number Placement

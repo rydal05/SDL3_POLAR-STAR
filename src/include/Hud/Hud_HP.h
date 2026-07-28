@@ -7,7 +7,7 @@
 
 class HP : public Entity {
 public:
-	HP() : m_sprite(new Sprite("assets/img/stg_story_ui.bmp")) {
+	HP() : Entity("assets/img/stg_story_ui.bmp") {
 		m_sprite->Draw_Src(0, 24, 64, 8);
 		m_sprite->Draw_Dst(8, 18);
 		m_sprite->Draw_Siz(64, 8);
@@ -17,7 +17,6 @@ public:
 	void Render() override { m_sprite->Render(); }
 
 private:
-	Sprite *m_sprite;
 };
 
 #endif

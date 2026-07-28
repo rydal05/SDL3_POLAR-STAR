@@ -11,15 +11,15 @@
 
 class Moon : public Entity {
 public:
-	Moon() {
-		moonSprite->Draw_Src(10.0f, 0.0f, 34.0f, 34.0f);
+	Moon() : Entity("assets/img/moon_stars_polarstar.bmp") {
+		m_sprite->Draw_Src(10.0f, 0.0f, 34.0f, 34.0f);
 		// pos 10 0
 		// size 34 x 34
 		// moon->Draw_Dst(0.0f, 0.0f);
-		moonSprite->Draw_Siz(34.0f, 34.0f);
+		m_sprite->Draw_Siz(34.0f, 34.0f);
 	}
 	~Moon() {
-		SDL_free(this->moonSprite);
+		SDL_free(this->m_sprite);
 	}
 
 	void Update(double dt) override {
@@ -48,10 +48,10 @@ public:
 		if (x < LB) direction = true;
 
 		// SDL_Log("XY POS %.2f %.2f", x, y);
-		moonSprite->Draw_Dst(x, y);
+		m_sprite->Draw_Dst(x, y);
 	}
 	void Render() override {
-		moonSprite->Render();
+		m_sprite->Render();
 	}
 
 private:
@@ -67,8 +67,6 @@ private:
     
     float UB = offsetX + (25.0f);
 	float LB = offsetX - (25.0f);
-
-	Sprite *moonSprite = new Sprite("assets/img/moon_stars_polarstar.bmp");
 };
 
 #endif

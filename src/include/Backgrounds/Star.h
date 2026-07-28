@@ -9,8 +9,7 @@
 
 class Star : public Entity {
 public:
-	Star() {
-		m_sprite = new Sprite("assets/img/moon_stars_polarstar.bmp");
+	Star() : Entity("assets/img/moon_stars_polarstar.bmp") {
 		float randY = float(rand() % (GameDefs::WindowHeight / 3));
 		float randX = float(rand() % GameDefs::WindowWidth);
 
@@ -44,7 +43,6 @@ public:
 	}
 
 private:
-	Sprite *m_sprite;
 	float speed = 0.0f;
 };
 

@@ -33,7 +33,6 @@ protected:
 	SDL_FPoint coreOffset{8.0f,
 						  10.0f};
 	SDL_Gamepad *m_gamepad;
-	Sprite *m_sprite;
 	WeaponsList weapons[WEAPON_LIST_SIZE];
 
 };
