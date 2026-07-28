@@ -8,7 +8,9 @@
 #include <memory> // TODO: probably should also be made singleton
 #include <vector>
 
-class Stars : public Entity {
+//TODO: see comment made in clouds.h
+
+class Stars {
 public:
 	Stars(int quantity) {
 		for (size_t i = 0; i < quantity; i++) {
@@ -29,12 +31,12 @@ public:
 		}
 	};
 
-	void Update(double dt) override {
+	void Update(double dt) {
 		for (size_t i = 0; i < starsBG.size(); i++) {
 			starsBG[i]->Update(dt);
 		}
 	}
-	void Render() override {
+	void Render() {
 		for (size_t i = 0; i < starsBG.size(); i++) {
 			starsBG[i]->Render();
 		}

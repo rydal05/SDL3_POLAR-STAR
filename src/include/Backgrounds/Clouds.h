@@ -8,7 +8,9 @@
 #include <unordered_map>
 #include <vector> //TODO: needs to be made singleton 
 
-class Clouds : public Entity {
+//TODO: possibly migrate this to an overhead class for collection of entities (factory probably)
+
+class Clouds {
 public:
 	Clouds() {
 		// SDL_Log("Init cloud");
@@ -76,7 +78,7 @@ public:
 		}
 	};
 
-	void Update(double dt) override {
+	void Update(double dt) {
 		for (size_t i = 0; i < cloudsBG.size(); i++) {
 			int x = i / 2;
 			cloudsBG[i]->Offset_X(-(cloud_speeds[x] * dt));
@@ -85,7 +87,7 @@ public:
 		}
 	};
 
-	void Render() override {
+	void Render() {
 		for (size_t i = 0; i < cloudsBG.size(); i++) {
 			cloudsBG[i]->Render();
 		}
