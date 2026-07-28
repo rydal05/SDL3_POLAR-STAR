@@ -1,11 +1,11 @@
 #include "ActorPlayer.h"
 #include "Managers/HudManager.h"
 
-ActorPlayer::ActorPlayer() {
+ActorPlayer::ActorPlayer(const char *filepath) : m_sprite(new Sprite(filepath)) {
 
 	// ensure parity with sprite
 
-	// SDL_Log("[ACTORPLAYER] update finished");
+	SDL_Log("-==Loading Sub Actor==-");
 
 	m_sprite->Draw_Src(0, 0, 16, 16); // TODO: refactor actorplayer to be base class instead nad purge the player class (it does literally nothing) so i can then build up the othercharacter classes and whatever
 	m_sprite->Draw_Dst(320.0f / 2.0f, 240.0f / 2.0f);
@@ -13,6 +13,16 @@ ActorPlayer::ActorPlayer() {
 	m_gamepad = nullptr;
 
 	// SDL_Log("[ACTORPLAYER] successful instantiation");
+}
+
+
+ActorPlayer::ActorPlayer() : m_sprite(new Sprite("assets/img/Polar_Star_Players.bmp")) {
+	SDL_Log("Loaded Actor: ActorPlayer");
+
+	m_sprite->Draw_Src(0, 0, 16, 16); // TODO: refactor actorplayer to be base class instead nad purge the player class (it does literally nothing) so i can then build up the othercharacter classes and whatever
+	m_sprite->Draw_Dst(320.0f / 2.0f, 240.0f / 2.0f);
+	m_sprite->Draw_Siz(16.0f, 16.0f);
+	m_gamepad = nullptr;
 }
 
 void ActorPlayer::Update(double dt) {
