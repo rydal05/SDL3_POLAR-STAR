@@ -29,7 +29,7 @@ public:
 	void makeTranslucent() {
 		if (!visible) return;
 		for (size_t i = 0; i < gameplayElements.size(); i++) {
-			// SDL_SetTextureAlphaMod(gameplayElements[i]->GetTexture(), 128);
+			SDL_SetTextureAlphaMod(gameplayElements[i]->m_GetTexture(), 128);
 		}
 		visible = false;
 	}
@@ -37,7 +37,7 @@ public:
 	void makeOpaque() {
 		if (visible) return;
 		for (size_t i = 0; i < gameplayElements.size(); i++) {
-			// SDL_SetTextureAlphaMod(gameplayElements[i]->GetTexture(), 255);
+			SDL_SetTextureAlphaMod(gameplayElements[i]->m_GetTexture(), 255);
 		}
 		visible = true;
 	}
@@ -53,7 +53,7 @@ public:
 
 	void setTransparency(int trans_num) {
 		for (size_t i = 0; i < gameplayElements.size(); i++) {
-			// SDL_SetTextureAlphaMod(gameplayElements[i]->GetTexture(), trans_num);
+			SDL_SetTextureAlphaMod(gameplayElements[i]->m_GetTexture(), trans_num);
 		}
 	}
 
