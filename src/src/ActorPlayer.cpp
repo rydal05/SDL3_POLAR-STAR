@@ -1,5 +1,6 @@
 #include "ActorPlayer.h"
 #include "Managers/HudManager.h"
+#include <algorithm>
 
 ActorPlayer::ActorPlayer(const char *filepath) : m_sprite(new Sprite(filepath)) {
 
@@ -12,9 +13,10 @@ ActorPlayer::ActorPlayer(const char *filepath) : m_sprite(new Sprite(filepath)) 
 	m_sprite->Draw_Siz(16.0f, 16.0f);
 	m_gamepad = nullptr;
 
+	std::fill_n(weapons, WEAPON_LIST_SIZE, WEAPON_LIST_SIZE);
+
 	// SDL_Log("[ACTORPLAYER] successful instantiation");
 }
-
 
 ActorPlayer::ActorPlayer() : m_sprite(new Sprite("assets/img/Polar_Star_Players.bmp")) {
 	SDL_Log("Loaded Actor: ActorPlayer");
@@ -45,7 +47,7 @@ void ActorPlayer::Render() {
 }
 
 void ActorPlayer::move(float x, float y) {
-	m_sprite->Draw_Dst(x, y); //just a wrapper for player movement
+	m_sprite->Draw_Dst(x, y); // just a wrapper for player movement
 }
 
 void ActorPlayer::movement(const bool *state, double dt) {
@@ -95,8 +97,15 @@ void ActorPlayer::collision(const bool *state) {
 	if (m_sprite->get_X() < 0.0f) m_sprite->Draw_X(0.0f);
 }
 
-void ActorPlayer::swapWeapon(const bool *state) {
+void ActorPlayer::swapWeaponLeft(const bool *state) {
+	//pick new weapon in left direction
+	//pass new weapon & trigger weapon switch animation in gui handler
+}
+
+void ActorPlayer::swapWeaponRight(const bool *state) {
+
 }
 
 void ActorPlayer::shoot(const bool *state) {
+
 }

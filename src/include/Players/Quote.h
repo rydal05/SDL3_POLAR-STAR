@@ -24,6 +24,8 @@ public:
 		m_sprite->Draw_Dst(320.0f / 2.0f, 240.0f / 2.0f);
 		m_sprite->Draw_Siz(16.0f, 16.0f);
 		m_gamepad = nullptr;
+
+        weapons[0] = POLAR;
 	}
 };
 

@@ -16,7 +16,7 @@ enum WeaponsList {
 	BALROG,
 	STAFF,
 
-    LIST_SIZE
+    WEAPON_LIST_SIZE
 };
 
 enum StatsOrder {
@@ -32,7 +32,7 @@ enum StatsOrder {
     STATS_SIZE
 };
 
-// std::int8_t stats[STATS_SIZE][LIST_SIZE] = {
+// std::int8_t stats[STATS_SIZE][WEAPON_LIST_SIZE] = {
 //     1,1,1,1,1,1,1,1,1,1,1,
 //     1,1,1,1,1,1,1,1,1,1,1,
 //     1,1,1,1,1,1,1,1,1,1,1,
