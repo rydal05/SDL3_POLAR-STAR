@@ -12,8 +12,10 @@
 class ActorPlayer : public Entity {
 public:
 	ActorPlayer();
-	void Update(double dt) override;
-	void Render() override;
+	explicit ActorPlayer(const char* filepath);
+
+	virtual void Update(double dt) override;
+	virtual void Render() override;
 	void move(float x, float y);
 
 	void movement(const bool *state, double dt);
@@ -22,12 +24,11 @@ public:
 	void shoot(const bool *state);
 
 protected:
-	Sprite *m_sprite = new Sprite("assets/img/stg_story.bmp");
-	SDL_Gamepad *m_gamepad;
 	SDL_FPoint coreOffset{8.0f,
 						  10.0f};
-
-	// WeaponsList weapons[POLAR];
+	SDL_Gamepad *m_gamepad;
+	Sprite *m_sprite;
+	WeaponsList weapons[LIST_SIZE];
 };
 
 #endif
