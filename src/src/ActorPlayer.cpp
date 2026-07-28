@@ -2,7 +2,7 @@
 #include "Managers/HudManager.h"
 #include <algorithm>
 
-ActorPlayer::ActorPlayer(const char *filepath) : m_sprite(new Sprite(filepath)) {
+ActorPlayer::ActorPlayer(const char *filepath) : Entity(filepath) {
 
 	// ensure parity with sprite
 
@@ -18,7 +18,7 @@ ActorPlayer::ActorPlayer(const char *filepath) : m_sprite(new Sprite(filepath)) 
 	// SDL_Log("[ACTORPLAYER] successful instantiation");
 }
 
-ActorPlayer::ActorPlayer() : m_sprite(new Sprite("assets/img/Polar_Star_Players.bmp")) {
+ActorPlayer::ActorPlayer() : Entity("assets/img/Polar_Star_Players.bmp") {
 	SDL_Log("Loaded Actor: ActorPlayer");
 
 	m_sprite->Draw_Src(0, 0, 16, 16); // TODO: refactor actorplayer to be base class instead nad purge the player class (it does literally nothing) so i can then build up the othercharacter classes and whatever
