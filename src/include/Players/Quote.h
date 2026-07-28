@@ -8,18 +8,23 @@ polar star, missile launcher, bubbline, snake (sidegrade from polar star), spur 
 
 */
 
+#ifndef QUOTE_H
+#define QUOTE_H
+
 #include "ActorPlayer.h"
 #include "Weapons/WeaponDefs.h"
 
 class Quote : public ActorPlayer {
 public:
-	Quote();
-    ~Quote();
+	Quote(): ActorPlayer("assets/img/Polar_Star_Players.bmp") {
+        SDL_Log("Loaded Actor: Quote");
+		// weapons[0] = POLAR;
 
-
-
-private:
-    Sprite *m_sprite = new Sprite("assets/img/stg_story.bmp");
-
-    
+		m_sprite->Draw_Src(0, 0, 16, 16);
+		m_sprite->Draw_Dst(320.0f / 2.0f, 240.0f / 2.0f);
+		m_sprite->Draw_Siz(16.0f, 16.0f);
+		m_gamepad = nullptr;
+	}
 };
+
+#endif
