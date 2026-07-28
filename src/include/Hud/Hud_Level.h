@@ -1,16 +1,16 @@
-#ifndef HP_H
-#define HP_H
+#ifndef LEVEL_H
+#define LEVEL_H
 
 #include "Entity.h"
 #include "Sprite.h"
 #include "SDL3/SDL.h"
 
-class HP : public Entity {
+class Level : public Entity {
 public:
-	HP() : m_sprite(new Sprite("assets/img/stg_story_ui.bmp")) {
-		m_sprite->Draw_Src(0, 24, 64, 8);
-		m_sprite->Draw_Dst(8, 18);
-		m_sprite->Draw_Siz(64, 8);
+	Level() : m_sprite(new Sprite("assets/img/stg_story_ui.bmp")) {
+		m_sprite->Draw_Src(0, 8, 64, 16);
+		m_sprite->Draw_Dst(8, 2);
+		m_sprite->Draw_Siz(64, 16);
 	}
 
     void Update(double dt) override { SDL_Log("HELLO THIS IS AN OVERRIDE");  }; //this function will get called on HP change (not explicitly gain or loss as I might have some custom shenanigans implemented for funny HP realted things down the line)
@@ -18,6 +18,10 @@ public:
 
 private:
 	Sprite *m_sprite;
+
+    //need to define rendering for XP bar size
+    //need to define slot for Level Number Placement
+    //need separate definitions for when level bar is maxed out
 };
 
 #endif
