@@ -2,9 +2,9 @@
 #define ACTORPLAYER_H
 
 #include "GameDefs.h"
-#include "Player.h"
 #include "Sprite.h"
 #include "Weapons/WeaponDefs.h"
+#include "Entity.h"
 
 #include <SDL3/SDL_scancode.h>
 #include <cstdint>
