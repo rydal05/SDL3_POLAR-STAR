@@ -2,7 +2,7 @@
 #define LOOP_QUEUES_H
 
 #include "Bullet.h"
-#include "Entity.h"
+#include "superclasses/Entity.h"
 #include "GameDefs.h"
 #include "ActorPlayer.h"
 

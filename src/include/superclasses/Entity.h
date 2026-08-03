@@ -1,7 +1,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include "Sprite.h"
+#include "superclasses/Sprite.h"
 
 class Entity {
 public:

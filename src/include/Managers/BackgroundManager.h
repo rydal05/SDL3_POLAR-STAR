@@ -9,7 +9,7 @@
 
 #include "GameDefs.h"
 #include "Managers/ResourceManager.h"
-#include "Sprite.h"
+#include "superclasses/Sprite.h"
 
 #include "Backgrounds/Clouds.h"
 #include "Backgrounds/Moon.h"

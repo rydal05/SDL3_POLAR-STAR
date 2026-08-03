@@ -1,9 +1,9 @@
 #ifndef CLOUD_H
 #define CLOUD_H
 
-#include "Entity.h"
+#include "superclasses/Entity.h"
 #include "GameDefs.h"
-#include "Sprite.h"
+#include "superclasses/Sprite.h"
 #include <memory>
 #include <unordered_map>
 #include <vector> //TODO: needs to be made singleton 

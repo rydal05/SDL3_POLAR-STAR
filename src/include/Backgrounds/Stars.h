@@ -1,9 +1,9 @@
 #ifndef STARS_H
 #define STARS_H
 
-#include "Entity.h"
+#include "superclasses/Entity.h"
 #include "GameDefs.h"
-#include "Sprite.h"
+#include "superclasses/Sprite.h"
 #include "Star.h"
 #include <memory> // TODO: probably should also be made singleton
 #include <vector>

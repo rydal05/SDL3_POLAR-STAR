@@ -1,8 +1,8 @@
 // #ifndef WEAPON_ICON_H
 // #define WEAPON_ICON_H
 
-// #include "Entity.h"
-// #include "Sprite.h"
+// #include "superclasses/Entity.h"
+// #include "superclasses/Sprite.h"
 // #include "SDL3/SDL.h"
 
 // class WeaponIcon : public Entity {

@@ -1,7 +1,7 @@
 #include <SDL3/SDL.h>
 #include <string>
 
-#include "Sprite.h"
+#include "superclasses/Sprite.h"
 #include "Managers/ResourceManager.h"
 #include "GameDefs.h"
 

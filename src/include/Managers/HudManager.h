@@ -2,7 +2,7 @@
 #define HUD_MANAGER_H
 
 #include "GameDefs.h"
-#include "Sprite.h"
+#include "superclasses/Sprite.h"
 
 #include <SDL3/SDL.h>
 #include <memory>

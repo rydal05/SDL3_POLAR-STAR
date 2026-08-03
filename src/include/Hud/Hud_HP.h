@@ -1,8 +1,8 @@
 #ifndef HP_H
 #define HP_H
 
-#include "Entity.h"
-#include "Sprite.h"
+#include "superclasses/Entity.h"
+#include "superclasses/Sprite.h"
 #include "SDL3/SDL.h"
 
 class HP : public Entity {

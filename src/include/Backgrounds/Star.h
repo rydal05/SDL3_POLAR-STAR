@@ -1,9 +1,9 @@
 #ifndef STAR_H
 #define STAR_H
 
-#include "Entity.h"
+#include "superclasses/Entity.h"
 #include "GameDefs.h"
-#include "Sprite.h"
+#include "superclasses/Sprite.h"
 #include <memory>
 #include <vector>
 

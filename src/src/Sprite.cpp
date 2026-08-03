@@ -3,7 +3,7 @@
 
 #include "GameDefs.h"
 #include "Managers/ResourceManager.h"
-#include "Sprite.h"
+#include "superclasses/Sprite.h"
 
 Sprite::Sprite(const char *filepath) {
 	char *new_filepath = NULL;

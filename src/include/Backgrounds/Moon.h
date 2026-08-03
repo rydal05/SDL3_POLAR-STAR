@@ -5,9 +5,9 @@
 #include <cstdlib>
 #include <memory>
 
-#include "Entity.h"
+#include "superclasses/Entity.h"
 #include "GameDefs.h" //TODO: needs to be made singleton and proabbly more acurately named as a bg asset manager
-#include "Sprite.h"
+#include "superclasses/Sprite.h"
 
 class Moon : public Entity {
 public:

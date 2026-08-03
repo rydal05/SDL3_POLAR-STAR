@@ -2,7 +2,7 @@
 #define SPRITEMANAGERS_H
 
 #include "Managers/ResourceManager.h"
-#include "Sprite.h"
+#include "superclasses/Sprite.h"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_render.h>
 #include <memory>
