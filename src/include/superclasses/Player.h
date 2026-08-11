@@ -16,10 +16,13 @@ public:
 
 	virtual void Update(double dt) override;
 	virtual void Render() override;
+	
 	void move(float x, float y);
-
 	void movement(const bool *state, double dt);
+	void inputs(const bool *state, double dt);
+
 	void collision(const bool *state);
+
 	void swapWeaponLeft(const bool *state);
 	void swapWeaponRight(const bool *state);
 	
@@ -30,8 +33,7 @@ public:
 
 
 protected:
-	SDL_FPoint coreOffset{8.0f,
-						  10.0f};
+	SDL_FPoint coreOffset{8.0f, 10.0f};
 	SDL_Gamepad *m_gamepad;
 	WeaponsList weapons[WEAPON_LIST_SIZE];
 
