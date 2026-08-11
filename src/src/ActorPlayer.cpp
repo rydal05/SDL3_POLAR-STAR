@@ -1,5 +1,5 @@
-#include "superclasses/Player.h"
 #include "Managers/HudManager.h"
+#include "superclasses/Player.h"
 #include <algorithm>
 
 ActorPlayer::ActorPlayer(const char *filepath) : Entity(filepath) {
@@ -29,7 +29,7 @@ ActorPlayer::ActorPlayer() : Entity("assets/img/Polar_Star_Players.bmp") {
 
 void ActorPlayer::Update(double dt) {
 	const bool *state = SDL_GetKeyboardState(nullptr);
-	movement(state, dt);
+	inputs(state, dt);
 	collision(state);
 }
 
@@ -48,6 +48,14 @@ void ActorPlayer::Render() {
 
 void ActorPlayer::move(float x, float y) {
 	m_sprite->Draw_Dst(x, y); // just a wrapper for player movement
+}
+
+void ActorPlayer::inputs(const bool *state, double dt) {
+	if (state[SDL_SCANCODE_X]) {
+		SDL_Log("P pressed");
+	}
+
+	movement(state, dt);
 }
 
 void ActorPlayer::movement(const bool *state, double dt) {
@@ -98,14 +106,12 @@ void ActorPlayer::collision(const bool *state) {
 }
 
 void ActorPlayer::swapWeaponLeft(const bool *state) {
-	//pick new weapon in left direction
-	//pass new weapon & trigger weapon switch animation in gui handler
+	// pick new weapon in left direction
+	// pass new weapon & trigger weapon switch animation in gui handler
 }
 
 void ActorPlayer::swapWeaponRight(const bool *state) {
-
 }
 
 void ActorPlayer::shoot(const bool *state) {
-
 }
