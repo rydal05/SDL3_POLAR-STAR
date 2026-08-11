@@ -11,7 +11,7 @@
 #include "Managers/SDLApplication.h"
 
 #include "GameDefs.h"
-#include "Players/ActorPlayer.h"
+#include "superclasses/Player.h"
 
 #include "Players/Quote.h"
 #include "Players/Curly.h"

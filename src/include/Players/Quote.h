@@ -11,7 +11,7 @@ polar star, missile launcher, bubbline, snake (sidegrade from polar star), spur 
 #ifndef QUOTE_H
 #define QUOTE_H
 
-#include "ActorPlayer.h"
+#include "superclasses/Player.h"
 #include "Weapons/WeaponDefs.h"
 
 class Quote : public ActorPlayer {

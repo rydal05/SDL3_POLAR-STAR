@@ -1,4 +1,4 @@
-#include "ActorPlayer.h"
+#include "superclasses/Player.h"
 #include "Managers/HudManager.h"
 #include <algorithm>
 

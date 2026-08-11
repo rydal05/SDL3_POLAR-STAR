@@ -11,7 +11,7 @@ bomb: balrog throw
 #ifndef MISERY_H
 #define MISERY_H
 
-#include "ActorPlayer.h"
+#include "superclasses/Player.h"
 #include "Weapons/WeaponDefs.h"
 
 class Misery : public ActorPlayer {
