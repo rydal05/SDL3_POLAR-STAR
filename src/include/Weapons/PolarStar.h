@@ -8,6 +8,11 @@ public:
 	virtual void Update(double dt) = 0;
 	virtual void Render() = 0;
 	virtual ~PolarStar() {}
+
+private:
+	int ammo;
+	float fireRate;
+
 };
 
 #endif
