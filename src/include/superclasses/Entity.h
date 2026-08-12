@@ -13,6 +13,10 @@ public:
 		return m_sprite->GetTexture();
 	}
 
+	Sprite *getSprite() {
+		return this->m_sprite;
+	}
+
 protected:
 	Entity(const char* path) : m_sprite(new Sprite(path)) {}
 	Sprite *m_sprite;
