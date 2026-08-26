@@ -36,6 +36,7 @@ protected:
 	SDL_Gamepad *m_gamepad;
 	int weapons[WEAPON_LIST_SIZE] = {0};
 	
+	int chargeLevel;
 	bool held;
 	std::uint16_t heldFrames;
 	std::uint8_t weaponIDX;
