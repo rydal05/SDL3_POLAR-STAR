@@ -64,13 +64,17 @@ void ActorPlayer::inputs(const bool *state, double dt) {
 				SDL_Log("Level 2 CHARGED");
 			}
 		} else { // otherwise reset held state
+			SDL_Log("INPUT RELEASED");
+			//fire corresponding shot
+			SDL_Log("FIRED %d at LEVEL %d", weaponIDX, weapons[weaponIDX]);
+			//reset weapon state
 			held = false;
 			heldFrames = 0;
 		}
 	} else if (state[SDL_SCANCODE_X]) { // continue if we werent holding an input over from previous frame
 		held = true;
 		heldFrames += 1;
-		SDL_Log("SHOOT BUTTON TAPPED");
+		SDL_Log("INPUT PRESSED");
 		// press shoot -> check gun equipped -> derive bullet type from that -> spawn bullet (add to queue)
 	}
 

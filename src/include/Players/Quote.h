@@ -24,7 +24,8 @@ public:
 		m_sprite->Draw_Siz(16.0f, 16.0f);
 		m_gamepad = nullptr;
 
-        weapons[POLAR] = 1;
+        weapons[POLAR] = 3;//add default weapon to list (w/level)
+		weaponIDX = POLAR; // set weapon to that 
 	}
 };
 
