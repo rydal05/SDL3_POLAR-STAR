@@ -11,7 +11,6 @@ machinegun, missile launcher, fireball, bubbline, nemesis
 #define CURLY_H
 
 #include "superclasses/Player.h"
-#include "Weapons/WeaponDefs.h"
 
 class Curly : public ActorPlayer {
 public:
