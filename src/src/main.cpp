@@ -37,10 +37,10 @@ int main(int argc, char *argv[]) {
 
 	double deltaTime = 0.0;
 	// ActorPlayer *player = new ActorPlayer();
-	// Quote *player = new Quote();
+	Quote *player = new Quote();
 	// Misery *player = new Misery();
 	// King *player = new King();
-	Curly *player = new Curly();
+	// Curly *player = new Curly();
 	
 	Queue::getInstance().insert_player(player); // TODO: make constructor automatically insert self into associated queue
 	const bool *keebState = SDL_GetKeyboardState(NULL);
