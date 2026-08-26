@@ -3,6 +3,7 @@
 
 #include <GameDefs.h>
 #include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
 // TODO: conversion to singleton interface to decouple from GameDefs.h | 7/3/2026
 class SDLApplication {
 public:
@@ -22,6 +23,12 @@ public:
 
 		SDL_SetRenderLogicalPresentation(GameDefs::g_renderer, w, h, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 		SDL_SetWindowResizable(GameDefs::g_window, true);
+
+		SDL_Surface* icon = IMG_Load("assets/icon.png");
+		if (icon){
+			SDL_SetWindowIcon(GameDefs::g_window, icon);
+			SDL_DestroySurface(icon);
+		}
 	}
 
 private:
