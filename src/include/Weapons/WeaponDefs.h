@@ -3,6 +3,8 @@
 
 #include <cstdint>
 
+
+
 enum WeaponsList {
 	POLAR,
 	MISSILE,
@@ -32,6 +34,6 @@ enum StatsOrder {
     STATS_SIZE
 };
 
-constexpr std::int8_t stats[STATS_SIZE][WEAPON_LIST_SIZE] = {1};
+inline std::int8_t stats[STATS_SIZE][WEAPON_LIST_SIZE] = {1};
 
 #endif
