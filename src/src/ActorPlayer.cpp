@@ -52,7 +52,9 @@ void ActorPlayer::move(float x, float y) {
 
 void ActorPlayer::inputs(const bool *state, double dt) {
 	if (state[SDL_SCANCODE_X]) {
-		SDL_Log("P pressed");
+		SDL_Log("SHOOT BUTTON PRESSED");
+		// press shoot -> check gun equipped -> derive bullet type from that -> spawn bullet (add to queue) 
+		
 	}
 
 	movement(state, dt);
