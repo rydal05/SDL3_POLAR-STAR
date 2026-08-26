@@ -35,7 +35,7 @@ public:
 protected:
 	SDL_FPoint coreOffset{8.0f, 10.0f};
 	SDL_Gamepad *m_gamepad;
-	WeaponsList weapons[WEAPON_LIST_SIZE];
+	int weapons[WEAPON_LIST_SIZE] = {0};
 
 };
 
