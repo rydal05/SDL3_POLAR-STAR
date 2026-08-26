@@ -32,6 +32,6 @@ enum StatsOrder {
     STATS_SIZE
 };
 
-std::int8_t stats[STATS_SIZE][WEAPON_LIST_SIZE] = {1};
+constexpr std::int8_t stats[STATS_SIZE][WEAPON_LIST_SIZE] = {1};
 
 #endif
