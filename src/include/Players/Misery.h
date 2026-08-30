@@ -24,7 +24,7 @@ public:
 		m_sprite->Draw_Siz(16.0f, 16.0f);
 		m_gamepad = nullptr;
 
-        weapons[0] = STAFF;
+        // weapons[0] = STAFF;
 	}
 };
 
