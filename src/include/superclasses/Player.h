@@ -5,6 +5,8 @@
 #include "Weapons/WeaponDefs.h"
 #include "superclasses/Entity.h"
 #include "superclasses/Sprite.h"
+#include "superclasses/Weapon.h"
+#include "superclasses/Bullet.h"
 
 #include <SDL3/SDL_scancode.h>
 #include <cstdint>
@@ -34,12 +36,13 @@ public:
 protected:
 	SDL_FPoint coreOffset{8.0f, 10.0f};
 	SDL_Gamepad *m_gamepad;
-	int weapons[WEAPON_LIST_SIZE] = {0};
+	Weapon *arsenal[WEAPON_LIST_SIZE] = {NULL}; //weapons are now a dedicated type of memory
 	
 	int chargeLevel;
 	bool held;
 	std::uint16_t heldFrames;
 	std::uint8_t weaponIDX;
+	Bullet *bulletArray = NULL; //probbaly converting this to a vector
 };
 
 #endif

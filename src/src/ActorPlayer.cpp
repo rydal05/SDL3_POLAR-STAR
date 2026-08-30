@@ -15,8 +15,6 @@ ActorPlayer::ActorPlayer(const char *filepath) : Entity(filepath) {
 	m_sprite->Draw_Siz(16.0f, 16.0f);
 	m_gamepad = nullptr;
 
-	std::fill_n(weapons, WEAPON_LIST_SIZE, WEAPON_LIST_SIZE);
-
 	// SDL_Log("[ACTORPLAYER] successful instantiation");
 }
 

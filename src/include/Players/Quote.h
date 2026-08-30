@@ -12,6 +12,7 @@ polar star, missile launcher, bubbline, snake (sidegrade from polar star), spur 
 #define QUOTE_H
 
 #include "superclasses/Player.h"
+#include "Weapons/WeaponDefs.h"
 
 class Quote : public ActorPlayer {
 public:
@@ -24,7 +25,7 @@ public:
 		m_sprite->Draw_Siz(16.0f, 16.0f);
 		m_gamepad = nullptr;
 
-        weapons[POLAR] = 3;//add default weapon to list (w/level)
+        arsenal[POLAR] = new PolarStar();//add default weapon to list (w/level)
 		weaponIDX = POLAR; // set weapon to that 
 	}
 };
