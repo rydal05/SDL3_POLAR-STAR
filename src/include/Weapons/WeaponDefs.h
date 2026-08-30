@@ -3,8 +3,7 @@
 
 #include <cstdint>
 
-#include "PolarStar.h"
-
+namespace weapondefs {
 enum WeaponsList {
 	POLAR,
 	MISSILE,
@@ -24,16 +23,13 @@ enum WeaponsList {
 enum StatsOrder {
 	FIRE_RATE,
 	AMMO_MAX,
-	DAMAGE_LEVEL_ONE,
-	DAMAGE_LEVEL_TWO,
-	DAMAGE_LEVEL_THREE,
-	XP_REQUIRED_TWO,
-	XP_REQUIRED_THREE,
+	DAMAGE,
+	XP_REQUIRED,
 	AMMO_PICKUP_SIZE,
 
 	STATS_SIZE
 };
 
-inline std::int8_t stats[STATS_SIZE][WEAPON_LIST_SIZE] = {1};
+} // namespace weapondefs
 
 #endif

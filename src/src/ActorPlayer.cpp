@@ -75,6 +75,7 @@ void ActorPlayer::inputs(const bool *state, double dt) {
 			chargeLevel = 0;
 		}
 	} else if (state[SDL_SCANCODE_X]) { // continue if we werent holding an input over from previous frame
+		arsenal[weaponIDX]->Shoot();
 		held = true;
 		heldFrames += 1;
 		SDL_Log("INPUT PRESSED");
