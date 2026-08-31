@@ -10,9 +10,12 @@ public:
 
 	virtual void Update(double dt) = 0; // update loop will interpret inputs and correspond weapon attack outputs
 	virtual void Render() = 0;
-	virtual void Shoot() = 0;
 	
+	virtual void Shoot() = 0;
+	// virtual void Hold() = 0;
+
 	virtual ~Weapon() {}
+
 
 
 
