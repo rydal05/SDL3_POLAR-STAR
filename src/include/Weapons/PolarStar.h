@@ -20,8 +20,8 @@ public:
 		// do nothing
 	};
 
-	void Shoot() {
-		SDL_Log("FIRED FROM POLARSTAR  UNSPECIFIED SHOT TYPE");
+	void Shoot() { 
+		SDL_Log("FIRED FROM POLARSTAR UNSPECIFIED SHOT TYPE");
 	}
 	private:
 		float stats[(int)(weapondefs::STATS_SIZE)][4] = {0};
