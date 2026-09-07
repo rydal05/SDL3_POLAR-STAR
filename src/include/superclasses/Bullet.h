@@ -17,6 +17,7 @@ class Bullet : public Entity {
 public:
 	Bullet();
 	explicit Bullet(const char *filepath);
+	~Bullet() = default;
 
 	virtual void Update(double dt) = 0;
 	virtual void Render() = 0;

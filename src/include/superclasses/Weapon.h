@@ -14,7 +14,7 @@ public:
 	virtual void Shoot() = 0;
 	// virtual void Hold() = 0;
 
-	virtual ~Weapon() {}
+	virtual ~Weapon() = default;
 
 
 

@@ -9,9 +9,7 @@ Star::Star() : Entity("assets/img/moon_stars_polarstar.bmp") {
 	m_sprite->Draw_Siz(5, 5);
 }
 
-Star::~Star() {
-	SDL_free(this->m_sprite);
-}
+Star::~Star() = default;
 
 void Star::Update(double dt) {
 	this->getSprite()->Offset_X(-speed * dt);

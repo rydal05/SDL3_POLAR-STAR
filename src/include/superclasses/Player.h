@@ -15,6 +15,7 @@ class ActorPlayer : public Entity {
 public:
 	ActorPlayer();
 	explicit ActorPlayer(const char *filepath);
+	~ActorPlayer() = default;
 
 	virtual void Update(double dt) override;
 	virtual void Render() override;

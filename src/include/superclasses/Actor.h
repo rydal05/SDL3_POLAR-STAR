@@ -7,6 +7,7 @@
 class Actor : public Entity{
     Actor();
     explicit Actor(const char *filepath);
+    ~Actor() = default;
 
     protected:
         Actor(const char *path) : Entity(path) {}

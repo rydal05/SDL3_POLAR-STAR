@@ -13,9 +13,7 @@ Sprite::Sprite(const char *filepath) {
 	SDL_free(new_filepath);
 }
 
-Sprite::~Sprite() {
-	SDL_DestroyTexture(m_texture);
-}
+Sprite::~Sprite() = default;
 
 void Sprite::Draw_Src(float x, float y, float w, float h) {
 	this->m_src.x = x;
