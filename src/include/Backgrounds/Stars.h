@@ -1,35 +1,31 @@
 #ifndef STARS_H
 #define STARS_H
 
-#include "superclasses/Entity.h"
 #include "GameDefs.h"
-#include "superclasses/Sprite.h"
 #include "Star.h"
+#include "superclasses/Entity.h"
+#include "superclasses/Sprite.h"
 #include <memory> // TODO: probably should also be made singleton
 #include <vector>
 
-//TODO: see comment made in clouds.h
+// TODO: see comment made in clouds.h
 
 class Stars {
 public:
 	Stars(int quantity) {
+		starsBG.reserve(quantity);
+
 		for (size_t i = 0; i < quantity; i++) {
 			auto star = std::make_unique<Star>();
 
-            int type = rand() % 4;
+			int type = rand() % 4;
 
 			star->setSpeed(star_speeds[type], star_sizes[type]);
 			starsBG.push_back(std::move(star));
 			// SDL_Log("Created star %d at pos %.2f %.2f", i, randX, randY);
 		}
 	}
-	~Stars() {
-		for (size_t i = 0; i < starsBG.size(); i++) {
-			starsBG[i]->~Star();
-			starsBG[i].reset();
-			// SDL_Log("Created star %d at pos %.2f %.2f", i, randX, randY);
-		}
-	};
+	~Stars() = default;
 
 	void Update(double dt) {
 		for (size_t i = 0; i < starsBG.size(); i++) {
