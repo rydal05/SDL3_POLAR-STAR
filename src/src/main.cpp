@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
 	// King *player = new King();
 	// Curly *player = new Curly();
 	
-	Queue::getInstance().insert_player(player); // TODO: make constructor automatically insert self into associated queue
+	// TODO: make constructor automatically insert self into associated queue
 	const bool *keebState = SDL_GetKeyboardState(NULL);
 
 	while (running) {
