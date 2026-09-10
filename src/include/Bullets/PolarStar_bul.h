@@ -10,11 +10,11 @@ class PolarStar_Bul : public Bullet {
         m_sprite->Draw_Siz(16.0f, 16.0f);
     }
 
-    void Update(double dt){
+    virtual void Update(double dt) override {
         m_sprite->Offset_X(X_speed*direction);
     }
 
-    void Render(double dt){
+    virtual void Render() override {
         m_sprite->Render();
     }
     private:
