@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 
 	double deltaTime = 0.0;
 	// ActorPlayer *player = new ActorPlayer();
-	Quote *player = new Quote();
+	
 	// Misery *player = new Misery();
 	// King *player = new King();
 	// Curly *player = new Curly();
@@ -65,6 +65,18 @@ int main(int argc, char *argv[]) {
 					} else if (GameDefs::GAME_STATUS == GameDefs::GameMode::GAME) {
 						GameDefs::GAME_STATUS = GameDefs::GameMode::PAUSED;
 					}
+				}
+				if (event.key.scancode == SDL_SCANCODE_1) {
+					Quote *player = new Quote();
+				}
+				if (event.key.scancode == SDL_SCANCODE_2) {
+					Curly *player = new Curly();
+				}
+				if (event.key.scancode == SDL_SCANCODE_3) {
+					Misery *player = new Misery();
+				}
+				if (event.key.scancode == SDL_SCANCODE_4) {
+					King *player = new King();
 				}
 			} else if (event.type == SDL_EVENT_JOYSTICK_ADDED) {
 				if (GameDefs::joystick == NULL) {
