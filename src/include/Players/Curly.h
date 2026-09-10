@@ -10,7 +10,7 @@ machinegun, missile launcher, fireball, bubbline, nemesis
 #ifndef CURLY_H
 #define CURLY_H
 
-#include "superclasses/Player.h"
+#include "superclasses/ActorPlayer.h"
 
 class Curly : public ActorPlayer {
 public:
@@ -22,6 +22,7 @@ public:
 		m_sprite->Draw_Dst(320.0f / 2.0f, 240.0f / 2.0f);
 		m_sprite->Draw_Siz(16.0f, 16.0f);
 		m_gamepad = nullptr;
+		strcpy(name, "CURLY\0");
 
         // arsenal[0] = new ;
 	}

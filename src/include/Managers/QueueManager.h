@@ -4,7 +4,7 @@
 #include "superclasses/Bullet.h"
 #include "superclasses/Entity.h"
 #include "GameDefs.h"
-#include "superclasses/Player.h"
+#include "superclasses/ActorPlayer.h"
 
 #include <mutex>
 #include <vector>

@@ -13,7 +13,7 @@ Hold: Yamato slash / level 3
 #ifndef KING_H
 #define KING_H
 
-#include "superclasses/Player.h"
+#include "superclasses/ActorPlayer.h"
 
 class King : public ActorPlayer {
 public:
@@ -26,6 +26,7 @@ public:
 		m_sprite->Draw_Siz(16.0f, 16.0f);
 		m_gamepad = nullptr;
 
+		strcpy(name, "KING\0");
         // weapons[0] = SWORD;
 	}
 };

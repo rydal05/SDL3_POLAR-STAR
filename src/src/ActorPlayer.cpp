@@ -1,5 +1,5 @@
 #include "Managers/HudManager.h"
-#include "superclasses/Player.h"
+#include "superclasses/ActorPlayer.h"
 #include <algorithm>
 #include <Managers/QueueManager.h>
 
@@ -84,7 +84,13 @@ void ActorPlayer::inputs(const bool *state, double dt) { //implementation of hol
 		held = true;
 		heldFrames += 1;
 		SDL_Log("INPUT PRESSED");
-		arsenal[weaponIDX]->Shoot();
+
+		if(curwep){
+			curwep->Shoot();
+		} else {
+			printf("%c HAS NO WEAPON\n", this->name);
+		}
+		// arsenal[weaponIDX]->Shoot();
 		// press shoot -> check gun equipped -> derive bullet type from that -> spawn bullet (add to queue)
 	}
 

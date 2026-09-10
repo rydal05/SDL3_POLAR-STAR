@@ -3,6 +3,8 @@
 //im doing this later because i really do not feel like implementing this hahahahahah
 #include "superclasses/Entity.h"
 #include "Bullet.h"
+#include <vector>
+#include <memory>
 
 class Actor : public Entity{
     Actor();
@@ -11,5 +13,5 @@ class Actor : public Entity{
 
     protected:
         Actor(const char *path) : Entity(path) {}
-        Bullet *bulletArray = NULL;
+        
 };

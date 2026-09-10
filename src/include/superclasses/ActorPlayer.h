@@ -37,13 +37,15 @@ public:
 protected:
 	SDL_FPoint coreOffset{8.0f, 10.0f};
 	SDL_Gamepad *m_gamepad;
-	Weapon *arsenal[(int)(weapondefs::WEAPON_LIST_SIZE)] = {NULL}; //weapons are now a dedicated type of memory
+	// Weapon *arsenal[(int)(weapondefs::WEAPON_LIST_SIZE)] = {NULL}; //weapons are now a dedicated type of memory
 	
+	Weapon *curwep = NULL;
+
+	char name[16];
 	int chargeLevel;
 	bool held;
 	std::uint16_t heldFrames;
 	std::uint8_t weaponIDX;
-	Bullet *bulletArray = NULL; //probbaly converting this to a vector
 };
 
 #endif
