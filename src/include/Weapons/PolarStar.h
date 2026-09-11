@@ -1,10 +1,10 @@
 #ifndef POLAR_STAR_H
 #define POLAR_STAR_H
 
+#include "Bullets/PolarStar.h"
 #include "WeaponDefs.h"
 #include "superclasses/Entity.h"
 #include "superclasses/Weapon.h"
-#include "Bullets/PolarStar_bul.h"
 
 #include "Managers/QueueManager.h"
 
@@ -24,14 +24,14 @@ public:
 		// do nothing
 	};
 
-	void Shoot() { 
+	void Shoot() {
 		SDL_Log("FIRED FROM POLARSTAR UNSPECIFIED SHOT TYPE");
 
-		Queue::getInstance().insert_bullets(new PolarStar_Bul(owner->getSprite()->get_dst()));
+		Queue::getInstance().insert_bullets(new Bul_PS(owner->getSprite()->get_dst(), -1, -1));
 	}
 
-	private:
-		float stats[(int)(weapondefs::STATS_SIZE)][4] = {0};
+private:
+	float stats[(int)(weapondefs::STATS_SIZE)][4] = {0};
 };
 
 #endif

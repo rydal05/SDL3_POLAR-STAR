@@ -1,11 +1,9 @@
 #include "superclasses/Bullet.h"
 
-class PolarStar_Bul : public Bullet {
+class Bul_PS : public Bullet {
 public:
-	PolarStar_Bul(SDL_FRect c_dst) : Bullet("assets/img/Polar_Star_Players.bmp") {
+	Bul_PS(SDL_FRect c_dst, int level, int charge) : Bullet("assets/img/Polar_Star_Players.bmp") {
 		SDL_Log("Create bullet");
-
-
 
 		m_sprite->Draw_Src(66, 5, 11, 4);
 		m_sprite->Draw_Dst(c_dst.x, c_dst.y);
@@ -14,7 +12,7 @@ public:
 
 	virtual void Update(double dt) override {
 		m_sprite->Offset_X(X_speed * direction);
-    }
+	}
 
 	virtual void Render() override {
 		m_sprite->Render();

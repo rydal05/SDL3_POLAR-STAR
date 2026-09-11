@@ -1,10 +1,10 @@
 #ifndef LOOP_QUEUES_H
 #define LOOP_QUEUES_H
 
-#include "superclasses/Bullet.h"
-#include "superclasses/Entity.h"
 #include "GameDefs.h"
 #include "superclasses/ActorPlayer.h"
+#include "superclasses/Bullet.h"
+#include "superclasses/Entity.h"
 
 #include <mutex>
 #include <vector>

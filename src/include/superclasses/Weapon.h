@@ -3,7 +3,7 @@
 
 #include "superclasses/Entity.h"
 
-class Weapon : public Sprite { // weapons are a literal sprite class on top of being functional for actual bullet shooting, this just gives us a way to abstract away the physical gun appearance and rendering separate from needing a player sprite for that specific weapon
+class Weapon { // weapons are a literal sprite class on top of being functional for actual bullet shooting, this just gives us a way to abstract away the physical gun appearance and rendering separate from needing a player sprite for that specific weapon
 public:
 	Weapon();
 	explicit Weapon(const char *filepath);

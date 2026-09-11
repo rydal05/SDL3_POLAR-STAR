@@ -67,7 +67,7 @@ private:
 
 	bool visible = true;
 
-	std::vector<Entity*> gameplayElements;
+	std::vector<Entity *> gameplayElements;
 };
 
 #endif
