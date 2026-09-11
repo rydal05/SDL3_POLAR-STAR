@@ -3,10 +3,10 @@
 
 #include "superclasses/Entity.h"
 
-class Weapon { // weapons are a literal sprite class on top of being functional for actual bullet shooting, this just gives us a way to abstract away the physical gun appearance and rendering separate from needing a player sprite for that specific weapon
+class Weapon : public Entity { // weapons are a literal sprite class on top of being functional for actual bullet shooting, this just gives us a way to abstract away the physical gun appearance and rendering separate from needing a player sprite for that specific weapon
 public:
-	Weapon();
-	explicit Weapon(const char *filepath);
+	Weapon() : Entity("assets/img/stg_story_ui.bmp") { SDL_Log("BLANK SLATE WEAPON"); }
+	Weapon(const char *filepath) : Entity(filepath) { SDL_Log("textured weapon"); }
 
 	virtual void Update(double dt) = 0; // update loop will interpret inputs and correspond weapon attack outputs
 	virtual void Render() = 0;
