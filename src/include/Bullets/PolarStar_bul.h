@@ -12,7 +12,7 @@ public:
 
 	virtual void Update(double dt) override {
 		m_sprite->Offset_X(X_speed * direction);
-	}
+    }
 
 	virtual void Render() override {
 		m_sprite->Render();
