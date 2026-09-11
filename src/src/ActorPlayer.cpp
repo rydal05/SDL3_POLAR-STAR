@@ -1,7 +1,7 @@
-#include "Managers/HudManager.h"
 #include "superclasses/ActorPlayer.h"
-#include <algorithm>
+#include "Managers/HudManager.h"
 #include <Managers/QueueManager.h>
+#include <algorithm>
 
 ActorPlayer::ActorPlayer(const char *filepath) : Entity(filepath) {
 	held = false;
@@ -52,13 +52,13 @@ void ActorPlayer::move(float x, float y) {
 	m_sprite->Draw_Dst(x, y); // just a wrapper for player movement
 }
 
-void ActorPlayer::inputs(const bool *state, double dt) { //implementation of holding is passed on to each indiviudal weapon for them to figure it out, this inputs function simply maintains the minimum possible required information to give the weapons to deal with
-	if (held) {						 // check if we held on previous frame
-		if (state[SDL_SCANCODE_X]) { // if still holding increment hold frames by 1
-			heldFrames += 1; //add check to stop counting frames when I hit some NOT arbitrary limit I'll decide later on
-			// arsenal[weaponIDX]->Hold(); //pass in frametime, we'll figure out a solution for charged weapon VFX later
-			//we could also just not do that 
-			// we dont really need whatever 's below we can just pass in the held frametime into the function once it's complete
+void ActorPlayer::inputs(const bool *state, double dt) { // implementation of holding is passed on to each indiviudal weapon for them to figure it out, this inputs function simply maintains the minimum possible required information to give the weapons to deal with
+	if (held) {											 // check if we held on previous frame
+		if (state[SDL_SCANCODE_X]) {					 // if still holding increment hold frames by 1
+			heldFrames += 1;							 // add check to stop counting frames when I hit some NOT arbitrary limit I'll decide later on
+														 // arsenal[weaponIDX]->Hold(); //pass in frametime, we'll figure out a solution for charged weapon VFX later
+														 // we could also just not do that
+														 // we dont really need whatever 's below we can just pass in the held frametime into the function once it's complete
 
 			// SDL_Log("Held for %d frames", heldFrames);
 			// if (heldFrames >= 340) {
@@ -73,9 +73,9 @@ void ActorPlayer::inputs(const bool *state, double dt) { //implementation of hol
 			// }
 		} else { // otherwise reset held state
 			SDL_Log("INPUT RELEASED");
-			//fire corresponding shot
-			// SDL_Log("FIRED %d at LEVEL %d", weaponIDX, chargeLevel);
-			//reset weapon state
+			// fire corresponding shot
+			//  SDL_Log("FIRED %d at LEVEL %d", weaponIDX, chargeLevel);
+			// reset weapon state
 			held = false;
 			heldFrames = 0;
 			chargeLevel = 0;
@@ -85,10 +85,10 @@ void ActorPlayer::inputs(const bool *state, double dt) { //implementation of hol
 		heldFrames += 1;
 		SDL_Log("INPUT PRESSED");
 
-		if(curwep){
+		if (curwep) {
 			curwep->Shoot();
 		} else {
-			printf("%c HAS NO WEAPON\n", this->name);
+			printf("%s HAS NO WEAPON\n", this->name);
 		}
 		// arsenal[weaponIDX]->Shoot();
 		// press shoot -> check gun equipped -> derive bullet type from that -> spawn bullet (add to queue)
