@@ -34,9 +34,9 @@ private:
 
 	bool direction = true;
 
-	Stars *starsManager = NULL;
-	Moon *moonManager = NULL;
-	Clouds *cloudManager = NULL;
+	Stars *starsManager{nullptr};
+	Moon *moonManager{nullptr};
+	Clouds *cloudManager{nullptr};
 
 	enum backgroundTypes {
 		SURFACE,

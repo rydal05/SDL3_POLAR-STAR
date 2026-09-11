@@ -16,10 +16,10 @@ enum class GameMode {
 	SETTINGS,
 };
 
-inline SDL_Window *g_window = nullptr;
-inline SDL_Renderer *g_renderer = nullptr;
+inline SDL_Window *g_window{nullptr};
+inline SDL_Renderer *g_renderer{nullptr};
 inline GameMode GAME_STATUS;
-inline SDL_Joystick *joystick = nullptr;
+inline SDL_Joystick *joystick{nullptr};
 
 constexpr int dead_zone = 8000;
 
