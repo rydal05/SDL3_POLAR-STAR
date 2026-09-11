@@ -8,7 +8,8 @@ Moon::Moon() : Entity("assets/img/moon_stars_polarstar.bmp") {
 	m_sprite->Draw_Siz(34.0f, 34.0f);
 }
 
-Moon::~Moon() = default;
+Moon::~Moon() {
+}
 
 void Moon::Update(double dt) {
 	// y = x whatever whatever function or reverse to accomplish what it is i want here
@@ -42,4 +43,3 @@ void Moon::Update(double dt) {
 void Moon::Render() {
 	m_sprite->Render();
 }
-
