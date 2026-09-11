@@ -27,7 +27,7 @@ public:
 	void Shoot() { 
 		SDL_Log("FIRED FROM POLARSTAR UNSPECIFIED SHOT TYPE");
 
-		Queue::getInstance().insert_bullets(new PolarStar_Bul());
+		Queue::getInstance().insert_bullets(new PolarStar_Bul(owner->getSprite()->get_dst()));
 	}
 
 	private:

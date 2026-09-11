@@ -17,10 +17,8 @@ public:
 		return this->m_sprite;
 	}
 
-	
-
 protected:
-	Entity(const char* path) : m_sprite(new Sprite(path)) {}
+	Entity(const char *path) : m_sprite(new Sprite(path)) {}
 	Sprite *m_sprite;
 };
 

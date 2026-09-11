@@ -2,11 +2,13 @@
 
 class PolarStar_Bul : public Bullet {
 public:
-	PolarStar_Bul() : Bullet("assets/img/Polar_Star_Players.bmp") {
+	PolarStar_Bul(SDL_FRect c_dst) : Bullet("assets/img/Polar_Star_Players.bmp") {
 		SDL_Log("Create bullet");
 
+
+
 		m_sprite->Draw_Src(66, 5, 11, 4);
-		m_sprite->Draw_Dst(320.0f / 2.0f, 240.0f / 2.0f);
+		m_sprite->Draw_Dst(c_dst.x, c_dst.y);
 		m_sprite->Draw_Siz(16.0f, 16.0f);
 	}
 
