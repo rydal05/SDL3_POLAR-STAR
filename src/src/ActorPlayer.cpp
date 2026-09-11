@@ -33,6 +33,7 @@ void ActorPlayer::Update(double dt) {
 	const bool *state = SDL_GetKeyboardState(nullptr);
 	inputs(state, dt);
 	collision(state);
+	curwep->Update(dt);
 }
 
 void ActorPlayer::Render() {
@@ -43,6 +44,8 @@ void ActorPlayer::Render() {
 	if (m_sprite->get_Y() > GameDefs::WindowHeight * 0.1f) {
 		Hud::getInstance().makeOpaque();
 	}
+
+	curwep->Render();
 
 	// m_sprite->m_dst = m_sprite->m_dst; // moved // REDUNDANT???
 	m_sprite->Render();
