@@ -7,7 +7,9 @@ class Entity {
 public:
 	virtual void Update(double dt) = 0;
 	virtual void Render() = 0;
-	virtual ~Entity() = default;
+	virtual ~Entity() {
+		SDL_free(m_sprite);
+	}
 
 	SDL_Texture *m_GetTexture() {
 		return m_sprite->GetTexture();

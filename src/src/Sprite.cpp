@@ -11,9 +11,12 @@ Sprite::Sprite(const char *filepath) {
 	SDL_Surface *retrieveSurface = ResourceManager::GetInstance().GetSurface(new_filepath);
 	m_texture = SDL_CreateTextureFromSurface(GameDefs::g_renderer, retrieveSurface);
 	SDL_free(new_filepath);
+	SDL_Log("WE JUST CREATED SOME NEW SHIT");
 }
 
-Sprite::~Sprite() = default;
+Sprite::~Sprite() {
+	SDL_free(m_texture);
+}
 
 void Sprite::Draw_Src(float x, float y, float w, float h) {
 	this->m_src.x = x;

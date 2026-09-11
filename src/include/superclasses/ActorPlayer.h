@@ -36,9 +36,9 @@ public:
 
 protected:
 	SDL_FPoint coreOffset{8.0f, 10.0f};
-	SDL_Gamepad *m_gamepad;
+	SDL_Gamepad *m_gamepad{NULL};
 	Weapon *arsenal[(int)(weapondefs::WEAPON_LIST_SIZE)] = {NULL}; // weapons are now a dedicated type of memory
-	Weapon *curwep = NULL;
+	Weapon *curwep{NULL};
 
 	char name[16];
 	int chargeLevel;
