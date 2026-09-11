@@ -17,8 +17,8 @@ Hold: Yamato slash / level 3
 
 class King : public ActorPlayer {
 public:
-	King(): ActorPlayer("assets/img/Polar_Star_Players.bmp") {
-        SDL_Log("Loaded Actor: King");
+	King() : ActorPlayer("assets/img/Polar_Star_Players.bmp") {
+		SDL_Log("Loaded Actor: King");
 		// weapons[0] = POLAR;
 
 		m_sprite->Draw_Src(0, 64, 16, 16);
@@ -27,7 +27,9 @@ public:
 		m_gamepad = nullptr;
 
 		strcpy(name, "KING\0");
-        // weapons[0] = SWORD;
+		arsenal[(int)(weapondefs::SWORD)] = new PolarStar(this); // add default weapon to list (w/level)
+		weaponIDX = (int)(weapondefs::SWORD);					 // set weapon to that
+		curwep = arsenal[weaponIDX];
 	}
 };
 

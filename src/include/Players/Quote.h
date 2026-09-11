@@ -11,14 +11,14 @@ polar star, missile launcher, bubbline, snake (sidegrade from polar star), spur 
 #ifndef QUOTE_H
 #define QUOTE_H
 
-#include "superclasses/ActorPlayer.h"
-#include "Weapons/WeaponDefs.h"
 #include "Weapons/PolarStar.h"
+#include "Weapons/WeaponDefs.h"
+#include "superclasses/ActorPlayer.h"
 
 class Quote : public ActorPlayer {
 public:
-	Quote(): ActorPlayer("assets/img/Polar_Star_Players.bmp") {
-        SDL_Log("Loaded Actor: Quote");
+	Quote() : ActorPlayer("assets/img/Polar_Star_Players.bmp") {
+		SDL_Log("Loaded Actor: Quote");
 		// weapons[0] = POLAR;
 
 		m_sprite->Draw_Src(0, 0, 16, 16);
@@ -26,11 +26,11 @@ public:
 		m_sprite->Draw_Siz(16.0f, 16.0f);
 		m_gamepad = nullptr;
 
-		curwep = new PolarStar(this);
 		strcpy(name, "QUOTE\0");
 
-        // arsenal[(int)(weapondefs::POLAR)] = new PolarStar(this);//add default weapon to list (w/level)
-		// weaponIDX = (int)(weapondefs::POLAR); // set weapon to that 
+		arsenal[(int)(weapondefs::POLAR)] = new PolarStar(this); // add default weapon to list (w/level)
+		weaponIDX = (int)(weapondefs::POLAR);					 // set weapon to that
+		curwep = arsenal[weaponIDX];
 	}
 };
 

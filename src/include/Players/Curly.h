@@ -14,8 +14,8 @@ machinegun, missile launcher, fireball, bubbline, nemesis
 
 class Curly : public ActorPlayer {
 public:
-	Curly(): ActorPlayer("assets/img/Polar_Star_Players.bmp") {
-        SDL_Log("Loaded Actor: Curly");
+	Curly() : ActorPlayer("assets/img/Polar_Star_Players.bmp") {
+		SDL_Log("Loaded Actor: Curly");
 		// weapons[0] = POLAR;
 
 		m_sprite->Draw_Src(0, 48, 16, 16);
@@ -24,7 +24,9 @@ public:
 		m_gamepad = nullptr;
 		strcpy(name, "CURLY\0");
 
-        // arsenal[0] = new ;
+		arsenal[(int)(weapondefs::MACHINE)] = new PolarStar(this); // add default weapon to list (w/level)
+		weaponIDX = (int)(weapondefs::MACHINE);					   // set weapon to that
+		curwep = arsenal[weaponIDX];
 	}
 };
 

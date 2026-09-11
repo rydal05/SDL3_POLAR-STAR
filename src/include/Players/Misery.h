@@ -25,7 +25,9 @@ public:
 		m_gamepad = nullptr;
 		strcpy(name, "MISERY\0");
 
-        // weapons[0] = STAFF;
+		arsenal[(int)(weapondefs::STAFF)] = new PolarStar(this); // add default weapon to list (w/level)
+		weaponIDX = (int)(weapondefs::STAFF);					 // set weapon to that
+		curwep = arsenal[weaponIDX];
 	}
 };
 
