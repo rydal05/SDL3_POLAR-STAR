@@ -16,7 +16,7 @@ RESPONSIBILITIES OF A BULLET:
 class Bullet : public Entity {
 public:
 	Bullet();
-	explicit Bullet(const char *filepath);
+	explicit Bullet(const char *filepath) : Entity(filepath) {}
 	~Bullet() = default;
 
 	virtual void Update(double dt) = 0;
@@ -27,7 +27,8 @@ public:
 	void travel();
 	bool collision();
 
-private:
+protected:
+
 };
 
 #endif

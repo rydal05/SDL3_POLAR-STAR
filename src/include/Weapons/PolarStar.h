@@ -4,6 +4,10 @@
 #include "WeaponDefs.h"
 #include "superclasses/Entity.h"
 #include "superclasses/Weapon.h"
+#include "Bullets/PolarStar_bul.h"
+
+#include "Managers/QueueManager.h"
+
 class PolarStar : public Weapon {
 public:
 	PolarStar(Entity *callee) : Weapon("assets/img/Polar_Star_Players.bmp") {
@@ -22,6 +26,8 @@ public:
 
 	void Shoot() { 
 		SDL_Log("FIRED FROM POLARSTAR UNSPECIFIED SHOT TYPE");
+
+		Queue::getInstance().insert_bullets(new PolarStar_Bul());
 	}
 
 	private:
