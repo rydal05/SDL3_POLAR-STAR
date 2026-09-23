@@ -7,7 +7,9 @@ class Entity {
 public:
 	virtual void Update(double dt) = 0;
 	virtual void Render() = 0;
-	virtual ~Entity() {}
+	virtual ~Entity() {
+		SDL_free(m_sprite);
+	}
 
 	SDL_Texture *m_GetTexture() {
 		return m_sprite->GetTexture();
@@ -18,7 +20,7 @@ public:
 	}
 
 protected:
-	Entity(const char* path) : m_sprite(new Sprite(path)) {}
+	Entity(const char *path) : m_sprite(new Sprite(path)) {}
 	Sprite *m_sprite;
 };
 

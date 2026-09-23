@@ -11,6 +11,7 @@ Sprite::Sprite(const char *filepath) {
 	SDL_Surface *retrieveSurface = ResourceManager::GetInstance().GetSurface(new_filepath);
 	m_texture = SDL_CreateTextureFromSurface(GameDefs::g_renderer, retrieveSurface);
 	SDL_free(new_filepath);
+	SDL_Log("WE JUST CREATED SOME NEW SHIT");
 }
 
 Sprite::~Sprite() {
@@ -37,16 +38,16 @@ void Sprite::Draw_Y(float y) {
 	this->m_dst.y = y;
 }
 
-void Sprite::Offset_Dst(float x, float y){
+void Sprite::Offset_Dst(float x, float y) {
 	this->m_dst.x += x;
 	this->m_dst.y += y;
 }
 
-void Sprite::Offset_X(float x){
+void Sprite::Offset_X(float x) {
 	this->m_dst.x += x;
 }
 
-void Sprite::Offset_Y(float y){
+void Sprite::Offset_Y(float y) {
 	this->m_dst.y += y;
 }
 

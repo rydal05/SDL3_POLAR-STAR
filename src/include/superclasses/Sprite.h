@@ -1,6 +1,7 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
+#include "GameDefs.h"
 #include <SDL3/SDL.h>
 #include <string>
 
@@ -29,6 +30,14 @@ public:
 	float get_Y() { return m_dst.y; }
 	float get_W() { return m_dst.w; }
 	float get_H() { return m_dst.h; }
+
+	void flip_horiz() {
+		SDL_RenderTextureRotated(GameDefs::g_renderer, m_texture, &m_src, &m_dst, 0.0, NULL, SDL_FLIP_HORIZONTAL);
+	}
+
+	void flip_vert() {
+		SDL_RenderTextureRotated(GameDefs::g_renderer, m_texture, &m_src, &m_dst, 0.0, NULL, SDL_FLIP_VERTICAL);
+	}
 
 	void Update(double dt);
 	void Render();

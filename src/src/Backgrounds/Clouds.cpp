@@ -46,6 +46,8 @@ Clouds::Clouds() {
 	layer4_c->Draw_Dst(320.0f, 240.0f - l4h);
 	layer4_c->Draw_Siz(320.0f, l4h);
 
+	cloudsBG.reserve(8);
+
 	cloudsBG.push_back(std::move(layer4_c));
 	cloudsBG.push_back(std::move(layer4));
 	cloudsBG.push_back(std::move(layer3_c));
@@ -57,9 +59,7 @@ Clouds::Clouds() {
 }
 
 Clouds::~Clouds() {
-	for (size_t i = 0; i < cloudsBG.size(); i++) {
-		cloudsBG[i].reset();
-	}
+	cloudsBG.clear();
 }
 
 void Clouds::Update(double dt) {

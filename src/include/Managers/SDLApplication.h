@@ -8,7 +8,7 @@
 class SDLApplication {
 public:
 	SDLApplication(const char *title, int w, int h) {
-		SDL_SetAppMetadata("TEXT TEXT LALALALLALA", "Version Very Very Friend 0.0.1", "com.cantisresort.polarstar");
+		SDL_SetAppMetadata("TEXT TEXT LALALALLALA", "Version Very Very Friend 0.0.1", "com.reddolphin.polarstar");
 
 		if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_AUDIO)) {
 			SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
@@ -23,7 +23,8 @@ public:
 
 		SDL_SetRenderLogicalPresentation(GameDefs::g_renderer, w, h, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 		SDL_SetWindowResizable(GameDefs::g_window, true);
-
+		SDL_SetHint(SDL_HINT_RENDER_DRIVER, "direct3d"); 
+		
 		SDL_Surface* icon = IMG_Load("assets/icon.png");
 		if (icon){
 			SDL_SetWindowIcon(GameDefs::g_window, icon);

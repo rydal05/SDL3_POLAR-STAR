@@ -9,7 +9,6 @@ Moon::Moon() : Entity("assets/img/moon_stars_polarstar.bmp") {
 }
 
 Moon::~Moon() {
-	SDL_free(this->m_sprite);
 }
 
 void Moon::Update(double dt) {
@@ -44,4 +43,3 @@ void Moon::Update(double dt) {
 void Moon::Render() {
 	m_sprite->Render();
 }
-
