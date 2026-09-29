@@ -22,14 +22,14 @@ public:
 	virtual void Update(double dt) = 0;
 	virtual void Render() = 0;
 
-	void move(float x, float y); //explicit placing at specified location on screen
+	void move(float x, float y); // explicit placing at specified location on screen`
 
-	void travel(); 
+	void travel();
 	bool collision(); // defines how bullets interact with colliding with things (hitbox size for example)
-	void onHit(); // determines on hit effects and other functions that follow
+	void onHit();	  // determines on hit effects and other functions that follow
+	bool offScreen();
 
 protected:
-
 };
 
 #endif
