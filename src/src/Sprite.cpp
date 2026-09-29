@@ -11,7 +11,7 @@ Sprite::Sprite(const char *filepath) {
 	SDL_Surface *retrieveSurface = ResourceManager::GetInstance().GetSurface(new_filepath);
 	m_texture = SDL_CreateTextureFromSurface(GameDefs::g_renderer, retrieveSurface);
 	SDL_free(new_filepath);
-	SDL_Log("WE JUST CREATED SOME NEW SHIT");
+	SDL_Log("NEW SPRITE CREATED");
 }
 
 Sprite::~Sprite() {
